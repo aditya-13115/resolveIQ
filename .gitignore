@@ -1,0 +1,32 @@
+# Virtual environment
+resolveIQ/
+.venv/
+venv/
+env/
+
+# Raw dataset
+data/raw/
+
+# Generated/intermediate data
+data/interim/
+
+# Python
+__pycache__/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+
+# Claude
+.claude/
+
+# Environment/secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db

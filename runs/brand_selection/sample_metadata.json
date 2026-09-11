@@ -1,0 +1,12 @@
+{
+  "source": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\data\\raw\\customer-support-on-twitter\\twcs.csv",
+  "sampling_strategy": "thread_preserving_root_sampling",
+  "fraction_of_roots": 0.15,
+  "seed": 42,
+  "total_tweets_full": 2811774,
+  "total_roots_full": 787346,
+  "sampled_roots": 118101,
+  "sampled_tweets": 405766,
+  "sampled_threads": 118101,
+  "timestamp": "2026-09-11T20:15:12.115787+00:00"
+}
