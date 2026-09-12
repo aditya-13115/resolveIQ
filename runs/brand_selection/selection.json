@@ -1,33 +1,32 @@
 {
   "provisional_brand": "AmazonHelp",
-  "final_brand_locked": false,
+  "final_brand": "GWRHelp",
+  "final_brand_locked": true,
+  "runner_up": "Tesco",
+  "quant_winner": "AmazonHelp",
+  "audit_winner": "GWRHelp",
+  "tiebreak_rule_applied": "gap 0.0137 < 0.10 -> audit winner",
+  "final_score_gap": 0.013702093937004056,
   "sampling": {
     "strategy": "thread_preserving_root_sampling",
     "fraction_of_roots": 0.15,
     "seed": 42
   },
-  "storage": "pickle",
   "weights": {
     "n_threads": 0.25,
     "avg_thread_len": 0.2,
     "deep_turn_rate": 0.25,
     "substantive_response_rate": 0.3
   },
-  "top_5_quantitative": {
-    "AmazonHelp": 0.6344,
-    "VerizonSupport": 0.4573,
-    "Tesco": 0.4409,
-    "AskPlayStation": 0.4369,
-    "GWRHelp": 0.4058
-  },
   "artifacts": {
     "threads_sample": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\data\\interim\\threads_sample.pkl",
     "sample_metadata": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\sample_metadata.json",
     "brand_scores": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\brand_scores.csv",
-    "brand_summary": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\brand_summary.csv",
-    "thread_stats": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\thread_stats.csv",
+    "brand_comparison_table": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\brand_comparison_table.csv",
+    "brand_final_comparison": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\brand_final_comparison.csv",
     "first_inbound": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\first_inbound_per_thread.pkl",
-    "candidate_audit": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\runs\\brand_selection\\candidate_audit.csv"
+    "human_audit": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\evaluation\\candidate_audit.csv",
+    "brand_config": "d:\\CODIN PLAYGROUND\\ML-AI\\ResolveIQ\\configs\\brand.yaml"
   },
-  "timestamp_utc": "2026-09-12T11:08:55.361567+00:00"
+  "timestamp_utc": "2026-09-12T13:10:12.743200+00:00"
 }

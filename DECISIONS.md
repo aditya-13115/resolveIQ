@@ -20,14 +20,15 @@ GWRHelp won the manual audit (4.12/5), leading on response usefulness (5/5),
 resolution evidence (4/5), behavioral consistency (5/5), and data cleanliness
 (5/5). Five of ten reviewed threads showed a visible resolution, compared to
 almost zero for AmazonHelp. The quantitative winner (AmazonHelp) had roughly
-7x more threads but ~30 pp lower substantive response behavior and a reply
-pattern dominated by link/DM handoffs.
+7x more threads but a reply pattern dominated by link/DM handoffs (29.3% vs
+3.6% for GWRHelp) and a lower manual audit score (3.00 vs 4.12).
 
-The top two candidates (GWRHelp 0.5935, Tesco 0.5798) are within 0.014,
-statistically indistinguishable at this sample size. The tie-break rule
-(audit winner when gap < 0.10) selects GWRHelp, which also wins on audit
-mean. For an assignment where proof matters more than system size, the
-cleaner, higher-quality corpus is the better choice.
+The top two candidates (GWRHelp 0.5935, Tesco 0.5798) are separated by only
+0.014 in the combined score. The predefined tie-break rule — when the
+quantitative and audit winners differ and the gap is below 0.10, select the
+audit winner — therefore applies. GWRHelp is selected. For an assignment
+where proof matters more than system size, the cleaner, higher-quality corpus
+is the better choice.
 
 ### Tradeoffs accepted
 
@@ -50,3 +51,58 @@ cleaner, higher-quality corpus is the better choice.
 - **VerizonSupport:** Inconsistent tone, misrouted replies, generic
   handoffs. Weakest candidate.
 
+### Limitations of the EDA Response Classifier
+
+The response classifier used during the EDA is a heuristic, not human ground
+truth. It is intentionally strict: brand replies must match positive evidence
+patterns to be classified as `informational`, `investigation`, or
+`resolution`. Replies that don't match any pattern fall into the `other`
+bucket.
+
+Observed distribution across the sampled brand replies:
+
+- `other`: 58.76%
+- `link_handoff`: 16.72%
+- `handoff_dm`: 14.17%
+- `informational`: 3.31%
+- `info_request`: 3.20%
+- `empathy_only`: 3.04%
+- `investigation`: 0.64%
+- `resolution`: 0.18%
+
+Implications:
+
+- The `substantive_response_rate` metric used in the quantitative brand
+  score is a coarse signal, not a high-fidelity quality measure. It is one
+  input to candidate ranking, not a benchmark.
+- Brand selection did not depend on this metric alone. The final choice
+  (GWRHelp) was validated by a manual audit of 10 threads per candidate.
+- This classifier must not be reused as-is for the intent taxonomy or the
+  golden evaluation set. Those will be built through manual annotation on
+  the selected brand only.
+
+## Key Decisions
+
+### Rule 1 — Sample the unit you evaluate
+
+> If the evaluation unit is a conversation, sample conversations — not individual tweets.
+
+### Rule 2 — Every score component must discriminate
+
+> A metric that is constant or tautological across candidates should not influence ranking.
+
+### Rule 3 — Name proxies honestly
+
+> A keyword-based topic proxy is not an intent taxonomy.
+
+### Rule 4 — Separate routing from substantive support
+
+> A brand response existing does not mean the issue was meaningfully addressed.
+
+### Rule 5 — Quantitative ranking is not the final decision
+
+> Use metrics to shortlist candidates; use manual audit to validate the final brand.
+
+### Rule 6 — Heuristic classifiers are bounded tools
+
+> A regex-based classifier is a ranking signal, not a quality benchmark. Its coverage and error rate must be reported alongside its outputs.
