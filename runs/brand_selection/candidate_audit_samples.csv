@@ -1,251 +1,292 @@
-brand,root_id,n_tweets,n_inbound,n_outbound,depth_group
-AmazonHelp,1246332,2,1,1,two_tweet
-AmazonHelp,261741,2,1,1,two_tweet
-AmazonHelp,272471,2,1,1,two_tweet
-AmazonHelp,2352340,2,1,1,two_tweet
-AmazonHelp,2282471,2,1,1,two_tweet
-AmazonHelp,2135592,2,1,1,two_tweet
-AmazonHelp,1528685,2,1,1,two_tweet
-AmazonHelp,2410476,2,1,1,two_tweet
-AmazonHelp,2477517,2,1,1,two_tweet
-AmazonHelp,2303624,2,1,1,two_tweet
-AmazonHelp,1219158,2,1,1,two_tweet
-AmazonHelp,250706,2,1,1,two_tweet
-AmazonHelp,2694973,2,1,1,two_tweet
-AmazonHelp,2944381,2,1,1,two_tweet
-AmazonHelp,2435694,2,1,1,two_tweet
-AmazonHelp,524252,2,1,1,two_tweet
-AmazonHelp,2608594,3,2,1,deep_multi_turn
-AmazonHelp,240501,5,3,2,deep_multi_turn
-AmazonHelp,1704059,5,3,2,deep_multi_turn
-AmazonHelp,2113036,4,1,3,deep_multi_turn
-AmazonHelp,2512037,4,1,3,deep_multi_turn
-AmazonHelp,669135,9,5,4,deep_multi_turn
-AmazonHelp,2694122,4,2,2,deep_multi_turn
-AmazonHelp,529202,5,2,3,deep_multi_turn
-AmazonHelp,887988,13,8,5,deep_multi_turn
-AmazonHelp,182627,7,4,3,deep_multi_turn
-AmazonHelp,180078,3,2,1,deep_multi_turn
-AmazonHelp,1463444,4,2,2,deep_multi_turn
-AmazonHelp,391659,3,1,2,deep_multi_turn
-AmazonHelp,1160651,6,4,2,deep_multi_turn
-AmazonHelp,2302022,4,2,2,deep_multi_turn
-AmazonHelp,2906583,6,3,3,deep_multi_turn
-AmazonHelp,2779270,4,2,2,deep_multi_turn
-AmazonHelp,544478,2,1,1,two_tweet
-AmazonHelp,961648,2,1,1,two_tweet
-AmazonHelp,1290981,6,3,3,deep_multi_turn
-AmazonHelp,331373,2,1,1,two_tweet
-AmazonHelp,219163,5,2,3,deep_multi_turn
-AmazonHelp,971314,2,1,1,two_tweet
-AmazonHelp,1257160,6,3,3,deep_multi_turn
-AmazonHelp,837785,2,1,1,two_tweet
-AmazonHelp,2033390,6,4,2,deep_multi_turn
-AmazonHelp,825532,2,1,1,two_tweet
-AmazonHelp,2910432,2,1,1,two_tweet
-AmazonHelp,465041,4,2,2,deep_multi_turn
-AmazonHelp,2453243,7,4,3,deep_multi_turn
-AmazonHelp,2135623,7,2,5,deep_multi_turn
-AmazonHelp,1096752,3,2,1,deep_multi_turn
-AmazonHelp,1273469,4,2,2,deep_multi_turn
-AmazonHelp,1552153,2,1,1,two_tweet
-VerizonSupport,2475313,2,1,1,two_tweet
-VerizonSupport,2460477,2,1,1,two_tweet
-VerizonSupport,2247747,2,1,1,two_tweet
-VerizonSupport,1001795,2,1,1,two_tweet
-VerizonSupport,17749,2,1,1,two_tweet
-VerizonSupport,2147094,2,1,1,two_tweet
-VerizonSupport,708825,2,1,1,two_tweet
-VerizonSupport,2518847,2,1,1,two_tweet
-VerizonSupport,2569914,2,1,1,two_tweet
-VerizonSupport,1536464,2,1,1,two_tweet
-VerizonSupport,512719,2,1,1,two_tweet
-VerizonSupport,2049991,2,1,1,two_tweet
-VerizonSupport,2160833,2,1,1,two_tweet
-VerizonSupport,2487639,2,1,1,two_tweet
-VerizonSupport,1785218,2,1,1,two_tweet
-VerizonSupport,2515371,2,1,1,two_tweet
-VerizonSupport,293619,5,3,2,deep_multi_turn
-VerizonSupport,1565611,3,2,1,deep_multi_turn
-VerizonSupport,1744014,5,3,2,deep_multi_turn
-VerizonSupport,1021851,15,10,5,deep_multi_turn
-VerizonSupport,767544,5,3,2,deep_multi_turn
-VerizonSupport,2353122,3,2,1,deep_multi_turn
-VerizonSupport,1255193,6,3,3,deep_multi_turn
-VerizonSupport,861353,4,2,2,deep_multi_turn
-VerizonSupport,1581091,8,5,3,deep_multi_turn
-VerizonSupport,1687107,8,5,3,deep_multi_turn
-VerizonSupport,590289,4,2,2,deep_multi_turn
-VerizonSupport,124558,37,26,11,deep_multi_turn
-VerizonSupport,1552251,3,2,1,deep_multi_turn
-VerizonSupport,1619755,4,2,2,deep_multi_turn
-VerizonSupport,2914195,3,2,1,deep_multi_turn
-VerizonSupport,1196607,5,3,2,deep_multi_turn
-VerizonSupport,1035378,6,3,3,deep_multi_turn
-VerizonSupport,2374996,2,1,1,two_tweet
-VerizonSupport,87275,5,3,2,deep_multi_turn
-VerizonSupport,2366989,4,2,2,deep_multi_turn
-VerizonSupport,1012004,2,1,1,two_tweet
-VerizonSupport,310945,4,2,2,deep_multi_turn
-VerizonSupport,363928,6,3,3,deep_multi_turn
-VerizonSupport,1223696,2,1,1,two_tweet
-VerizonSupport,2930176,2,1,1,two_tweet
-VerizonSupport,1218803,4,2,2,deep_multi_turn
-VerizonSupport,1242797,2,1,1,two_tweet
-VerizonSupport,1430224,4,2,2,deep_multi_turn
-VerizonSupport,2480853,5,3,2,deep_multi_turn
-VerizonSupport,2200354,7,5,2,deep_multi_turn
-VerizonSupport,2208968,2,1,1,two_tweet
-VerizonSupport,481306,3,2,1,deep_multi_turn
-VerizonSupport,2149837,4,2,2,deep_multi_turn
-VerizonSupport,1982163,3,2,1,deep_multi_turn
-Tesco,2777849,2,1,1,two_tweet
-Tesco,538168,2,1,1,two_tweet
-Tesco,2509684,2,1,1,two_tweet
-Tesco,2551227,2,1,1,two_tweet
-Tesco,1172313,2,1,1,two_tweet
-Tesco,2905892,2,1,1,two_tweet
-Tesco,1635911,2,1,1,two_tweet
-Tesco,578185,2,1,1,two_tweet
-Tesco,2349810,2,1,1,two_tweet
-Tesco,2850026,2,1,1,two_tweet
-Tesco,1482496,2,1,1,two_tweet
-Tesco,1877865,2,1,1,two_tweet
-Tesco,2875323,2,1,1,two_tweet
-Tesco,1188918,2,1,1,two_tweet
-Tesco,1840145,2,1,1,two_tweet
-Tesco,1481080,2,1,1,two_tweet
-Tesco,1507167,4,1,3,deep_multi_turn
-Tesco,1130649,8,3,5,deep_multi_turn
-Tesco,1705563,8,5,3,deep_multi_turn
-Tesco,2540541,6,4,2,deep_multi_turn
-Tesco,2103867,4,2,2,deep_multi_turn
-Tesco,1784657,5,2,3,deep_multi_turn
-Tesco,1950828,4,1,3,deep_multi_turn
-Tesco,1126221,5,2,3,deep_multi_turn
-Tesco,59684,8,3,5,deep_multi_turn
-Tesco,770295,5,1,4,deep_multi_turn
-Tesco,1430695,8,4,4,deep_multi_turn
-Tesco,1900303,10,5,5,deep_multi_turn
-Tesco,2207171,4,2,2,deep_multi_turn
-Tesco,632043,3,1,2,deep_multi_turn
-Tesco,2383488,3,2,1,deep_multi_turn
-Tesco,1606904,3,1,2,deep_multi_turn
-Tesco,1593656,2,1,1,two_tweet
-Tesco,83726,12,6,6,deep_multi_turn
-Tesco,1935490,3,2,1,deep_multi_turn
-Tesco,671417,2,1,1,two_tweet
-Tesco,765196,5,1,4,deep_multi_turn
-Tesco,1901811,5,2,3,deep_multi_turn
-Tesco,1879247,3,2,1,deep_multi_turn
-Tesco,1140407,2,1,1,two_tweet
-Tesco,2424936,2,1,1,two_tweet
-Tesco,1156479,4,2,2,deep_multi_turn
-Tesco,741869,6,3,3,deep_multi_turn
-Tesco,1886934,2,1,1,two_tweet
-Tesco,538154,7,4,3,deep_multi_turn
-Tesco,2062762,3,2,1,deep_multi_turn
-Tesco,1272504,5,1,4,deep_multi_turn
-Tesco,2862701,4,3,1,deep_multi_turn
-Tesco,2938722,3,1,2,deep_multi_turn
-Tesco,2768501,3,2,1,deep_multi_turn
-AskPlayStation,2482957,2,1,1,two_tweet
-AskPlayStation,13756,2,1,1,two_tweet
-AskPlayStation,654949,2,1,1,two_tweet
-AskPlayStation,1463918,2,1,1,two_tweet
-AskPlayStation,1142138,2,1,1,two_tweet
-AskPlayStation,363525,2,1,1,two_tweet
-AskPlayStation,711339,2,1,1,two_tweet
-AskPlayStation,2559083,2,1,1,two_tweet
-AskPlayStation,940562,2,1,1,two_tweet
-AskPlayStation,869704,2,1,1,two_tweet
-AskPlayStation,1479312,2,1,1,two_tweet
-AskPlayStation,2662615,2,1,1,two_tweet
-AskPlayStation,771171,2,1,1,two_tweet
-AskPlayStation,2783998,2,1,1,two_tweet
-AskPlayStation,1408778,2,1,1,two_tweet
-AskPlayStation,94342,2,1,1,two_tweet
-AskPlayStation,776987,13,11,2,deep_multi_turn
-AskPlayStation,1221500,5,3,2,deep_multi_turn
-AskPlayStation,556792,8,4,4,deep_multi_turn
-AskPlayStation,2468489,8,6,2,deep_multi_turn
-AskPlayStation,1599540,5,3,2,deep_multi_turn
-AskPlayStation,2701667,5,3,2,deep_multi_turn
-AskPlayStation,367730,6,3,3,deep_multi_turn
-AskPlayStation,2513627,4,2,2,deep_multi_turn
-AskPlayStation,2840439,3,2,1,deep_multi_turn
-AskPlayStation,968899,4,2,2,deep_multi_turn
-AskPlayStation,162698,4,3,1,deep_multi_turn
-AskPlayStation,1447747,3,2,1,deep_multi_turn
-AskPlayStation,795376,4,2,2,deep_multi_turn
-AskPlayStation,1420437,4,2,2,deep_multi_turn
-AskPlayStation,2843246,5,3,2,deep_multi_turn
-AskPlayStation,526358,3,2,1,deep_multi_turn
-AskPlayStation,1400184,8,4,4,deep_multi_turn
-AskPlayStation,103310,2,1,1,two_tweet
-AskPlayStation,375413,6,3,3,deep_multi_turn
-AskPlayStation,2662341,2,1,1,two_tweet
-AskPlayStation,876226,2,1,1,two_tweet
-AskPlayStation,815336,2,1,1,two_tweet
-AskPlayStation,2362236,2,1,1,two_tweet
-AskPlayStation,2564400,3,2,1,deep_multi_turn
-AskPlayStation,1136904,2,1,1,two_tweet
-AskPlayStation,2913343,2,1,1,two_tweet
-AskPlayStation,2656186,2,1,1,two_tweet
-AskPlayStation,2656238,2,1,1,two_tweet
-AskPlayStation,517337,10,6,4,deep_multi_turn
-AskPlayStation,2857698,2,1,1,two_tweet
-AskPlayStation,1240863,6,3,3,deep_multi_turn
-AskPlayStation,270705,2,1,1,two_tweet
-AskPlayStation,2257131,2,1,1,two_tweet
-AskPlayStation,330637,6,3,3,deep_multi_turn
-GWRHelp,733309,2,1,1,two_tweet
-GWRHelp,1117648,2,1,1,two_tweet
-GWRHelp,1874388,2,1,1,two_tweet
-GWRHelp,1259448,2,1,1,two_tweet
-GWRHelp,678629,2,1,1,two_tweet
-GWRHelp,2395986,2,1,1,two_tweet
-GWRHelp,1011059,2,1,1,two_tweet
-GWRHelp,120617,2,1,1,two_tweet
-GWRHelp,2233325,2,1,1,two_tweet
-GWRHelp,2965683,2,1,1,two_tweet
-GWRHelp,2600555,2,1,1,two_tweet
-GWRHelp,1083629,2,1,1,two_tweet
-GWRHelp,601762,2,1,1,two_tweet
-GWRHelp,2189439,2,1,1,two_tweet
-GWRHelp,2904931,2,1,1,two_tweet
-GWRHelp,2572820,2,1,1,two_tweet
-GWRHelp,2030183,3,2,1,deep_multi_turn
-GWRHelp,1590174,4,2,2,deep_multi_turn
-GWRHelp,174072,4,2,2,deep_multi_turn
-GWRHelp,1317119,7,4,3,deep_multi_turn
-GWRHelp,550413,4,2,2,deep_multi_turn
-GWRHelp,807150,5,3,2,deep_multi_turn
-GWRHelp,2561416,5,3,2,deep_multi_turn
-GWRHelp,66123,5,3,2,deep_multi_turn
-GWRHelp,2470323,6,3,3,deep_multi_turn
-GWRHelp,2233264,3,2,1,deep_multi_turn
-GWRHelp,2130683,3,2,1,deep_multi_turn
-GWRHelp,1807273,5,3,2,deep_multi_turn
-GWRHelp,1372247,4,2,2,deep_multi_turn
-GWRHelp,2189442,4,2,2,deep_multi_turn
-GWRHelp,2359727,7,4,3,deep_multi_turn
-GWRHelp,2718833,4,2,2,deep_multi_turn
-GWRHelp,1854779,3,2,1,deep_multi_turn
-GWRHelp,21249,7,4,3,deep_multi_turn
-GWRHelp,1587270,2,1,1,two_tweet
-GWRHelp,673762,8,4,4,deep_multi_turn
-GWRHelp,1854044,3,2,1,deep_multi_turn
-GWRHelp,2723478,8,4,4,deep_multi_turn
-GWRHelp,498300,2,1,1,two_tweet
-GWRHelp,1786857,3,2,1,deep_multi_turn
-GWRHelp,2827658,2,1,1,two_tweet
-GWRHelp,2174289,3,2,1,deep_multi_turn
-GWRHelp,2514335,2,1,1,two_tweet
-GWRHelp,1935475,4,2,2,deep_multi_turn
-GWRHelp,1347350,3,2,1,deep_multi_turn
-GWRHelp,605444,9,5,4,deep_multi_turn
-GWRHelp,2233214,5,3,2,deep_multi_turn
-GWRHelp,591595,9,8,1,deep_multi_turn
-GWRHelp,2878357,2,1,1,two_tweet
-GWRHelp,66081,2,1,1,two_tweet
+brand,root_id,first_inbound_tweet_id,customer_text,n_tweets,sampling_bucket,audit_pool_rank
+AmazonHelp,987995,987995,Today 14th.Product ordered on 23rd Sept neither quality delivered nor refund.No refund by 2morow will lodge policeComplaint&amp;approach C.court https://t.co/pCzM5cLt8Z,5,deep_multi_turn,35
+AmazonHelp,2347771,2347771,"Gente, a @117086  não está pra brincadeira msm hein! Comprei no dia 11 e já chegou! 👏👏👏👏 https://t.co/ct9meGXTtF",5,deep_multi_turn,36
+AmazonHelp,158786,158786,I tried to order a game to be delivered next day with Prime @ 5:10PM Friday - I have to wait until Monday?!?! @115821 @115830 @AmazonHelp https://t.co/XKqiOHvz6c,6,deep_multi_turn,37
+AmazonHelp,2320721,2320721,@115821 @AmazonHelp how do I sign up for the once yearly amazon? I can only find the monthly payments right now. And just a 30 day trial. I just want to buy the yearly one.,7,deep_multi_turn,38
+AmazonHelp,1309595,1309595,Got this unsmart fone for One plus5! Is this how u treat ur valued customers @115821 @115850 ? Not replaced since 1 week. Poor experience. https://t.co/ASRUS1d2LE,15,deep_multi_turn,39
+AmazonHelp,1067672,1067672,"Hung up on by @115830 Customer Services. Those Prime fees at work, there... 😡",6,deep_multi_turn,40
+AmazonHelp,1311282,1311282,"@115830 @AmazonHelp I tweeted you, posted the transcript of my conversation with your very unhelpful rep, emailed Jeff. What does it take?",6,deep_multi_turn,41
+AmazonHelp,198116,198116,@AmazonHelp why can I not apply this balance to my outstanding amount due all of the sudden? https://t.co/RqDdn4mTAs,11,deep_multi_turn,42
+AmazonHelp,2668736,2668736,@115830 can you tell me what neighbour this has been delivered to? I’ve tried 36 and 37 and neither of them have it... https://t.co/OsPiDU6uQX,5,deep_multi_turn,43
+AmazonHelp,2408725,2408725,"Bon @132988 et @120533, mon colis il s'est perdu dans le néant ou quoi ? Il devait arriver hier et toujours rien aujourd'hui :/",5,deep_multi_turn,44
+AmazonHelp,1749460,1749460,"Un anniversaire sans cadeau grâce à @115821.fr
+Il devait arrivée hier et a finalement été livré aujourd'hui en notre absence à un ""résident""",11,deep_multi_turn,45
+AmazonHelp,781189,781189,"@115850 what is the status. 
+
+I don't get any call.
+
+Are you delevring items or not?
+
+Or just passing the time.",7,deep_multi_turn,46
+AmazonHelp,1043182,1043182,Hey @AmazonHelp how do I report that I only received 1 item I ordered 2 of? Marketplace vendor isn't helping and you/they have my money...,7,deep_multi_turn,47
+AmazonHelp,2318811,2318811,".@115821 &amp; @142696 - your signed ""On Tour"" package arrived yesterday &amp; the envelope was empty. What kind of BS is this? My son had been waiting for months. What a total scam. #Gamers - beware.",5,deep_multi_turn,48
+AmazonHelp,2433638,2433638,When you pay extra for a delivery by 1pm with @115830 and it's still not here 24 hours later,5,deep_multi_turn,49
+AmazonHelp,2671379,2671379,Plusieurs jours que je n’arrive pas à consulter mon compte ni à commander sur l’application @120533,8,deep_multi_turn,50
+AmazonHelp,2773084,2773084,Pls say @47383 is part of this deal !!!! @115850 please please please tell us some.good news !! https://t.co/EJIWexMK58,3,three_to_four_tweet,18
+AmazonHelp,784737,784737,"Dear @115821:
+
+Is it Waterproof, or is it Water resistant? Those 2 words aren’t the same.",3,three_to_four_tweet,19
+AmazonHelp,276136,276136,Gutted as @152044 #Butterfly #PictureDisc order now is delayed on @AmazonHelp @115830 😪 https://t.co/aK3in55q5K,4,three_to_four_tweet,20
+AmazonHelp,2385851,2385851,"クレジットカードの明細を見てたらAmazonの請求があるんだけど、注文履歴を見ても何の注文なのかさっぱり分からない…
+日にちが近いのを見ても金額が違うしどう確認したらよいのやら。
+Amazonに問い合せた方がいいのかなー。",3,three_to_four_tweet,21
+AmazonHelp,1739048,1739048,@115821 umm can you tell me why I ordered an iPhone 7+ adapter n it doesn’t work 😑,3,three_to_four_tweet,22
+AmazonHelp,2318618,2318618,@115830 @115821 is it time to rethink your packaging process and reduce your #cardboardfootprint? A touch unnecessary me thinks. https://t.co/4WQDJUVjRj,3,three_to_four_tweet,23
+AmazonHelp,93497,93497,Hey @115830 free 1 day delivery with a delivery date in 3 days? Why am I paying for prime? https://t.co/tBQ6DjndfA,3,three_to_four_tweet,24
+AmazonHelp,280208,280208,"@171152 @115821 Worst service, 45 days no solutions to complaint, do not trust them #WorldSmileDay #ZefoWaliDiwaliSale #sasikala",4,three_to_four_tweet,25
+AmazonHelp,2220136,2220136,@120533 Des infos sur quand le Vol 5 de Transformers IDW Collection Phase 1 (ISBN 1613770528) sera à nouveau dispo ? Merci d'avance !,4,three_to_four_tweet,26
+AmazonHelp,882554,882554,"@115850 @118343 both cheater companies, One put offer on Website and sell product,  then ask to contact other cheater, Cheaters club",3,three_to_four_tweet,27
+AmazonHelp,2451320,2451320,"Dear @115821 and @118706 .. when we order things and they arrive lile this, its pretty damn disappointing. https://t.co/ZmWhC7ckjc",4,three_to_four_tweet,28
+AmazonHelp,396868,396868,@116928 DONDE ESTÁN MIS LIBROS???!!! https://t.co/f5Ek1XOLxh,4,three_to_four_tweet,29
+AmazonHelp,1288161,1288161,@117086 não consigo realizar o pagamento com cartão de débito,4,three_to_four_tweet,30
+AmazonHelp,2230276,2230276,"Por culpa de @130687, siento que estoy tirando el dinero con @116928 Premium 😤
+https://t.co/yL2KVhziim",4,three_to_four_tweet,31
+AmazonHelp,324122,324122,Shout out to the @115821 team for these clever football print boxes advertising their Amazon PrimeThursday Night Football partnership. #TNF https://t.co/ENFzkVBnTD,4,three_to_four_tweet,32
+AmazonHelp,2598850,2598850,"Amazon bewirbt Music Unlimited. Auf die Mailadresse, die im Prime-Konto hinterlegt ist. 
+
+I don't get it.",4,three_to_four_tweet,33
+AmazonHelp,156816,156816,"@115830 terrible service today, took day off work and waited in for order, only to be told at 4.30pm it wasn’t getting delivered today and would be delivered in next few days. What’s the point in paying for prime? 😡😡",4,three_to_four_tweet,34
+AmazonHelp,836944,836944,"@115850 I've ordered 2 phones last week, have received one and the other one was supposed to be delivered yesterday &amp; now I just got this. https://t.co/hSBVYNF1Ru",2,two_tweet,1
+AmazonHelp,2318869,2318869,"Funny, frustrating experience with @115850 Based on false assurances, I am still waiting for a delivery.  Grrrr...",2,two_tweet,2
+AmazonHelp,571748,571748,"80% of all my Amazon shipments are delayed...I am a super patience person, but really? What gives? What is the point of having Prime then?",2,two_tweet,3
+AmazonHelp,2513467,2513467,signed up for amazon prime 10 minutes ago and i have already bought 2 things,2,two_tweet,4
+AmazonHelp,900387,900387,Whoever @115821 contracts with in my area to do Prime Amazon Logistics deliveries is horrible. So frustrating that they're always late. https://t.co/Hlq0CyTGkl,2,two_tweet,5
+AmazonHelp,1881164,1881164,Will Apple Music be available in Amazon Echo India any time soon? @AmazonHelp,2,two_tweet,6
+AmazonHelp,419070,419070,@115821 Fix the survey we receive after picking up our first locker delivery. It will give you inaccurate results of customer experience. https://t.co/mMXFpGhSQ5,2,two_tweet,7
+AmazonHelp,2273240,2273240,@120533 bjr. étant client fidèle chez vous serait-il possible d'obtenir gratuitement le kindle d'un roman que j'ai par ailleurs acheté chez vous en format classique?,2,two_tweet,8
+AmazonHelp,2815522,2815522,"Is there a preferred channel to tell @amazonhelp that a package the site lists as delivered was, in fact, not?",2,two_tweet,9
+AmazonHelp,577787,577787,Amazonから本とCD届かねぇな,2,two_tweet,10
+AmazonHelp,35933,35933,"It's not disappointing,but""IRRITATING""for me and #SHAMEFUL on @115850 I know you'll come up with just a ""SORRY"" coz it can't be delivered. https://t.co/h0MehKwyhX",2,two_tweet,11
+AmazonHelp,279723,279723,Really @115821 same day service and you loose the package? #Badservice https://t.co/7SOQ1Q41ob,2,two_tweet,12
+AmazonHelp,1159084,1159084,@115850 I have a query regarding Manufacturer Warranty on a product. Can you please get in touch?,2,two_tweet,13
+AmazonHelp,2273457,2273457,"@AmazonHelp Can I sign up for student prime as I have an NUS card but I'm only 17? Surely if I have an NUS card, I should be eligible for student prime?",2,two_tweet,14
+AmazonHelp,1357190,1357190,"@226078 @1386 @115850 i purchased bms+amazon gv, all are locked. why the hell this is done,i want my money,solve this issue",2,two_tweet,15
+AmazonHelp,2887393,2887393,No compréis en @115821 mirar como entregan los paquetes estos desgraciados!! Te lo tiran por encima de la valla y solucionado. Transporte @137863 SINVERGUENZAS!! https://t.co/lOvCvIiVKF,2,two_tweet,16
+AmazonHelp,145757,145757,Só gastei na Black Friday da @117086 até agora 🤓,2,two_tweet,17
+AskPlayStation,1738368,1738368,@AskPlayStation why I can't use my NBA account to view in the NBA App on the PS4?,10,deep_multi_turn,35
+AskPlayStation,299288,299288,"@AskPlayStation My ps4 controller keeps randomly turning off while I’m using the ps4 and it won’t reconnect unless I unplug the ps4, help!",5,deep_multi_turn,36
+AskPlayStation,1375863,1375863,"@AskPlayStation hey there
+I have have a problem with my online status .
+ i can't go online even when am choose it .. it don't change",6,deep_multi_turn,37
+AskPlayStation,654933,654933,@AskPlayStation can’t connect to the playstation store in my ps4,7,deep_multi_turn,38
+AskPlayStation,781735,781735,@117014 @AskPlayStation Hi there. I have a ps4 Pro and 4k TV. Some games run fine in 4k but others seem to flick to a lesser resolution,12,deep_multi_turn,39
+AskPlayStation,2208897,2208897,@AskPlayStation trying to sign up/in PS vue. Not working.,6,deep_multi_turn,40
+AskPlayStation,263718,263718,@AskPlayStation when logging into psn im getting a error code of WV-33898-1,6,deep_multi_turn,41
+AskPlayStation,109519,109519,@AskPlayStation  i have a problem,6,deep_multi_turn,42
+AskPlayStation,512158,512158,@AskPlayStation I have multiple PS4's in my house. I also play on my friends PS4 as well. I use my PSN account on them all. Recently I used one of my PS4's w my PSN and tonight I booted up my other PS4 cuz the other 1 is being used. My game licenses won't restore. Why?,5,deep_multi_turn,43
+AskPlayStation,722687,722687,@AskPlayStation what does error code CE-36434-0 mean? I get this when I try to install an update for Raid WW2,5,deep_multi_turn,44
+AskPlayStation,1405698,1405698,@AskPlayStation Using my account... Where do I find that?! Thanks! O_o,6,deep_multi_turn,45
+AskPlayStation,1599540,1599540,@AskPlayStation  help,5,deep_multi_turn,46
+AskPlayStation,1346154,1346154,@AskPlayStation  Hello! I want to start a livechat with support  and it keep telling me that  my PSN Online Id is wrong https://t.co/DR4zJ0ChKQ,7,deep_multi_turn,47
+AskPlayStation,432506,432506,"Is it normal for the PS4 pro to heat up after 5-15min? Because mine gets hot real quick, should I return it? @117014 @AskPlayStation",7,deep_multi_turn,48
+AskPlayStation,1213797,1213797,"@AskPlayStation Fifa 18 won’t load anymore on our PS4, tried everything we can think of and it won’t load - CE-34878-0",6,deep_multi_turn,49
+AskPlayStation,1707453,1707453,Help I am having security issues @AskPlayStation,20,deep_multi_turn,50
+AskPlayStation,669545,669545,"@AskPlayStation I Bought COD WW2, By Mistake And I Really Don't Like The Game ,Can I Get A Refund Please? My Psn Is
+XxKripsu-12xX-.-",3,three_to_four_tweet,18
+AskPlayStation,214692,214692,"@AskPlayStation I ""appreciate"" buying another PSTV &amp; being told I cannot activate the content &amp; when I try to deactivate a system on the web",3,three_to_four_tweet,19
+AskPlayStation,1161192,1161192,"@AskPlayStation I'm getting my ps4 serviced, didn't keep receipt. Will a copy of the invoice work? Includes date of purchase, payment, etc",4,three_to_four_tweet,20
+AskPlayStation,2820962,2820962,@AskPlayStation i require assistance,4,three_to_four_tweet,21
+AskPlayStation,822033,822033,"@121984 Olá pessoal, estou com problemas com um cartão da PSN que ganhei. Tento cadastrar o código mas os créditos não entram!",4,three_to_four_tweet,22
+AskPlayStation,1280984,1280984,@AskPlayStation my internet is fine but when i try to download somethingh it says 3mins then the download pauses and dsnt continue.,3,three_to_four_tweet,23
+AskPlayStation,2669595,2669595,@AskPlayStation help! created on line account won't activate on fire stick and won't let me sign in on line on laptop. WTH?,4,three_to_four_tweet,24
+AskPlayStation,1766594,1766594,"@AskPlayStation Hello, can you help me please? I have a game that is platinum glitched (Birthdays) but it seems it won't be patched. Help?",3,three_to_four_tweet,25
+AskPlayStation,1269858,1269858,"@AskPlayStation Can I request a refund for a game that I thought I could share consoles, but turns out I can't? No warning before purchase",3,three_to_four_tweet,26
+AskPlayStation,394209,394209,@AskPlayStation My suspension e-mail didn't say why you suspended me so can I at least see what I did wrong like a screenshot or anything ?,3,three_to_four_tweet,27
+AskPlayStation,2879996,2879996,@AskPlayStation I purchased the full game of Mortal Kombat X ($7.99) yet the story is locked and it says Mortal Kombat XL on the screen. Huh?,3,three_to_four_tweet,28
+AskPlayStation,2315745,2315745,"@AskPlayStation I can't buy anything on PSN.  it says my card is invalid, which it certainly isn't.  I've deleted it and added it again, I've answered all the stupid verified by Visa questions, but it still won't work.  What the hell is going on?",4,three_to_four_tweet,29
+AskPlayStation,403215,403215,"@AskPlayStation 
+Hi when can i expect the newest roster update for Nhl18? Waiting patiently to start my Franchise",3,three_to_four_tweet,30
+AskPlayStation,2222750,2222750,"@AskPlayStation The live chat help tells me I can't access because they can't find my account, I made it yesterday and it still tells me to wait 4-6 hours. I have trouble with payments not going through that I need fixed. My PSN is fez_whatley",3,three_to_four_tweet,31
+AskPlayStation,1399121,1399121,"@AskPlayStation 
+
+Why did my account get banned. I was helping with my friends and my account stopped working nd now its banned. Why tho",4,three_to_four_tweet,32
+AskPlayStation,2715366,2715366,"@AskPlayStation hi, i have bought the game my name is mayo, but the game is gone from my download list (need to pay again for it), any way to resolve this? Thanks",3,three_to_four_tweet,33
+AskPlayStation,1237803,1237803,@AskPlayStation hi im already have an account but when i want to sign in it tell me i need new online id why is that?,4,three_to_four_tweet,34
+AskPlayStation,2751726,2751726,"@AskPlayStation PlayStation vue won’t stream cbs live, plays 1 second then reverts back about an hour and freezes",2,two_tweet,1
+AskPlayStation,1695919,1695919,@AskPlayStation why can't other users on my ps4 play WWII on the downloaded game? Disk is same price &amp; all users can play that. @67692,2,two_tweet,2
+AskPlayStation,2099374,2099374,@AskPlayStation Why cant i download my account onto my PS4,2,two_tweet,3
+AskPlayStation,1405200,1405200,This as been my screen seen Thursday night I have the update file on a USB drive but it keeps giving me this HELP! @AskPlayStation #ps4 https://t.co/lDFFNGa5GG,2,two_tweet,4
+AskPlayStation,941146,941146,@116216  me hicieron un recargo no reconocido que puedo hacer,2,two_tweet,5
+AskPlayStation,1784021,1784021,@116216 hola ! Como hago válida la promoción activa de Fifa 18 + plus ??!!,2,two_tweet,6
+AskPlayStation,1785852,1785852,@AskPlayStation my account has not been working. I cant send any messages. Can u help me?,2,two_tweet,7
+AskPlayStation,1418849,1418849,@AskPlayStation it’s showing PSN is down for maintenance but my buddy is in the same place as me and is connected fine. Can you please help?,2,two_tweet,8
+AskPlayStation,845518,845518,@AskPlayStation I need help with a double purchase and refund please.,2,two_tweet,9
+AskPlayStation,223352,223352,"@AskPlayStation why did I get logged out of my account, username not recognized, no way to contact a human, and why do you hate me?",2,two_tweet,10
+AskPlayStation,2371684,2371684,@116216 pueden abrirme MD? es encerio urgente,2,two_tweet,11
+AskPlayStation,957949,957949,When ea makes you pay more money for the special Fifa but when you enter the code it doesn't work ridiculous @127852 @AskPlayStation,2,two_tweet,12
+AskPlayStation,2513743,2513743,@AskPlayStation hi I need to reset my password but I must of put the incorrect info in for my birthday can you help?,2,two_tweet,13
+AskPlayStation,1176725,1176725,"@AskPlayStation Hi, upgraded to 12 month pplus subscription on 21/10 and was advised would receive 1600 Fifa FUT points. I am yet to receive",2,two_tweet,14
+AskPlayStation,586113,586113,@AskPlayStation i forgot my password for my ps4 and i dont know what dob i put on it,2,two_tweet,15
+AskPlayStation,1639958,1639958,@AskPlayStation I have a problem: I think a hacker stoled my account...Can someone help me?,2,two_tweet,16
+AskPlayStation,2179217,2179217,"@AskPlayStation Hey, i have a problem i pre-ordered Star Wars Battlefront 2 and today i received a message that says i can pre-load it and then i go to the ps store and i receive this message https://t.co/9bpPznMTca",2,two_tweet,17
+GWRHelp,49452,49452,@GWRHelp Why not possible to book sleeper on your site? Says follow link to GWR site &gt; then takes you back to very same greyed out box. 🤷‍♂️ https://t.co/r6ujPLwjhW,6,deep_multi_turn,35
+GWRHelp,133166,133166,Why was the 7:21 from St Austell to Truro cancelled? @GWRHelp,6,deep_multi_turn,36
+GWRHelp,251180,251180,#gwr train from Burnham to London just cancelled again. Why? @GWRHelp,7,deep_multi_turn,37
+GWRHelp,2811695,2811695,@GWRHelp spectacularly bad service between Didcot &amp; Maidenhead yet again.,5,deep_multi_turn,38
+GWRHelp,1696393,1696393,@GWRHelp Why are there only 2 carriages on 17:54 Bris-Cardiff? Overcrowding is ridiculous (but not at all unexpected),5,deep_multi_turn,39
+GWRHelp,1326055,1326055,@GWRHelp might take my bike on the IET over the weekend. Which carriages are the cycle racks and is reservation compulsory? #GreenAzuma,12,deep_multi_turn,40
+GWRHelp,2741359,2741359,@GWRHelp yet another delay. Guildford to Reading delayed and now running straight to Reading 😡quite literally the worst service ever,5,deep_multi_turn,41
+GWRHelp,1632100,1632100,"Everything @GWRHelp seems to be delayed by up to an hour today waiting at Tiverton Parkway...., https://t.co/P5ghaMTQaZ",5,deep_multi_turn,42
+GWRHelp,651980,651980,"Typical scenes, every train delayed indefinitely and @GWRHelp are nowhere to be seen. https://t.co/Pmn8IKiaT3",7,deep_multi_turn,43
+GWRHelp,2822529,2822529,@GWRHelp Hi. Forgot my season ticket so had to buy a ticket - how does it work getting this refunded?,6,deep_multi_turn,44
+GWRHelp,1337612,1337612,"@GWRHelp “lack of train crew” adding at least an hour and two changes to my journey home. Fantastic, thanks",6,deep_multi_turn,45
+GWRHelp,2516651,2516651,"@GWRHelp Sorry to say guys as The Day tripper on you Railways ,The New 800s are like travelling on a waiting room bench and that Hmmmm ,but Hey I'm a old school and love the Legendary HST 125 ,at least it had a bar 👍🍻🙋",8,deep_multi_turn,46
+GWRHelp,2747979,2747979,".@121203 @GWRHelp at their very best. Given all of 2 mins to get to platform 14, half a mile from the screens for an already delayed train and then whistled at for not sprinting. Are you serious??? The train was being prepared... Why not tell us a platform then? Youre a joke.",7,deep_multi_turn,47
+GWRHelp,2634325,2634325,"@GWRHelp hi can you upgrade to first once on the train? And if yes, how?",6,deep_multi_turn,48
+GWRHelp,1517481,1517481,"@GWRHelp Hello, just inquiring of when will the 387's be running between London #Paddington and #Reading?",6,deep_multi_turn,49
+GWRHelp,624069,624069,"@145776 not a whine, some feedback on new trains from a weekly commuter.. 
+
+(+)longer trains should improve crowding, shiny, quicker is welcome, PA system now fixed 
+
+(-) v v bright, seats rock hard &amp; can’t snooze in them, seat arms uncomfortable, buffet idea a disaster",6,deep_multi_turn,50
+GWRHelp,2566575,2566575,@GWRHelp hi trying to book a ticket and reserve a seat for the 8.26 CDF to PAD for tomorrow but none available. Are all seats fully booked?,4,three_to_four_tweet,18
+GWRHelp,2369368,2369368,Outraged at #greatwesternrailway charging almost £50 for my boyfriend to be stood like this for 2 hours @GWRHelp It's disgusting you treat your customers like this https://t.co/H0gxeTnbH0,3,three_to_four_tweet,19
+GWRHelp,2164715,2164715,"@GWRHelp it’s infuriating how shit your service is. TWO delayed trains this morning from Cardiff to Bristol, ZERO information or management. Now my plans for the morning are ruined 👏🏻 and I still have to pay for this 🎈",3,three_to_four_tweet,20
+GWRHelp,624055,624055,@GWRHelp I spoke with an advisor who said I can get a refund or discount on my next months season ticket due to the cancellations/delays I’ve had this current month. How do i get this discount? There’s no where to do it online.,4,three_to_four_tweet,21
+GWRHelp,1855500,1855500,"@GWRHelp need to stop running trains that don’t have toilets on them, how stupid",4,three_to_four_tweet,22
+GWRHelp,1004268,1004268,@GWRHelp what is this for? https://t.co/4dTmQeLeU7,4,three_to_four_tweet,23
+GWRHelp,1517937,1517937,@GWRHelp where’s the 1:01 from Reading to Oxford? Display says it’s “on time” but no sign of it...,4,three_to_four_tweet,24
+GWRHelp,1581173,1581173,@GWRHelp waiting at BOA and not getting information beyond 'delayed'. What are my chances of getting to Bristol Temple Meads please?,4,three_to_four_tweet,25
+GWRHelp,782119,782119,"@GWRHelp on 7:21 from Twyford. Train stops for 5 mins, driver announcement totally inaudible. Please fix!",4,three_to_four_tweet,26
+GWRHelp,2731603,2731603,"@GWRHelp What is going on with 16.49 from BRI to AVF? NR website suggests it is cancelled as well as running as normal!? Please advise. Also, can we have 3 carriages please?",4,three_to_four_tweet,27
+GWRHelp,2169329,2169329,"@GWRHelp Hello, I’m on the 10.30 from Evesham to London Paddington,  but there doesn’t seem to be seat reservations? I have a reservation on my ticket? The seats don’t even have numbers.",3,three_to_four_tweet,28
+GWRHelp,2935983,2935983,Reopen the Strawberry Line 🍓 @GWRHelp 🚂,3,three_to_four_tweet,29
+GWRHelp,1065740,1065740,@GWRHelp I have yet to receive via post ticket booked on 5 Oct - in my experience should have arrived by now? Can you pls advise.,3,three_to_four_tweet,30
+GWRHelp,277005,277005,@GWRHelp just left a bag on the 2341 from ealing to maidenhead - can you help? Thank you,4,three_to_four_tweet,31
+GWRHelp,1622882,1622882,Freezing cold and no cafe service to get a drink on my @GWRHelp train back to London! Not a nice way to end the weekend!! 😢❄️☃️,4,three_to_four_tweet,32
+GWRHelp,2571148,2571148,"@GWRHelp absolutely horrendous toilets at bath train station, sort it out, fucking health hazard!!!! 😷😷😷😷",4,three_to_four_tweet,33
+GWRHelp,2793356,2793356,"@GWRHelp I'd like to get home tonight GWR please sort out your train services 'trains stuck, trains delayed and trains cancelled' come on sort it out",3,three_to_four_tweet,34
+GWRHelp,2655972,2655972,Been up to London this weekend. Thanks @GWRHelp for great service on Friday and Saturday back home despite diversion due to Severn tunnel works still arrived into NWP on time 😊,2,two_tweet,1
+GWRHelp,1581157,1581157,@GWRHelp at seat power not working on 7.30 from Cheltenham #batteryanxiety . We appears to be whole train fault grrrrr,2,two_tweet,2
+GWRHelp,2625816,2625816,@GWRHelp Where is the Reading to Swindon rail replacement bus? It’s freezing,2,two_tweet,3
+GWRHelp,1836587,1836587,@GWRHelp 05:50 Oxford to PAD coach L seat 9 seat does not work. Please can you report to engineering,2,two_tweet,4
+GWRHelp,1254004,1254004,@GWRHelp what's the next train from Warminster to Salisbury? One delayed and one cancelled...,2,two_tweet,5
+GWRHelp,618448,618448,Here we are again @GWRHelp any chance of a loyalty card? Seen this platform more than anything else haha! https://t.co/x9blkDySsT,2,two_tweet,6
+GWRHelp,1676778,1676778,"@GWRhelp thanks for cancelling my train this morning, not only do I pay you money every month for nothing, I also have to pay @115873 #",2,two_tweet,7
+GWRHelp,1085007,1085007,"@GWRHelp Sorry to be a pain, will reservations ever be opened for 17 Dec? What engineering work confirmations are you waiting for? Seems to be a pretty comprehensive list up on Nat Rail and if you're just waiting for details on some services why not open booking on others? Thanks",2,two_tweet,8
+GWRHelp,2796715,2796715,@GWRHelp credit where credit is due the staff at Reading station dealing with an unruly passenger over an excess Fair. No need to be rude to your staff. Your team dealt with him well,2,two_tweet,9
+GWRHelp,876788,876788,"Usual Friday night chaos, no seat reservations put out and people now fighting over seats! You lot are a complete shambles @GWRHelp",2,two_tweet,10
+GWRHelp,2799888,2799888,@GWRHelp What's happening with the 23:52 train from Bristol TM towards Exeter?,2,two_tweet,11
+GWRHelp,555198,555198,Thanks @GWRHelp https://t.co/BoWpn2DFDZ,2,two_tweet,12
+GWRHelp,2100321,2100321,@GWRHelp  it’s winter now.  Any chance we can get heating in the trains rather than cold air blowing over us all ?!!,2,two_tweet,13
+GWRHelp,1336910,1336910,@GWRHelp how long does it take for a response to a text please,2,two_tweet,14
+GWRHelp,2225152,2225152,@GWRHelp again guys.,2,two_tweet,15
+GWRHelp,987131,987131,"@GWRHelp is Appalling. 1 over capacity train, 1 cancelled and a now on a train with everyone standing. £44 for what?#gwr #networkrail #scam",2,two_tweet,16
+GWRHelp,1233828,1233828,@GWRHelp Is there any chance you could send me the new Calss 800 timetables please? Thanks in advance.,2,two_tweet,17
+Tesco,894413,894413,@Tesco why aren't you stocking Lynx Apollo antiperspirant? My nearest Superdrug store is half an hour away and it's £4,6,deep_multi_turn,35
+Tesco,1659584,1659584,@Tesco I just bought a fresh pasta sauce from your Summertown express and somehow plastic tab was broken and has now leaked all over my bag!,7,deep_multi_turn,36
+Tesco,1008390,1008390,Odd coloured orange juice Tesco! Definitely a bad batch @Tesco https://t.co/uVxHeQv3cj,5,deep_multi_turn,37
+Tesco,1856036,1856036,"@Tesco This came in my shopping Tues. Had fajitas last night, went to open this but it's already openso couldn't eat it 😬. Shall I return? https://t.co/9AMHYQ81uk",8,deep_multi_turn,38
+Tesco,1855759,1855759,"@Tesco have a 12kg bag of tesco complete dry dog food and about 6kg is dust! Unhappy human, unhappy dogs!",6,deep_multi_turn,39
+Tesco,2913708,2913708,"@Tesco yay! New (pack size).
+Ah 5 instead of 6.
+😣
+#shrinkflation https://t.co/KqkFiclrux",6,deep_multi_turn,40
+Tesco,919547,919547,"This weekend I want to: cook a big pot of vegetable stew/curry, bake a loaf of bread, make pancakes and draw a new picture #makeallthethings",5,deep_multi_turn,41
+Tesco,2562711,2562711,@Tesco  I seem to have changed sex since ordering my Clubcard at the weekend ? 😬 https://t.co/8me21ZXnql,6,deep_multi_turn,42
+Tesco,1556391,1556391,"@Tesco Heya,  do you take away old washing machines when delivering new ones?",5,deep_multi_turn,43
+Tesco,1063928,1063928,"@Tesco Haven't seen the gorgeous Cape Flora Bouquet recently, I loved this bouquet- especially the proteas! Will it come back soon? 🌸🌹🌼",5,deep_multi_turn,44
+Tesco,397514,397514,@Tesco @118374 caught in the act! 3 4 2 offer but huge price increases 1st. This now £60 despite ad ticket for £40 same with others https://t.co/EVwK51RCYh,13,deep_multi_turn,45
+Tesco,2133530,2133530,@Tesco can you tweet when mum-to-be bumper packs are in stock in Tesco Burnley extra store... Thanks,5,deep_multi_turn,46
+Tesco,1001352,1001352,@Tesco is your #gluten-free garlic bread meant to look like this? Much browner than usual and a bit frothy? https://t.co/haOnp6uVzb,7,deep_multi_turn,47
+Tesco,2944987,2944987,@Tesco @123088 #Bicester why are all the parent trolleys parked on one side of the car park and the parent and child spaces on the other? It means I have to carry my 3 month old across the busy car park to get an appropriate trolley??,6,deep_multi_turn,48
+Tesco,1950436,1950436,"People who shop in Whitchurch @Tesco express in Whitchurch (Cardiff) had pizza from them last night, spent most of early morning in bathroom, bought one from same freezer today black and green, shop assistant said yes there’s 3 freezers with faulty doors. WTF disgraceful.",7,deep_multi_turn,49
+Tesco,1509453,1509453,Don’t you just love finding mouldy fruit in your @Tesco fruit pot... 🤢🤢 https://t.co/KiA6rbrpxf,5,deep_multi_turn,50
+Tesco,1432055,1432055,"@Tesco Hi, is there a problem with the direct site at the moment? Struggling to buy car seat and can't understand why? #babybrain",4,three_to_four_tweet,18
+Tesco,1181378,1181378,@Tesco Skipton petrol @Tesco station refused to give token/code 4 tyre air pump. Also refused to give cash back to pay 50p air. #boycottTeso,3,three_to_four_tweet,19
+Tesco,2727479,2727479,"@Tesco very disappointing there's no #vegan breakfast or build your own option on your menu. You sell @221914 sausages in your stores, it would be so easy to do! Got a tea with soya milk before we head elsewhere for food #dairyfree #CrueltyFree",4,three_to_four_tweet,20
+Tesco,1394112,1394112,@Tesco you sent me a poorly orange 😔😔 https://t.co/nPtsqgyW0q,4,three_to_four_tweet,21
+Tesco,1079097,1079097,@Tesco : Old vs New. Spot the difference? Pecans replaced by peanuts. Same price #sneaky #shrinkflation . Pecan still in picture 👎🏻 #scam https://t.co/LWY9i1AlDG,4,three_to_four_tweet,22
+Tesco,2387681,2387681,"@Tesco saving 10p per litre of fuel ⛽️ discriminates against your electric vehicle 🚗 customers. Can you not come up with an offer for us to shop at your stores too? From a long time Tesco customer, but one who is doing their part for the environment 🍃",3,three_to_four_tweet,23
+Tesco,2034466,2034466,"@Tesco so tesco, bought this chicken today cooked it and find some sort of alien lifeform inside, thoughts? https://t.co/gOnIZu9ASF",3,three_to_four_tweet,24
+Tesco,1807467,1807467,@Tesco I am having trouble finding these in your stores? What is going on? Needed for #Autistic child who lives on them. https://t.co/2hodRc1i20,3,three_to_four_tweet,25
+Tesco,2783564,2783564,@Tesco sign clearly says Luxury tinsel £1. Yet charged £3 . Explain your signage please. https://t.co/sk3Oo7t1iP,4,three_to_four_tweet,26
+Tesco,160472,160472,"18 bottles of prosecco
+
+12 bottles of white
+
+3 bottles of red
+
+2 bottles of Baileys
+
+.....and a partridge in a pear tree!!
+
+Thank you @Tesco home delivery!
+
+Just testing it ... just in case 😜 https://t.co/5zpVDE9Yfb",3,three_to_four_tweet,27
+Tesco,1735943,1735943,@Tesco. Yes again another grocery delivery from the Worcester store that is missing items. Every single time this happens.,3,three_to_four_tweet,28
+Tesco,2471180,2471180,@Tesco what's the point of a shopping delivery slot if you repeatedly fail to deliver during it? Thinking of moving to another store. Hungry of Clapton!,4,three_to_four_tweet,29
+Tesco,2963385,2963385,Would like to personally like to congratulate @Tesco for creating luxury wrapping paper that refuses to accept the properties of cellotape 👌,3,three_to_four_tweet,30
+Tesco,1426237,1426237,@Tesco Is there a problem with your grocery ecommerce site? I'm getting lots of error messages and currently can't complete my purchase,4,three_to_four_tweet,31
+Tesco,2171415,2171415,Pray tell @Tesco why are you only selling the small jars of Coleman's sauces but the price is still the same? #Colemans https://t.co/wK5NinFuES,4,three_to_four_tweet,32
+Tesco,124866,124866,@Tesco will cod ww2 for PS4 be the same price for Black Friday on tesco direct and tesco Stroud green Instore?,4,three_to_four_tweet,33
+Tesco,1900329,1900329,Salmon is my new favourite food,3,three_to_four_tweet,34
+Tesco,1855598,1855598,"@Tesco hi, what time does your lewes shop close on nov 4th for bonfire celebrations? #thankyou",2,two_tweet,1
+Tesco,1496811,1496811,"Went to buy a chicken from the deli counter as the lady was reducing them. ""The lady over there is having them all"" was my reply. @Tesco",2,two_tweet,2
+Tesco,2936288,2936288,@Tesco are you planning on Halal lunch options? I wish my team had the same options for lunch as others at the Shoreditch branch.,2,two_tweet,3
+Tesco,1153592,1153592,Why have i never tried goats cheese until today? Heaven 😍 #yetanotherfoodtweet,2,two_tweet,4
+Tesco,1817239,1817239,@Tesco Your new Tesco Groceries website is awful.  It takes so much longer. I gave up in the end.,2,two_tweet,5
+Tesco,2530756,2530756,Halloween competition by Alba age 5 @Tesco #EveryLittleHelps #mirrorwriting #lefthanded https://t.co/9vj1In7ZrL,2,two_tweet,6
+Tesco,2946155,2946155,I would like to thank @Tesco for making a garlic and herb salad cream that tastes exactly like the dominos dip 🙌,2,two_tweet,7
+Tesco,812963,812963,"Turkey sandwiches, turkey soup and turkey curry. Just 1 month and 1 day to go. #nomnom #leftovers",2,two_tweet,8
+Tesco,543231,543231,"@Tesco Hi, I got an email a few days ago which I’m just looking at now. It says I have Clubcard vouchers which expired on 30/11. Is there any way I could get these reissued?",2,two_tweet,9
+Tesco,1280747,1280747,"@Tesco ordered something on direct, no discount was applied. AGAIN.",2,two_tweet,10
+Tesco,1220097,1220097,Managed to dig my old Halloween costume out as I'm too poor to get a new one. My ghost pirate costume is ready for the party Saturday! 👻☠,2,two_tweet,11
+Tesco,1171529,1171529,"Need to get off Twitter until I get my work done, because, #GBBO spoilers!",2,two_tweet,12
+Tesco,1996249,1996249,"Not brilliant, @Tesco, especially as I specifically booked that hour due to tight timescale and after 4pm was a cheaper delivery slot... https://t.co/FEx96Dp0Jn",2,two_tweet,13
+Tesco,1390365,1390365,Nice one @Tesco just had me drive 20mile trip for something that was meant to be waiting for me at cust serv ...turns out they sold out😡😡,2,two_tweet,14
+Tesco,1928858,1928858,"@Tesco Your ""ripe to eat"" avocados weren't quite ripe enough to stop my girlfriend digging them out of the blender ;) #A&amp;EBaby #WhatanIdiot https://t.co/1RYMgyB5OJ",2,two_tweet,15
+Tesco,543211,543211,"Service that can only be described as atrocious @Tesco Amesbury cafe this morning.  Tables dirty, slow service and rude staff.  Not even busy!",2,two_tweet,16
+Tesco,1812881,1812881,"From Monday, round £1 coins wont be legal tender anymore?!?
+
+Oi @sainsburys @Tesco u lot upgraded your trolleys or na?!?",2,two_tweet,17
+VerizonSupport,1744014,1744014,@VerizonSupport great going. Your web site won't support my phone browser anymore. Congratulations for messing it up.,5,deep_multi_turn,35
+VerizonSupport,2521088,2521088,@VerizonSupport love waiting for a call back from support for 12 minutes to immediately be hung up on,10,deep_multi_turn,36
+VerizonSupport,719595,719595,"@VerizonSupport trying to watch Vegas Knights on NBCSN, but prompted with, ""To watch videos you will need to subscribe to FiOS TV."" Help!",14,deep_multi_turn,37
+VerizonSupport,2588016,2588016,"@VerizonSupport I'm getting a recorded message from 866-338-7390, is this one your numbers?",8,deep_multi_turn,38
+VerizonSupport,409944,409944,Did @115725 change something? Finally get LTE at home and work.,5,deep_multi_turn,39
+VerizonSupport,247858,247858,@VerizonSupport where is my redemption code? i claimed the reward for apple music and you said use code to redeem. what code? where? #farce,5,deep_multi_turn,40
+VerizonSupport,1204573,1204573,Cmon @115722 the service on BTN online is dreadful,6,deep_multi_turn,41
+VerizonSupport,436040,436040,@115725 Have this great rep helping me for a while &amp; now want to upgrade &amp; can't get it through him Bc online discount only- disappointed!!,5,deep_multi_turn,42
+VerizonSupport,2423627,2423627,@115722 thank you for scheduling my installation to then find out your employee didn’t schedule the appointment. Already starting of bad.,6,deep_multi_turn,43
+VerizonSupport,2231582,2231582,"@115722 y'all are trash for sending me a text every month wanting me to pay my bill but can't text me when the ""free promotion"" ends",6,deep_multi_turn,44
+VerizonSupport,367293,367293,@115722 no online chat option for TV/STB support? Wow.  It's 2017.,12,deep_multi_turn,45
+VerizonSupport,946126,946126,.@115722 over the past 3 days I've been on hold With you for a 1 hr and 30 mins. I'm hoping today is the day you guys actually pickup!,16,deep_multi_turn,46
+VerizonSupport,2457533,2457533,So @115725 needs to hand out some Local numbers to Emergency Officials to report emergencies. Calling 1-800-Verizon is NOT Acceptable. We need LOCAL Contacts WITHOUT Prompts! I had to use Chat feature to someone in India to even get a ticket made for this hazardous issue. https://t.co/RrVfx8QknY,5,deep_multi_turn,47
+VerizonSupport,1966140,1966140,"@115722 , I need a TELEPHONE NUMBER for technical support for reference number 75__credit_card__.  Online support is not working.",36,deep_multi_turn,48
+VerizonSupport,2641542,2641542,@115722 hi does recording a show count towards views?,5,deep_multi_turn,49
+VerizonSupport,2731886,2731886,@VerizonSupport what is going on with phone lines in 605 area code Sioux Falls only!  We cannot call Land lines.,5,deep_multi_turn,50
+VerizonSupport,714981,714981,"Does @168151 #CenterIce have a clue? They're giving us #STLvsNYR, which should be blacked out &amp; are blacking out #CARvsCBJ. @115722",3,three_to_four_tweet,18
+VerizonSupport,2647508,2647508,"@VerizonSupport SECONDVWEEK IN A ROW.   Pd for NFL red zone. Can’t get the channel.  Last week 5 calls to customer svce- wait for rep almost one hour -never got through this  Today, got through one hour 20 min with rep. Not re solved Promised callback 1 hr- never was called back",4,three_to_four_tweet,19
+VerizonSupport,310945,310945,Seriously @115722 why can't I watch #Atlanta on demand?!?! Anybody else know where I can binge watch it?!,4,three_to_four_tweet,20
+VerizonSupport,2451122,2451122,@VerizonSupport none of my widgets are playing sound but fios cable is playing sound. Help please,4,three_to_four_tweet,21
+VerizonSupport,104553,104553,"@115725 I'd love for someone in a managerial position to contact me about my parent's interaction with your incompetent employees in Ruston, LA.",4,three_to_four_tweet,22
+VerizonSupport,979289,979289,@115722 When is the G1100 router going to get a #firmware updated to protect against the #KrackAttack ?,3,three_to_four_tweet,23
+VerizonSupport,1626905,1626905,@115725 so its almost 2018 now and somehow you fucks still haven't figured out how to get service down in Olean NY. Get it together #scrubs,3,three_to_four_tweet,24
+VerizonSupport,1703487,1703487,@115990 been on the phone all day with Verizon.. Incompetent.. Need help,3,three_to_four_tweet,25
+VerizonSupport,626979,626979,@115722 why did my bill go up $30,4,three_to_four_tweet,26
+VerizonSupport,1153460,1153460,I don’t understand why @115725 makes such a big deal about the PIN number to access your account. I just need my bill. Are there people trying to pay other people’s bill or something geez!,4,three_to_four_tweet,27
+VerizonSupport,2326947,2326947,@VerizonSupport is there a way to cancel this? I don't even use it https://t.co/SWFqKgEu8V,4,three_to_four_tweet,28
+VerizonSupport,715786,715786,"@VerizonSupport Awful customer support... I have a real issue that other people have experienced, and I'm just being ignored",4,three_to_four_tweet,29
+VerizonSupport,1565611,1565611,"Hey @115725, I’ve called you 5 times and your last customer support rep said I would have internet yesterday. I still don’t have internet.",3,three_to_four_tweet,30
+VerizonSupport,1624073,1624073,@115722 nfl red zone hd channel 835 down?,4,three_to_four_tweet,31
+VerizonSupport,1982163,1982163,Sitting with my elderly mother-in-law waiting for @VerizonSupport human to pick up the call. phone and Internet out. 4th attempt to contact.,3,three_to_four_tweet,32
+VerizonSupport,772142,772142,@VerizonSupport can i please get some help with my account?,3,three_to_four_tweet,33
+VerizonSupport,1697975,1697975,@115722 doesn't care about customers.Given wrong info by 2 CS reps to recover service &amp; need to spend more $$ for help #switchingtocox,4,three_to_four_tweet,34
+VerizonSupport,2460477,2460477,@115725 I just moved 4 miles away and had issues with technician and disruptive service. I was promised the same pricing but the bill is more than what I was quoted. I’m very disappointed.,2,two_tweet,1
+VerizonSupport,2476955,2476955,@115955 I went from great sevice with FIOS to bad with Comcast and now even worse with Spectrum.,2,two_tweet,2
+VerizonSupport,2796220,2796220,@115725  @VerizonSupport  @115722  it would be great if you actually told customers error code 8803 is a system glitch. Was told you contacted me I have no such communication.,2,two_tweet,3
+VerizonSupport,512719,512719,Spent a thousand on my self and I still ain't pay my phone bill @VerizonSupport I need an extension,2,two_tweet,4
+VerizonSupport,1216816,1216816,@VerizonSupport @117735 I have just one question. Do y’all charge a  cancellation of lease fee of someone upgrades their phone?,2,two_tweet,5
+VerizonSupport,270503,270503,@180138 having an issue signing into Verizon as tv provider to watch Yankee game 😞,2,two_tweet,6
+VerizonSupport,647989,647989,.@VerizonSupport FYI me asking endless questions about my service issue via tweets is great way to make an unhappy customer REALLY angry.,2,two_tweet,7
+VerizonSupport,724186,724186,You're terrible!!!! You have taken advantage of us for YEARS and we are WALKING AWAY. eat our dust. @115725 @VerizonSupport 😘 https://t.co/n15cSKWUIG,2,two_tweet,8
+VerizonSupport,2053910,2053910,@VerizonSupport Norton sent me an alert regarding KRACK which has capabilities of compromising my WIFI.. are you aware?,2,two_tweet,9
+VerizonSupport,2984084,2984084,Thanks for the not so great Customer Service @115725 @VerizonSupport.,2,two_tweet,10
+VerizonSupport,80091,80091,"@115722 Hi! If I sign up for FiOS, will you cancel all my other services? If not, no problem. Thanks.",2,two_tweet,11
+VerizonSupport,2818340,2818340,@115725 i actually wrote a letter to you about all the problems i have with your slow internet. it’ll probably get there before the email i sent. #neveragain #comcastordie,2,two_tweet,12
+VerizonSupport,944073,944073,Trying to watch an on demand movie and this is what it looks like. Any idea how to fix? @115722 https://t.co/81CwWXBpoj,2,two_tweet,13
+VerizonSupport,2971374,2971374,"@VerizonSupport Is there a trick to make the HD version of an episode play on On Demand instead of SD? The episode says ""HD | CC"" but it only plays the SD version. I've rebooted my STB, but it's still in SD. Thanks.",2,two_tweet,14
+VerizonSupport,2970434,2970434,@117310 &amp; @115722 Get it worked out. I NEED @176152 I'm sure I won't be seeing any change in my bill with less channels.,2,two_tweet,15
+VerizonSupport,374697,374697,@115722 worst customer service ever!!!! Recording says wait time 10-13 minutes wait 35 min later still waiting 😡😡,2,two_tweet,16
+VerizonSupport,2967972,2967972,@136221 @VerizonSupport my google pixel has been dropping incoming and outgoing SMS messages. are you trying to con me into buying a pixel 2?,2,two_tweet,17

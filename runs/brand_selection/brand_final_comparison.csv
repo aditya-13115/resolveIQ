@@ -1,0 +1,6 @@
+brand,quant_score_0_1,audit_mean_1_5,audit_score_0_1,notes,final_score_0_1
+GWRHelp,0.40580548790969373,4.125,0.78125,Small but very high quality; consistent professional style; frequent direct answers; several visible resolutions; cleanest data.,0.5935277439548469
+Tesco,0.4409013000356857,3.875,0.71875,"Best balance: clean English, consistent voice, several visible resolutions, good mix of FAQ-style and complaint-style requests.",0.5798256500178428
+AmazonHelp,0.634390511579726,3.0,0.5,Volume leader; reply pattern dominated by link/DM handoffs; almost no visible resolutions; good ambiguity coverage but few safe auto-handle cases.,0.567195255789863
+AskPlayStation,0.4369299203407316,2.875,0.46875,Rich technical ambiguity; high context-dependence; account-specific and security issues; some customer-to-customer confusion.,0.45283996017036576
+VerizonSupport,0.4573161779515426,2.375,0.34375,"Smaller sample; inconsistent reply quality (one snarky reply, several misrouted replies); generic handoffs dominate; occasional technical depth.",0.40053308897577133
