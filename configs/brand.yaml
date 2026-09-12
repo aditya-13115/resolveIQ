@@ -1,0 +1,18 @@
+brand: GWRHelp
+selection_method: quantitative_plus_manual_audit_tiebreak
+
+quantitative_score: 0.4058
+audit_mean_1_5: 4.12
+audit_score_0_1: 0.7812
+final_score_0_1: 0.5935
+
+runner_up: Tesco
+quant_winner: AmazonHelp
+audit_winner: GWRHelp
+tiebreak_rule_applied: gap 0.0137 < 0.10 -> audit winner
+
+notes: |
+  Selected via the tie-break rule: when the quantitative and audit
+  winners differ and the final-score gap is below 0.10, the audit
+  winner is selected. Audit evaluated 10 threads per candidate from
+  a 50-thread stratified pool.
