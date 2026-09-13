@@ -1,3 +1,9 @@
+> **Naming note.** The internal identifier `llm_zeroshot` is retained
+> in artifact filenames and the frozen lock. The method is **few-shot**:
+> the system prompt includes 20 examples (2 per operational intent + 2
+> each for `other` and `ambiguous`) drawn from human-verified,
+> non-golden data. The identifier is legacy; the method is few-shot.
+
 ## Classifier — final evaluation
 
 **Chosen classifier:** llm_zeroshot (`openai/gpt-oss-20b` via Groq)

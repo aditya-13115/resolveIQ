@@ -137,3 +137,18 @@ class must be evaluated.
 **Rationale:** Coverage labels were rule-generated. Reusing them as
 golden-set labels would leak the taxonomy's own rules into the
 evaluation and inflate classifier scores.
+
+## Classifier naming — llm_zeroshot vs llm_fewshot
+
+**Decision:** Keep the identifier `llm_zeroshot` in the frozen artifacts
+(`runs/classifier/chosen.json`, `TEST_LOCK.json`, `final_metrics.json`).
+
+**Rationale:** The classifier is few-shot (system prompt includes 20
+examples from human-verified non-golden data), but the identifier
+`llm_zeroshot` was written to disk during dev iteration before this
+was noted. Renaming after test evaluation would invalidate the
+`TEST_LOCK.json` chosen_sha and force a re-run of test, which violates
+the one-shot protocol.
+
+The report refers to the classifier as **few-shot LLM**. The artifact
+filename retains the original identifier for audit traceability.
