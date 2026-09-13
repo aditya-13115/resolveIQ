@@ -245,3 +245,22 @@ This golden set was built in `notebooks/03_golden_set.ipynb` on top of the froze
 **Test lock:** the 139-example test split is for final reported metrics only. It must not be used for classifier, prompt, retrieval, or escalation-rule tuning.
 
 **Metric priority:** macro F1 is primary (coverage-oriented sampling). Per-intent precision / recall / F1 and confusion matrix are reported. Accuracy is secondary and must be interpreted with sampling in mind.
+
+## Split constraints
+
+The dev/test split fell back to a random (non-stratified) split because
+`ambiguous` has a single example — below the stratified minimum of 2.
+Consequence:
+
+- `ambiguous` appears **only in the test split**, not in dev
+- Every other intent is present in both splits
+- Downstream metrics for `ambiguous` are computed on test only and
+  should be interpreted as a single-example result
+
+## Annotation pool minima
+
+- `MIN_PER_OPERATIONAL = 8` (was 12) — `lost_property` has only 8 examples
+- `MIN_AMBIGUOUS = 1` (was 4) — corpus contains a single genuinely ambiguous message
+
+These minima were lowered to match the annotation pool. No examples were
+synthesized to meet the original thresholds.
