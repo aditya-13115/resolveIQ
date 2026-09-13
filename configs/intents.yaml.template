@@ -1,0 +1,131 @@
+# Hand-authored taxonomy — save as configs/intents.yaml.
+# Rules:
+#   * include_when / exclude_when must be mutually distinguishable.
+#   * examples: 5–10 short representative paraphrases per intent.
+#   * Do NOT paste probe_regex here. It lives in candidate_intents.csv.
+
+version: 1
+author: ""       # TODO: your initials
+notes: ""        # TODO: one-line rationale for the freeze
+
+intents:
+  - name: delay_compensation
+    description: >
+      Customer seeks compensation under Delay Repay for a delayed journey.
+    include_when:
+      - "Message references a specific delay, missed connection, or journey time and asks for compensation.  # TODO: refine"
+    exclude_when:
+      - "Delay mentioned only in passing; no compensation ask. Cancellations that led to a refund request.  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: refund_request
+    description: >
+      Customer asks for a refund on an unused, unused-part, or cancelled ticket.
+    include_when:
+      - "Explicit request for refund / money back on a ticket or booking.  # TODO: refine"
+    exclude_when:
+      - "Compensation for a delay (delay_compensation); goodwill gesture with no refund demand.  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: booking_issue
+    description: >
+      Problem with booking, changing, or paying for a ticket on the website or app.
+    include_when:
+      - "Website / app errors, payment failures, seat selection during booking, confirmation not received.  # TODO: refine"
+    exclude_when:
+      - "Post-booking queries; cancellation of an already-issued ticket (refund_request).  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: timetable_info
+    description: >
+      Request for schedule, platform, route, or service-information.
+    include_when:
+      - "Asking whether a train runs, at what time, from which platform, or which route it takes.  # TODO: refine"
+    exclude_when:
+      - "Report of a disruption that has already occurred (service_disruption).  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: service_disruption
+    description: >
+      Report or query about a current disruption: cancellations, delays, strikes, engineering works.
+    include_when:
+      - "Live disruption affecting travel today or imminently; cancels / strikes / engineering.  # TODO: refine"
+    exclude_when:
+      - "Retrospective claim for compensation (delay_compensation); generic timetable query (timetable_info).  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: seat_reservation
+    description: >
+      Questions or problems about seat reservations, coach allocation, or seating preferences.
+    include_when:
+      - "Seat reservation, coach letter, table seat, group seating, changing a seat.  # TODO: refine"
+    exclude_when:
+      - "General onboard comfort complaints (on_board_issue).  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: accessibility_assistance
+    description: >
+      Assistance requests: wheelchair, Passenger Assist, step-free access, travelling with a disability.
+    include_when:
+      - "Request for assistance, accessibility information, or step-free route planning.  # TODO: refine"
+    exclude_when:
+      - "General travel enquiries with no accessibility dimension.  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: lost_property
+    description: >
+      Report of an item left on a train or at a station, or query about lost property.
+    include_when:
+      - "Item left behind; lost property process query.  # TODO: refine"
+    exclude_when:
+      - "Theft report (escalates separately); damage to property.  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: on_board_issue
+    description: >
+      Complaints or reports about conditions or staff behaviour on a train.
+    include_when:
+      - "Cleanliness, temperature, noise, luggage space, staff conduct, overcrowding on a specific service.  # TODO: refine"
+    exclude_when:
+      - "Delay-related complaints (delay_compensation); accessibility (accessibility_assistance).  # TODO: refine"
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: other
+    description: >
+      No defined intent fits.
+    include_when:
+      - "Message does not match any defined intent."
+    exclude_when:
+      - "Any defined intent applies clearly."
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"
+
+  - name: ambiguous
+    description: >
+      Two or more intents fit equally well.
+    include_when:
+      - "Multiple intents apply with equal confidence."
+    exclude_when:
+      - "A single intent dominates."
+    examples:
+      - "TODO: short paraphrase 1"
+      - "TODO: short paraphrase 2"

@@ -1,0 +1,12 @@
+intent,n,pct
+on_board_issue,63,0.21
+delay_compensation,59,0.19666666666666666
+service_disruption,48,0.16
+other,34,0.11333333333333333
+praise_or_chatter,30,0.1
+timetable_info,24,0.08
+seat_reservation,15,0.05
+booking_issue,12,0.04
+refund_request,7,0.023333333333333334
+lost_property,6,0.02
+ambiguous,2,0.006666666666666667
