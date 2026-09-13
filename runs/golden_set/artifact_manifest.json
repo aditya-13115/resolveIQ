@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-09-13T10:49:28+00:00",
+  "artifacts": [
+    {
+      "path": "runs\\golden_set\\golden_set.csv",
+      "size_bytes": 59553,
+      "sha256": "9fa86604a89eda1cfc7569a60a94498669effafffbd5160475bed1d974271ada"
+    },
+    {
+      "path": "runs\\golden_set\\golden_set.jsonl",
+      "size_bytes": 86063,
+      "sha256": "01f62701d7809bff09f31966dab639c291de18bc49b6303448c9ea15de2f85ee"
+    },
+    {
+      "path": "runs\\golden_set\\golden_set.meta.json",
+      "size_bytes": 3596,
+      "sha256": "2a13f523256a23924b4ae7fc28df2d51260e70f35270243d81077b672c409325"
+    },
+    {
+      "path": "runs\\golden_set\\golden_set.sha256",
+      "size_bytes": 66,
+      "sha256": "2c3ecd0d250e2b326f1b1a5178ea0bb29ccf3bd601fa2d5c7fdcca364f71a92d"
+    },
+    {
+      "path": "runs\\golden_set\\labeling_sheet.csv",
+      "size_bytes": 91080,
+      "sha256": "2389cdaca1277f175d614c64c9fa1944d064d3a1a739ecdc3aaefbe34b43c87f"
+    },
+    {
+      "path": "runs\\golden_set\\review_sheet.csv",
+      "size_bytes": 4631,
+      "sha256": "3924fb4e09d488286c18ed82bdc6928cc87bc57b90558f3a83bb3f5fe2e49718"
+    },
+    {
+      "path": "evaluation\\annotation_guidelines.md",
+      "size_bytes": 10487,
+      "sha256": "d8339b700e95347ddf08d3796b930a32fae14a2b95445ff4ebe55ca8f2e45131"
+    }
+  ]
+}

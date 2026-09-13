@@ -8,6 +8,8 @@ ResolveIQ
 ├── configs
 │   ├── brand.yaml
 │   ├── eval.yaml
+│   ├── intents.yaml
+│   ├── intents.yaml.template
 │   └── model.yaml
 ├── data
 │   ├── interim
@@ -31,7 +33,9 @@ ResolveIQ
 │       ├── README.md
 │       └── run.py
 ├── notebooks
-│   └── 01_eda.ipynb
+│   ├── 01_eda.ipynb
+│   ├── 02_taxonomy.ipynb
+│   └── 03_golden_set.ipynb
 ├── prompts
 │   ├── classifier_v1.txt
 │   ├── grounding_v1.txt
@@ -44,6 +48,8 @@ ResolveIQ
 │   │   ├── brand_selection_score.png
 │   │   ├── brand_summary_outbound_volume.png
 │   │   ├── first_inbound_message_length.png
+│   │   ├── taxonomy_msg_length.png
+│   │   ├── taxonomy_terms.png
 │   │   ├── thread_length_distribution.png
 │   │   ├── top_authors_volume.png
 │   │   ├── top_brand_authors.png
@@ -56,20 +62,43 @@ ResolveIQ
 │   ├── agent_v2
 │   ├── baseline_0
 │   ├── baseline_1
-│   └── brand_selection
-│       ├── brand_comparison_table.csv
-│       ├── brand_final_comparison.csv
-│       ├── brand_responses_classified.csv
-│       ├── brand_scores.csv
-│       ├── brand_summary.csv
-│       ├── candidate_audit_samples.csv
-│       ├── candidate_audit_samples.pkl
-│       ├── candidate_audit.csv
-│       ├── first_inbound_per_thread.pkl
-│       ├── manual_audit_samples.csv
-│       ├── sample_metadata.json
-│       ├── selection.json
-│       └── thread_stats.csv
+│   ├── brand_selection
+│   │   ├── brand_comparison_table.csv
+│   │   ├── brand_final_comparison.csv
+│   │   ├── brand_responses_classified.csv
+│   │   ├── brand_scores.csv
+│   │   ├── brand_summary.csv
+│   │   ├── candidate_audit_samples.csv
+│   │   ├── candidate_audit_samples.pkl
+│   │   ├── candidate_audit.csv
+│   │   ├── first_inbound_per_thread.pkl
+│   │   ├── manual_audit_samples.csv
+│   │   ├── sample_metadata.json
+│   │   ├── selection.json
+│   │   └── thread_stats.csv
+│   ├── golden_set
+│   │   ├── artifact_manifest.json
+│   │   ├── golden_set.csv
+│   │   ├── golden_set.jsonl
+│   │   ├── golden_set.meta.json
+│   │   ├── golden_set.sha256
+│   │   ├── labeling_sheet.csv
+│   │   └── review_sheet.csv
+│   └── taxonomy
+│       ├── frozen
+│       │   ├── intents_v1.meta.json
+│       │   └── intents_v1.yaml
+│       ├── artifact_manifest.json
+│       ├── candidate_intents.csv
+│       ├── cluster_exemplars.csv
+│       ├── coverage_labeling_sheet.csv
+│       ├── excluded_uninformative_messages.csv
+│       ├── exploration_sample.csv
+│       ├── intent_distribution.csv
+│       ├── intent_examples.csv
+│       ├── intents.draft.yaml
+│       ├── intents.yaml.sha256
+│       └── taxonomy_notes.md
 ├── scripts
 │   ├── build_index.py
 │   ├── make_report.py
