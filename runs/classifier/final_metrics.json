@@ -1,0 +1,122 @@
+{
+  "approach": "llm_zeroshot",
+  "chosen_sha": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
+  "test_preds_sha256": "1e54ec73d745c6253c927aed197a1337d778a9c412e4d27ef17bca092184721a",
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "overall": {
+    "macro_f1": 0.5512843024924462,
+    "weighted_f1": 0.5900421429047913,
+    "accuracy": 0.60431654676259,
+    "n": 139
+  },
+  "operational": {
+    "macro_f1": 0.6237919252685454,
+    "macro_f1_95ci": [
+      0.5484321894282795,
+      0.7250337562874526
+    ]
+  },
+  "all_class": {
+    "macro_f1": 0.5512843024924462,
+    "macro_f1_95ci": [
+      0.46902517956518874,
+      0.6175775492713373
+    ]
+  },
+  "natural": {
+    "macro_f1": 0.5495772933742858,
+    "weighted_f1": 0.5890564161844427,
+    "accuracy": 0.6055045871559633,
+    "n": 109
+  },
+  "targeted": {
+    "macro_f1": 0.4201298701298702,
+    "weighted_f1": 0.6176984126984127,
+    "accuracy": 0.6,
+    "n": 30
+  },
+  "per_intent": [
+    {
+      "intent": "delay_compensation",
+      "precision": 1.0,
+      "recall": 0.16666666666666666,
+      "f1": 0.2857142857142857,
+      "support": 18
+    },
+    {
+      "intent": "refund_request",
+      "precision": 0.8181818181818182,
+      "recall": 0.9,
+      "f1": 0.8571428571428571,
+      "support": 10
+    },
+    {
+      "intent": "booking_issue",
+      "precision": 0.8,
+      "recall": 0.5714285714285714,
+      "f1": 0.6666666666666666,
+      "support": 14
+    },
+    {
+      "intent": "timetable_info",
+      "precision": 0.375,
+      "recall": 0.3,
+      "f1": 0.3333333333333333,
+      "support": 10
+    },
+    {
+      "intent": "service_disruption",
+      "precision": 0.42857142857142855,
+      "recall": 0.8333333333333334,
+      "f1": 0.5660377358490566,
+      "support": 18
+    },
+    {
+      "intent": "seat_reservation",
+      "precision": 0.5,
+      "recall": 0.7777777777777778,
+      "f1": 0.6086956521739131,
+      "support": 9
+    },
+    {
+      "intent": "lost_property",
+      "precision": 0.8,
+      "recall": 0.5714285714285714,
+      "f1": 0.6666666666666666,
+      "support": 7
+    },
+    {
+      "intent": "on_board_issue",
+      "precision": 0.8095238095238095,
+      "recall": 0.7391304347826086,
+      "f1": 0.7727272727272727,
+      "support": 23
+    },
+    {
+      "intent": "praise_or_chatter",
+      "precision": 0.9,
+      "recall": 0.8181818181818182,
+      "f1": 0.8571428571428571,
+      "support": 11
+    },
+    {
+      "intent": "other",
+      "precision": 0.4090909090909091,
+      "recall": 0.5,
+      "f1": 0.45,
+      "support": 18
+    },
+    {
+      "intent": "ambiguous",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 1
+    }
+  ],
+  "force_fit_rate": 0.5263157894736842,
+  "force_fit_n": 10,
+  "residual_n": 19,
+  "evaluated_at": "2026-09-13T20:12:34+00:00"
+}

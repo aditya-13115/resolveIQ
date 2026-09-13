@@ -1,0 +1,12 @@
+intent,precision,recall,f1,support
+delay_compensation,0.0,0.0,0.0,15
+refund_request,1.0,0.8333333333333334,0.9090909090909091,6
+booking_issue,0.0,0.0,0.0,3
+timetable_info,0.0,0.0,0.0,4
+service_disruption,0.8333333333333334,0.625,0.7142857142857143,8
+seat_reservation,0.8,0.8,0.8,5
+lost_property,1.0,1.0,1.0,1
+on_board_issue,1.0,0.14285714285714285,0.25,7
+praise_or_chatter,0.5,0.4,0.4444444444444444,5
+other,0.13513513513513514,1.0,0.23809523809523808,5
+ambiguous,0.0,0.0,0.0,0

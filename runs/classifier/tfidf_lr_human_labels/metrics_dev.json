@@ -1,0 +1,105 @@
+{
+  "overall": {
+    "macro_f1": 0.4548979531384223,
+    "weighted_f1": 0.4924598638103285,
+    "accuracy": 0.5084745762711864,
+    "n": 59
+  },
+  "operational_macro_f1": 0.5559863871691828,
+  "macro_f1_95ci": [
+    0.2894318181818181,
+    0.529420745920746
+  ],
+  "natural": {
+    "macro_f1": 0.3174668765577857,
+    "weighted_f1": 0.39892542445733925,
+    "accuracy": 0.425531914893617,
+    "n": 47
+  },
+  "targeted": {
+    "macro_f1": 0.45656565656565656,
+    "weighted_f1": 0.8481481481481482,
+    "accuracy": 0.8333333333333334,
+    "n": 12
+  },
+  "per_intent": [
+    {
+      "intent": "delay_compensation",
+      "precision": 0.5625,
+      "recall": 0.6,
+      "f1": 0.5806451612903226,
+      "support": 15
+    },
+    {
+      "intent": "refund_request",
+      "precision": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "f1": 0.8333333333333334,
+      "support": 6
+    },
+    {
+      "intent": "booking_issue",
+      "precision": 0.3333333333333333,
+      "recall": 0.3333333333333333,
+      "f1": 0.3333333333333333,
+      "support": 3
+    },
+    {
+      "intent": "timetable_info",
+      "precision": 0.14285714285714285,
+      "recall": 0.25,
+      "f1": 0.18181818181818182,
+      "support": 4
+    },
+    {
+      "intent": "service_disruption",
+      "precision": 0.5,
+      "recall": 0.75,
+      "f1": 0.6,
+      "support": 8
+    },
+    {
+      "intent": "seat_reservation",
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.8888888888888888,
+      "support": 5
+    },
+    {
+      "intent": "lost_property",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    {
+      "intent": "on_board_issue",
+      "precision": 0.5,
+      "recall": 0.14285714285714285,
+      "f1": 0.2222222222222222,
+      "support": 7
+    },
+    {
+      "intent": "praise_or_chatter",
+      "precision": 0.3333333333333333,
+      "recall": 0.4,
+      "f1": 0.36363636363636365,
+      "support": 5
+    },
+    {
+      "intent": "other",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 5
+    },
+    {
+      "intent": "ambiguous",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    }
+  ],
+  "elapsed_sec": 0.03667950630187988
+}

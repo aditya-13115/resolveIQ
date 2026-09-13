@@ -1,0 +1,20 @@
+{
+  "approach": "llm_zeroshot",
+  "model_meta": {
+    "type": "llm",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "client": "groq",
+    "prompt_sha256": "2eb0adee6742d77666d65258954359b8605f993de7b351f64dda600248cc1654"
+  },
+  "dev_macro_f1": 0.6567834522379977,
+  "dev_operational_f1": 0.7471797749575528,
+  "dev_macro_f1_95ci": [
+    0.47312818887885727,
+    0.7270355826840239
+  ],
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "locked_at": "2026-09-13T19:26:07+00:00",
+  "note": "Immutable lock written before test evaluation. Do not edit after Cell 12."
+}

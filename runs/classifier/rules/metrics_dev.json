@@ -1,0 +1,105 @@
+{
+  "overall": {
+    "macro_f1": 0.39599239144693693,
+    "weighted_f1": 0.3615513488394844,
+    "accuracy": 0.3898305084745763,
+    "n": 59
+  },
+  "operational_macro_f1": 0.45753567420234087,
+  "macro_f1_95ci": [
+    0.2423971861471862,
+    0.44899756760146353
+  ],
+  "natural": {
+    "macro_f1": 0.22238939921866754,
+    "weighted_f1": 0.2617626708181975,
+    "accuracy": 0.2978723404255319,
+    "n": 47
+  },
+  "targeted": {
+    "macro_f1": 0.25974025974025977,
+    "weighted_f1": 0.7142857142857143,
+    "accuracy": 0.75,
+    "n": 12
+  },
+  "per_intent": [
+    {
+      "intent": "delay_compensation",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 15
+    },
+    {
+      "intent": "refund_request",
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "f1": 0.9090909090909091,
+      "support": 6
+    },
+    {
+      "intent": "booking_issue",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 3
+    },
+    {
+      "intent": "timetable_info",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 4
+    },
+    {
+      "intent": "service_disruption",
+      "precision": 0.8333333333333334,
+      "recall": 0.625,
+      "f1": 0.7142857142857143,
+      "support": 8
+    },
+    {
+      "intent": "seat_reservation",
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "support": 5
+    },
+    {
+      "intent": "lost_property",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    {
+      "intent": "on_board_issue",
+      "precision": 1.0,
+      "recall": 0.14285714285714285,
+      "f1": 0.25,
+      "support": 7
+    },
+    {
+      "intent": "praise_or_chatter",
+      "precision": 0.5,
+      "recall": 0.4,
+      "f1": 0.4444444444444444,
+      "support": 5
+    },
+    {
+      "intent": "other",
+      "precision": 0.13513513513513514,
+      "recall": 1.0,
+      "f1": 0.23809523809523808,
+      "support": 5
+    },
+    {
+      "intent": "ambiguous",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    }
+  ],
+  "elapsed_sec": 0.0049288272857666016
+}

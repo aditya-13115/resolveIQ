@@ -1,0 +1,25 @@
+{
+  "from_notebook": "04_classifier.ipynb",
+  "to_notebook": "05_retrieval.ipynb",
+  "consumes": [
+    "runs/classifier/predictions_dev.jsonl",
+    "runs/classifier/predictions_test.jsonl",
+    "runs/classifier/final_metrics.json",
+    "runs/classifier/chosen.json"
+  ],
+  "does_not_rerun_classification": true,
+  "verification_required_by_05": {
+    "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+    "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+    "chosen_sha": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
+    "test_preds_sha256": "1e54ec73d745c6253c927aed197a1337d778a9c412e4d27ef17bca092184721a",
+    "model_id": "openai/gpt-oss-20b"
+  },
+  "headline_metrics": {
+    "operational_macro_f1": 0.6237919252685454,
+    "all_class_macro_f1": 0.5512843024924462,
+    "weighted_f1": 0.5900421429047913,
+    "accuracy": 0.60431654676259
+  },
+  "notes": "Test was evaluated once and locked. Confidences are suitable as escalation signals in 06_agent. `alternative_intent` and `alternative_confidence` support margin-based abstention. The test prediction file is the sole source of test-time classifier output for downstream notebooks."
+}

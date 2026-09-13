@@ -1,0 +1,12 @@
+{
+  "approach": "tfidf_lr_rule_labels",
+  "model_meta": {
+    "type": "tfidf_lr",
+    "regime": "rule_labels",
+    "n_train": 300
+  },
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "dev_size": 59,
+  "created_at": "2026-09-13T19:24:31+00:00"
+}

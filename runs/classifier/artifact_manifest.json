@@ -1,0 +1,158 @@
+{
+  "created_at": "2026-09-13T20:20:10+00:00",
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "chosen_approach": "llm_zeroshot",
+  "artifacts": [
+    {
+      "path": "runs\\classifier\\chosen.json",
+      "size_bytes": 729,
+      "sha256": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea"
+    },
+    {
+      "path": "runs\\classifier\\comparison_dev.csv",
+      "size_bytes": 889,
+      "sha256": "923bf482e3dae8d367892f45c3ab373f2ec08d1d1261ae20e6d2b5f28fb3b15c"
+    },
+    {
+      "path": "runs\\classifier\\confidence_calibration_test.csv",
+      "size_bytes": 316,
+      "sha256": "c5457e0d4b6431e867487bd452ca7972d15a3aff3437b5ce5df73dcf3504c551"
+    },
+    {
+      "path": "runs\\classifier\\confusion_test.csv",
+      "size_bytes": 691,
+      "sha256": "75962e323c970157a642af16ceb266b4c1da004fb3173fea05aca3e548fab8fe"
+    },
+    {
+      "path": "runs\\classifier\\failure_analysis_test.csv",
+      "size_bytes": 5055,
+      "sha256": "bfb6adc2c06ab4b42ce8c9f983d6d95105d15edb244e6fbcde2cb3f22b9def60"
+    },
+    {
+      "path": "runs\\classifier\\final_metrics.json",
+      "size_bytes": 3066,
+      "sha256": "d69fbdd1d96ee2ea3140d1dcc632e34ab36318688792d1b614d6f9918e5e87c6"
+    },
+    {
+      "path": "runs\\classifier\\handoff_to_05.json",
+      "size_bytes": 1261,
+      "sha256": "300b0706eb1fec166a2250518fbb78fec141aa982579e1164e8f8704d034331f"
+    },
+    {
+      "path": "runs\\classifier\\llm_zeroshot\\confusion_dev.csv",
+      "size_bytes": 689,
+      "sha256": "2291b96c3bbe33b6382aa24a5aa4c6c45179279a025e45debf4a1c342529cada"
+    },
+    {
+      "path": "runs\\classifier\\llm_zeroshot\\meta.json",
+      "size_bytes": 495,
+      "sha256": "ddb5d9b455381a0eb580c4e0602294a0ab3e8c9dd9c736be927c977b3134bc2f"
+    },
+    {
+      "path": "runs\\classifier\\llm_zeroshot\\metrics_dev.json",
+      "size_bytes": 2325,
+      "sha256": "c31668802246d1de35e03faed7a4872ba668f0a38219d36dc73bf0cefc865129"
+    },
+    {
+      "path": "runs\\classifier\\llm_zeroshot\\per_intent_dev.csv",
+      "size_bytes": 581,
+      "sha256": "90ac926b8a5ff1d34a5b518a5929ff85ea0bd6f3aecbc1511f5eced13442de22"
+    },
+    {
+      "path": "runs\\classifier\\llm_zeroshot\\predictions_dev.jsonl",
+      "size_bytes": 11865,
+      "sha256": "f9f098739813231ab1680167cd25147be48e87ccf81e44108a3f3065754c516b"
+    },
+    {
+      "path": "runs\\classifier\\per_intent_test.csv",
+      "size_bytes": 676,
+      "sha256": "974336574c3684d411d8260b7306952cc4d676b8adf3fc75860075bcffcd44db"
+    },
+    {
+      "path": "runs\\classifier\\predictions_test.jsonl",
+      "size_bytes": 27684,
+      "sha256": "1e54ec73d745c6253c927aed197a1337d778a9c412e4d27ef17bca092184721a"
+    },
+    {
+      "path": "runs\\classifier\\rules\\confusion_dev.csv",
+      "size_bytes": 690,
+      "sha256": "e8f52f349cd89b2ccfe03cf7cf920737c458f9b4ab1aceee2e03a23c8a4c1f70"
+    },
+    {
+      "path": "runs\\classifier\\rules\\meta.json",
+      "size_bytes": 338,
+      "sha256": "a11f2654f082b40cd4176873e5228acb42bc100ec0624dcf4d20f5b3a196469a"
+    },
+    {
+      "path": "runs\\classifier\\rules\\metrics_dev.json",
+      "size_bytes": 2240,
+      "sha256": "7bf00d91ab66d8d0fb4664c6478f1833ad5f18bbd9b693ef900a208cc8e80aa8"
+    },
+    {
+      "path": "runs\\classifier\\rules\\per_intent_dev.csv",
+      "size_bytes": 490,
+      "sha256": "533b0396be53526e66df8e95e304c5b00bddb8da93e6934b6573adce80874b53"
+    },
+    {
+      "path": "runs\\classifier\\rules\\predictions_dev.jsonl",
+      "size_bytes": 10941,
+      "sha256": "379dec79cb21277f0ec9d54be7684ab7f1f8da3e2dec6802b47012571483771b"
+    },
+    {
+      "path": "runs\\classifier\\TEST_LOCK.json",
+      "size_bytes": 228,
+      "sha256": "ddf375a4f84295901cb5ad91e2ac17868f8bb7d832402735537c1b102d04b826"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_human_labels\\confusion_dev.csv",
+      "size_bytes": 689,
+      "sha256": "a8acfc7da098766813aa53ab2bd13625bd9debf78dd48622ca40b0cf1363a8eb"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_human_labels\\meta.json",
+      "size_bytes": 387,
+      "sha256": "ac147ce219bf24ac2ee5bb98d588b0b7b548cfff00571d0f17793fb67e82e14f"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_human_labels\\metrics_dev.json",
+      "size_bytes": 2340,
+      "sha256": "c15193a8df2a95e5269712c588eb45ad5321be9d238265d8858ed469fb9e2b26"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_human_labels\\per_intent_dev.csv",
+      "size_bytes": 583,
+      "sha256": "a83c604ed11a7771fddcb25c09c03fc8340fdb2dc2e69f3f2864e8a077c78e1a"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_human_labels\\predictions_dev.jsonl",
+      "size_bytes": 13238,
+      "sha256": "12a477946f8e509e111929cc659c1fb7b5487ca4577483b87768fde88c999df7"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_rule_labels\\confusion_dev.csv",
+      "size_bytes": 690,
+      "sha256": "2ff5dee6b9d56e9b06a6a02b5ea46849436d6a082830c940a51056907724709e"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_rule_labels\\meta.json",
+      "size_bytes": 385,
+      "sha256": "ef474eafc6ce3ab2c6db3d9c5a146c0a4e707d3e224b241d280126291ef59327"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_rule_labels\\metrics_dev.json",
+      "size_bytes": 2314,
+      "sha256": "3dc6ac92679e87313c9a9b0bb7301252cac711f1b04f7a2c3ab04ff830d01d56"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_rule_labels\\per_intent_dev.csv",
+      "size_bytes": 567,
+      "sha256": "648be10bf351e53ba6888536ca97025d8d5eb33fd580697d2e660b521c9cbb26"
+    },
+    {
+      "path": "runs\\classifier\\tfidf_lr_rule_labels\\predictions_dev.jsonl",
+      "size_bytes": 13230,
+      "sha256": "26d0c16e376b7bb78d5cd0039cd6691f2558b9c892c09d10738c1aa6284b8478"
+    }
+  ]
+}
