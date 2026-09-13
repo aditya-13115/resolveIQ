@@ -1,4 +1,4 @@
-# Taxonomy notes � GWRHelp
+# Taxonomy notes � GWRHelp
 
 - Source: `runs\brand_selection\first_inbound_per_thread.pkl`
 - GWRHelp threads (raw):        1,612
@@ -36,3 +36,24 @@ Must read:
   - `runs/taxonomy/intent_distribution.csv` (if coverage was labelled)
   - `runs/taxonomy/excluded_uninformative_messages.csv`
 Must record the frozen hash in the golden set manifest.
+
+## Coverage validation
+
+Rule-based coverage pass on N=300 messages:
+- mapped: 0.880
+- other: 0.113
+- ambiguous: 0.007
+- unlabelled: 0.000
+
+All thresholds passed (mapped ≥ 0.80, other ≤ 0.15, ambiguous ≤ 0.10).
+
+## Handoff to 03_golden_set.ipynb
+
+The frozen taxonomy (SHA-256 recorded in `intents.yaml.sha256`) is the
+source of truth for the golden set. `03_golden_set.ipynb` reads
+`configs/intents.yaml` and verifies the hash before proceeding. Any drift
+in the taxonomy invalidates the golden set's labels.
+
+The 300-message coverage sample (`coverage_labeling_sheet.csv`) is
+**excluded** from the golden set — its labels were rule-generated, not
+human-verified. The golden set draws from a separate disjoint pool.

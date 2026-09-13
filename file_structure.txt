@@ -83,7 +83,8 @@ ResolveIQ
 │   │   ├── golden_set.meta.json
 │   │   ├── golden_set.sha256
 │   │   ├── labeling_sheet.csv
-│   │   └── review_sheet.csv
+│   │   ├── review_sheet.csv
+│   │   └── verification_sheet.csv
 │   └── taxonomy
 │       ├── frozen
 │       │   ├── intents_v1.meta.json

@@ -106,3 +106,34 @@ Implications:
 ### Rule 6 — Heuristic classifiers are bounded tools
 
 > A regex-based classifier is a ranking signal, not a quality benchmark. Its coverage and error rate must be reported alongside its outputs.
+
+
+## Golden set construction (03_golden_set.ipynb)
+
+**Decision:** Coverage-oriented sampling, not prevalence-representative.
+
+**Rationale:** Rare intents (`lost_property`) would be severely
+underrepresented in a purely random sample. Targeted supplementation
+brings each operational intent to a minimum of 8 examples. The `_source`
+column preserves the natural/targeted distinction so metrics can be
+reported both ways.
+
+**Decision:** Human confirmation of every annotation-pool row.
+
+**Rationale:** A rule + TF-IDF cascade auto-suggested labels, but every
+row in the 310-row annotation pool was human-confirmed. Cascade
+agreement was ~53%. This satisfies the requirement that the golden set
+is human-verified, not machine-labeled.
+
+**Decision:** Fall back to random split when stratified split fails.
+
+**Rationale:** `ambiguous` has only 1 example, below the stratified
+minimum. Random split is used and the constraint is documented. An
+alternative (dropping `ambiguous`) was rejected because the residual
+class must be evaluated.
+
+**Decision:** Exclude the 300-message coverage sample from the golden set.
+
+**Rationale:** Coverage labels were rule-generated. Reusing them as
+golden-set labels would leak the taxonomy's own rules into the
+evaluation and inflate classifier scores.

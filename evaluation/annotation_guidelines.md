@@ -3,8 +3,8 @@
 Taxonomy version:   **1**  
 Taxonomy SHA-256:   `7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679`  
 Evaluation unit:    the first inbound customer message of a GWRHelp thread  
-Frozen golden set:  200 examples (60 dev, 140 test)  
-Golden set SHA-256: `01f62701d7809bff09f31966dab639c291de18bc49b6303448c9ea15de2f85ee`  
+Frozen golden set:  198 examples (59 dev, 139 test)  
+Golden set SHA-256: `acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817`  
 
 **Sampling:** coverage-oriented (natural + targeted rare-intent supplement), not prevalence-representative. The `_source` field distinguishes the two slices.
 
@@ -242,6 +242,6 @@ Two or more intents fit equally well.
 
 This golden set was built in `notebooks/03_golden_set.ipynb` on top of the frozen taxonomy. Its labels are human-verified and independent from the rule-based labels in `runs/taxonomy/coverage_labeling_sheet.csv`. Reuse of the coverage set as a golden set is prohibited by the handoff contract in `02_taxonomy.ipynb`.
 
-**Test lock:** the 140-example test split is for final reported metrics only. It must not be used for classifier, prompt, retrieval, or escalation-rule tuning.
+**Test lock:** the 139-example test split is for final reported metrics only. It must not be used for classifier, prompt, retrieval, or escalation-rule tuning.
 
 **Metric priority:** macro F1 is primary (coverage-oriented sampling). Per-intent precision / recall / F1 and confusion matrix are reported. Accuracy is secondary and must be interpreted with sampling in mind.
