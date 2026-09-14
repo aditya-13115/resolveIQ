@@ -1,0 +1,97 @@
+{
+  "notebook": "07_evaluation",
+  "created_at": "2026-09-14T12:52:08+00:00",
+  "frozen_inputs": {
+    "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+    "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+    "classifier_sha256": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
+    "retriever_sha256": "33dbaea4a95ad1484910ea38528d69769c22865b2914e002a4edca426504eeeb",
+    "agent_sha256": "dc6c09f6f3cd147eaa66cd284aa1c5bd5776d62e4e19f891bfd769be426086ab",
+    "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872"
+  },
+  "final_system": {
+    "classifier": "llm_zeroshot",
+    "retriever": "tfidf",
+    "agent": "ungrounded",
+    "generator_model": "openai/gpt-oss-20b",
+    "judge_model": "openai/gpt-oss-120b",
+    "escalation_config": {
+      "tau_c": 0.4,
+      "tau_m": 0.15,
+      "escalate_on_other_or_ambiguous": true,
+      "escalate_on_zero_coverage": true
+    }
+  },
+  "n_test": 139,
+  "corpus_size": 50,
+  "q1_grounding_dev": {
+    "delta_universal": -0.5084745762711869,
+    "delta_unsupported": -0.288135593220339,
+    "note": "DEV-only ablation from 06. Not re-evaluated on test."
+  },
+  "q2_generation_test": {
+    "mean_universal_auto": 13.37410071942446,
+    "unsupported_rate_auto": 0.19424460431654678,
+    "n_replies": 139
+  },
+  "q3_automation_test": {
+    "automation_coverage": 1.0,
+    "automation_coverage_denom": 139,
+    "safe_automation_coverage": 0.2949640287769784,
+    "safe_automation_denom": 139,
+    "unsafe_automation_rate": 0.5971223021582733,
+    "unsafe_automation_denom": 139,
+    "escalation_precision": null,
+    "escalation_recall": 0.0,
+    "decision_accuracy": 0.4028776978417266,
+    "escalation_tp": 0,
+    "escalation_fp": 0,
+    "escalation_tn": 56,
+    "escalation_fn": 83
+  },
+  "pipeline_success": {
+    "safe_handling_rate": 0.2014388489208633,
+    "safe_automation_rate": 0.2949640287769784
+  },
+  "confidence_intervals": {
+    "classifier_accuracy_95ci": [
+      0.5251798561151079,
+      0.6906474820143885
+    ],
+    "retrieval_recall@5_95ci": [
+      0.45323741007194246,
+      0.6187050359712231
+    ],
+    "universal_score_95ci": [
+      13.143705035971223,
+      13.597122302158274
+    ],
+    "safe_automation_cov_95ci": [
+      0.2158273381294964,
+      0.37410071942446044
+    ],
+    "unsafe_automation_95ci": [
+      0.5107913669064749,
+      0.6834532374100719
+    ],
+    "safe_handling_95ci": [
+      0.1366906474820144,
+      0.2733812949640288
+    ]
+  },
+  "upstream_headlines": {
+    "classifier_op_macro_f1": 0.6237919252685454,
+    "retrieval_recall@5": 0.5323741007194245,
+    "retrieval_mrr": 0.3418779262304442
+  },
+  "human_audit": {
+    "retrieval_ndcg@5": 0.592,
+    "retrieval_graded_p@5": 0.33,
+    "agent_judge_universal_rho": 0.7217486754461739,
+    "agent_judge_universal_mad": 0.6666666666666666,
+    "agent_judge_esc_agreement": 0.95
+  },
+  "cost_latency": {
+    "note": "Not captured in this run. Generation and judging use cache; token counts and latency were not aggregated by 06."
+  }
+}

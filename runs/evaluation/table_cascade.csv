@@ -1,0 +1,7 @@
+"stage","automation"
+"1_classification","55"
+"2_retrieval_corpus_missing","4"
+"3_unsafe_auto_handle","43"
+"4_generation_quality","4"
+"4_generation_unsupported","6"
+"0_success","27"

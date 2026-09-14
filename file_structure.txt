@@ -37,7 +37,9 @@ ResolveIQ
 │   ├── 02_taxonomy.ipynb
 │   ├── 03_golden_set.ipynb
 │   ├── 04_classifier.ipynb
-│   └── 05_retrieval.ipynb
+│   ├── 05_retrieval.ipynb
+│   ├── 06_agent.ipynb
+│   └── 07_evaluation.ipynb
 ├── prompts
 │   ├── classifier_v1.txt
 │   ├── grounding_v1.txt
@@ -45,12 +47,16 @@ ResolveIQ
 │   └── reply_v1.txt
 ├── reports
 │   ├── figures
+│   │   ├── automation_by_intent_test.png
+│   │   ├── automation_tradeoff_test.png
 │   │   ├── brand_criteria_comparison.png
 │   │   ├── brand_selection_score_v2.png
 │   │   ├── brand_selection_score.png
 │   │   ├── brand_summary_outbound_volume.png
 │   │   ├── classifier_reliability_test.png
 │   │   ├── first_inbound_message_length.png
+│   │   ├── pipeline_cascade_test.png
+│   │   ├── pipeline_handling_cascade_test.png
 │   │   ├── taxonomy_msg_length.png
 │   │   ├── taxonomy_terms.png
 │   │   ├── thread_length_distribution.png
@@ -59,8 +65,35 @@ ResolveIQ
 │   │   ├── top_brands_by_requests.png
 │   │   └── topic_richness_proxy.png
 │   ├── failure_analysis.md
-│   └── final_report.md
+│   ├── final_report.md
+│   └── retrieval_handoff.json
 ├── runs
+│   ├── agent
+│   │   ├── escalate_all
+│   │   │   └── dev_replies.jsonl
+│   │   ├── full_pipeline
+│   │   │   └── dev_replies.jsonl
+│   │   ├── grounded_no_escalate
+│   │   │   └── dev_replies.jsonl
+│   │   ├── ungrounded
+│   │   │   └── dev_replies.jsonl
+│   │   ├── artifact_manifest.json
+│   │   ├── chosen_agent.json
+│   │   ├── comparison_dev.csv
+│   │   ├── diagnostic_grounding_failures.csv
+│   │   ├── diagnostic_safe_vs_unsafe.csv
+│   │   ├── escalation_suitability_dev.jsonl
+│   │   ├── escalation_suitability_test.jsonl
+│   │   ├── EVAL_LOCK.json
+│   │   ├── final_metrics.json
+│   │   ├── groundedness_scores_dev.jsonl
+│   │   ├── handoff_to_07.json
+│   │   ├── human_spot_check.csv
+│   │   ├── predictions_test.jsonl
+│   │   ├── TEST_LOCK.json
+│   │   ├── threshold_sweep_dev.csv
+│   │   ├── universal_scores_dev.jsonl
+│   │   └── universal_scores_test.jsonl
 │   ├── agent_v1
 │   ├── agent_v2
 │   ├── baseline_0
@@ -116,6 +149,21 @@ ResolveIQ
 │   │   ├── predictions_test.jsonl
 │   │   ├── reliability_for_escalation.csv
 │   │   └── TEST_LOCK.json
+│   ├── evaluation
+│   │   ├── artifact_manifest.json
+│   │   ├── end_to_end_test.jsonl
+│   │   ├── failure_cases_test.csv
+│   │   ├── failure_mode_counts.csv
+│   │   ├── handoff_to_report.json
+│   │   ├── limitations.md
+│   │   ├── metrics.json
+│   │   ├── table_cascade.csv
+│   │   ├── table_confusion_pairs.csv
+│   │   ├── table_decisions_by_intent.csv
+│   │   ├── table_headline.csv
+│   │   ├── table_length_bins.csv
+│   │   ├── table_per_intent.csv
+│   │   └── table_slices.csv
 │   ├── golden_set
 │   │   ├── artifact_manifest.json
 │   │   ├── golden_set.csv

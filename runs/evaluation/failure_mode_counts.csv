@@ -1,0 +1,7 @@
+"failure_mode","count","pct"
+"intent_error","55","0.3957"
+"unsafe_auto_handle","44","0.3165"
+"successful_auto_handle","27","0.1942"
+"unsupported_claim","9","0.0647"
+"missing_precedent","3","0.0216"
+"poor_generation","1","0.0072"

@@ -1,0 +1,23 @@
+{
+  "from_notebook": "07_evaluation.ipynb",
+  "to_artifact": "reports/final_report.md",
+  "consumes": [
+    "runs/evaluation/metrics.json",
+    "runs/evaluation/table_headline.csv",
+    "runs/evaluation/table_cascade.csv",
+    "runs/evaluation/table_per_intent.csv",
+    "runs/evaluation/table_slices.csv",
+    "runs/evaluation/table_length_bins.csv",
+    "runs/evaluation/table_decisions_by_intent.csv",
+    "runs/evaluation/table_confusion_pairs.csv",
+    "runs/evaluation/failure_mode_counts.csv",
+    "runs/evaluation/failure_cases_test.csv",
+    "runs/evaluation/limitations.md",
+    "reports/figures/pipeline_cascade_test.png",
+    "reports/figures/pipeline_handling_cascade_test.png",
+    "reports/figures/automation_by_intent_test.png",
+    "reports/figures/automation_tradeoff_test.png"
+  ],
+  "metrics_sha256": "d15e41b7f09ba352a045330da38e876dfa7906177ff990e9aeb7ef179f90dd21",
+  "note": "Every number in reports/final_report.md must trace to runs/evaluation/metrics.json or one of the table_*.csv files."
+}

@@ -366,3 +366,83 @@ appropriately escalated**.
    details."
 4. **Grow the corpus.** A 50-document corpus at smoke-test scale is the
    dominant limit on grounded performance.
+
+   # ResolveIQ — Final Report
+
+## Executive summary
+One paragraph: what was built, what the numbers are, what the finding is.
+
+## 1. Problem framing
+What the task is. Why customer-support automation needs grounding +
+escalation. Scope and non-goals.
+
+## 2. Data and brand selection (notebook 01)
+- GWRHelp chosen from candidate brands
+- N threads, distribution of intents in the raw corpus
+- Reference to reports/figures/*_brand_*.png
+
+## 3. Intent taxonomy (notebook 02)
+- 11 intents (9 operational + other + ambiguous)
+- Discovery method
+- Coverage validation: mapped=0.880, other=0.113, ambiguous=0.007
+- Taxonomy SHA: 7a05e4af...
+- Reference to configs/intents.yaml
+
+## 4. Golden set (notebook 03)
+- 198 human-verified examples (59 dev / 139 test)
+- Disjoint from coverage and training pool
+- SHA: acde341d...
+- Sample quality: 310 human-confirmed, 145 corrections
+
+## 5. Classifier (notebook 04)
+- Table: 4 approaches on dev
+- Chosen: llm_zeroshot, op macro F1 = 0.747 on dev / 0.624 on test
+- Confidence overconfidence: ECE = 0.16
+- Weakness: delay_compensation F1 = 0.286 (per-intent table)
+- SHA: 7d51251a...
+
+## 6. Retrieval (notebook 05)
+- Table: 6 approaches on dev
+- Chosen: tfidf, recall@5 = 0.746 dev / 0.532 test
+- Corpus limitation: 50 documents
+- Human audit: nDCG@5 = 0.592, graded P@5 = 0.330
+- SHA: 33dbaea4...
+
+## 7. Agent (notebook 06)
+- Pipeline: classify → retrieve → escalate or generate
+- Safety gate failed on dev for all candidates
+- Chosen: ungrounded (per predeclared fallback)
+- Test: automation coverage 1.0, unsafe rate 0.597
+- Three diagnostics explaining the failure
+- SHA: dc6c09f6...
+
+## 8. End-to-end evaluation (notebook 07)
+- Cascade table
+- Per-intent breakdown
+- Safe automation coverage = 0.295
+- Safe handling rate = 0.201
+- Reference to reports/figures/*_test.png
+
+## 9. Key findings
+1. The classifier is the bottleneck, not the agent.
+2. delay_compensation boundary is the single largest error source.
+3. Grounding did not improve reply quality (Δ = −0.51 on dev).
+4. Escalation policy signals do not discriminate safe from unsafe.
+5. Corpus scale limits grounded generation.
+
+## 10. Limitations
+Copy from runs/evaluation/limitations.md
+
+## 11. Future work
+The v2 recommendations from each notebook's diagnostics:
+- Fix the delay_compensation taxonomy boundary (add tie-break examples, split the intent, or add a rule override)
+- Move escalation-suitability judgment into the runtime policy
+- Gate precedent inclusion on relevance
+- Grow the corpus to production scale
+- Capture cost/latency in generation
+
+## 12. Reproducibility appendix
+- Environment (uv, Python version, key deps)
+- Exact commands to reproduce
+- All SHA-256 pins
+- Reference to DECISIONS.md

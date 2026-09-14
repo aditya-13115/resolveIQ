@@ -1,0 +1,65 @@
+{
+  "created_at": "2026-09-14T12:52:46+00:00",
+  "artifacts": [
+    {
+      "path": "runs\\evaluation\\end_to_end_test.jsonl",
+      "size_bytes": 153976,
+      "sha256": "819b8336568177d5d4f4f0f9539d9a131054b986fb3a08ccb55da0591b896066"
+    },
+    {
+      "path": "runs\\evaluation\\failure_cases_test.csv",
+      "size_bytes": 7867,
+      "sha256": "1d20214e8a057e05709efb7bbb442f923e9863c4051763f3c9ab5ba991d18c14"
+    },
+    {
+      "path": "runs\\evaluation\\failure_mode_counts.csv",
+      "size_bytes": 236,
+      "sha256": "0d3767354688c9ff2d607f9a287f6e31d680e4e22a06e389ef47a9bf68d2b882"
+    },
+    {
+      "path": "runs\\evaluation\\limitations.md",
+      "size_bytes": 958,
+      "sha256": "d45c0a402ead073aa4a44a289198bccfda9e2a153a0c2fcd58ef84d06d717111"
+    },
+    {
+      "path": "runs\\evaluation\\metrics.json",
+      "size_bytes": 3196,
+      "sha256": "d15e41b7f09ba352a045330da38e876dfa7906177ff990e9aeb7ef179f90dd21"
+    },
+    {
+      "path": "runs\\evaluation\\table_cascade.csv",
+      "size_bytes": 188,
+      "sha256": "6f702c033946122a0e35796f51c3ea4ab3057df6f95b5bd9a718ff941c820e6e"
+    },
+    {
+      "path": "runs\\evaluation\\table_confusion_pairs.csv",
+      "size_bytes": 418,
+      "sha256": "56ec4126c4b0550b4012c746bd60cd21ef9458091f4d63d008ff882cb475e911"
+    },
+    {
+      "path": "runs\\evaluation\\table_decisions_by_intent.csv",
+      "size_bytes": 414,
+      "sha256": "bf02b163da770ff19987b705d10785633415bee8f7996f3846e0f41a12a105f6"
+    },
+    {
+      "path": "runs\\evaluation\\table_headline.csv",
+      "size_bytes": 551,
+      "sha256": "d11b0a824cca7ba029b6ef9c2eb0d438c8ae1acd8fb6ec4555fd1bdcd2d3c3de"
+    },
+    {
+      "path": "runs\\evaluation\\table_length_bins.csv",
+      "size_bytes": 232,
+      "sha256": "94054227e8db368d581b87346df55b51cb671fc047af60aa444d352d2e03d752"
+    },
+    {
+      "path": "runs\\evaluation\\table_per_intent.csv",
+      "size_bytes": 1367,
+      "sha256": "cb158203a9145a4f6781f3df43aa93517bc80857c8f5a6d8f7306bbe4847ab86"
+    },
+    {
+      "path": "runs\\evaluation\\table_slices.csv",
+      "size_bytes": 649,
+      "sha256": "0836112fabb40713976ea811c541d1953da933bdb6946ad61d68c5afcf76f5c8"
+    }
+  ]
+}
