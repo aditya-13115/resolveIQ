@@ -1,0 +1,22 @@
+{
+  "from_notebook": "06_agent.ipynb",
+  "to_notebook": "07_evaluation.ipynb",
+  "consumes": [
+    "runs/agent/predictions_test.jsonl",
+    "runs/agent/universal_scores_test.jsonl",
+    "runs/agent/escalation_suitability_test.jsonl",
+    "runs/agent/final_metrics.json",
+    "runs/agent/chosen_agent.json"
+  ],
+  "does_not_rerun_generation": true,
+  "does_not_rerun_judging": true,
+  "verification_required_by_07": {
+    "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+    "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+    "classifier_sha256": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
+    "retriever_sha256": "33dbaea4a95ad1484910ea38528d69769c22865b2914e002a4edca426504eeeb",
+    "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
+    "chosen_agent_sha": "f77aafcd0b97c253f21837f56ef60d9250d844fc626685f8d7ff8c391002ff17"
+  },
+  "notes": "Retrieval scores are ordinal. Reply quality measured by three independent judges (universal, groundedness, escalation-suitability). Escalation-suitability label is independent of generation and sees only the customer message."
+}

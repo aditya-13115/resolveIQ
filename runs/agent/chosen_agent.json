@@ -1,0 +1,36 @@
+{
+  "approach": "ungrounded",
+  "escalation_config": {
+    "tau_c": 0.4,
+    "tau_m": 0.15,
+    "escalate_on_other_or_ambiguous": true,
+    "escalate_on_zero_coverage": true
+  },
+  "generator_model": "openai/gpt-oss-20b",
+  "judge_model": "openai/gpt-oss-120b",
+  "safety_gate": 0.1,
+  "retrieval_top_k": 5,
+  "selection_rule": {
+    "primary": "mean_universal_non_escalated",
+    "tie_delta": 0.3,
+    "tie_break": "higher_coverage_then_simplicity",
+    "simplicity_order": [
+      "ungrounded",
+      "grounded_no_escalate",
+      "full_pipeline",
+      "escalate_all"
+    ]
+  },
+  "escalation_rubric_sha256": "620cc267a3666a8cabd4ae470920c4c8d8a0ed537c75d36b8c9c67f0921929ec",
+  "universal_rubric_sha256": "b649ea025980af7314eb74060d489b0873067c716d2ea847e33b761a4959f361",
+  "groundedness_rubric_sha256": "e43dce962cbbb76a13dd50ce57c04232440d6f7960647aa8e180e59b8bdc7445",
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "classifier_sha256": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
+  "retriever_sha256": "33dbaea4a95ad1484910ea38528d69769c22865b2914e002a4edca426504eeeb",
+  "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
+  "delta_grounding": -0.5084745762711864,
+  "delta_unsupported": -0.288135593220339,
+  "locked_at": "2026-09-14T11:04:36+00:00",
+  "note": "Immutable lock written before test evaluation."
+}

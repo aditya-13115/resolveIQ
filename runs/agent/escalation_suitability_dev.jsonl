@@ -1,0 +1,59 @@
+{"root_id":1267080,"auto_handle_safe":false,"reasons":["Unclear request","Insufficient information","No actionable question"]}
+{"root_id":2022953,"auto_handle_safe":true,"reasons":[]}
+{"root_id":2703317,"auto_handle_safe":false,"reasons":["Unclear request","No specific action asked","Needs follow‑up clarification"]}
+{"root_id":1897157,"auto_handle_safe":true,"reasons":[]}
+{"root_id":1320194,"auto_handle_safe":false,"reasons":["Requires internal schedule investigation","Needs specific service details","Cannot resolve without follow‑up"]}
+{"root_id":2275104,"auto_handle_safe":true,"reasons":[]}
+{"root_id":1884566,"auto_handle_safe":false,"reasons":["Insufficient reservation details","Needs follow‑up for status"]}
+{"root_id":2811081,"auto_handle_safe":true,"reasons":[]}
+{"root_id":2189442,"auto_handle_safe":false,"reasons":["Needs company compensation policy","Requires personal ticket details","Potential financial inquiry"]}
+{"root_id":1096341,"auto_handle_safe":false,"reasons":["No actionable request"]}
+{"root_id":1939900,"auto_handle_safe":false,"reasons":["Requires real-time train status","Cannot provide specific delay information"]}
+{"root_id":43978,"auto_handle_safe":false,"reasons":["Needs account-specific refund details","Requires company refund policy","Involves financial compensation"]}
+{"root_id":1073073,"auto_handle_safe":false,"reasons":["No clear request","Vague complaint"]}
+{"root_id":1317126,"auto_handle_safe":true,"reasons":[]}
+{"root_id":783612,"auto_handle_safe":true,"reasons":[]}
+{"root_id":2781238,"auto_handle_safe":true,"reasons":[]}
+{"root_id":1609855,"auto_handle_safe":false,"reasons":["No actionable request"]}
+{"root_id":1561409,"auto_handle_safe":false,"reasons":["Requires real-time service status","Cannot answer without current data"]}
+{"root_id":2244762,"auto_handle_safe":false,"reasons":["requires real-time delay data","needs specific train information","cannot answer without system access"]}
+{"root_id":1940666,"auto_handle_safe":false,"reasons":["Requires real-time schedule information","Specific operational details unknown"]}
+{"root_id":1960303,"auto_handle_safe":false,"reasons":["Requires real-time service info","Needs company-specific schedule","Cannot answer without live data"]}
+{"root_id":580725,"auto_handle_safe":false,"reasons":["Refund request requires policy review","Needs investigation of transaction","Potential financial action"]}
+{"root_id":733207,"auto_handle_safe":true,"reasons":[]}
+{"root_id":1014147,"auto_handle_safe":false,"reasons":["Needs company-specific refund policy","Requires verification of reservation details"]}
+{"root_id":1208104,"auto_handle_safe":false,"reasons":["Unclear request","Needs more details"]}
+{"root_id":926351,"auto_handle_safe":false,"reasons":["No actionable request","Message is a complaint, not a question"]}
+{"root_id":782121,"auto_handle_safe":false,"reasons":["Requires internal investigation","Needs specific reservation details"]}
+{"root_id":2514816,"auto_handle_safe":false,"reasons":["Vague complaint without clear request","Needs follow‑up for specifics","Cannot answer without additional info"]}
+{"root_id":984031,"auto_handle_safe":false,"reasons":["Requires real-time service status","Needs current disruption info","Cannot answer without up-to-date data"]}
+{"root_id":1480619,"auto_handle_safe":true,"reasons":[]}
+{"root_id":2233353,"auto_handle_safe":false,"reasons":["Vague complaint, no clear request","Potential harassment content"]}
+{"root_id":2336670,"auto_handle_safe":false,"reasons":["Requires real-time service information","Specific train times need live data","Cannot answer without current status"]}
+{"root_id":1570667,"auto_handle_safe":false,"reasons":["Unclear request","Potential legal advice needed"]}
+{"root_id":1855474,"auto_handle_safe":true,"reasons":[]}
+{"root_id":2720778,"auto_handle_safe":false,"reasons":["Requires specific reservation policy","Needs real-time availability info","Company-specific ticketing rules"]}
+{"root_id":2878357,"auto_handle_safe":false,"reasons":["Needs company-specific schedule info","Cannot answer without speculation","Request not answerable with general knowledge"]}
+{"root_id":1690006,"auto_handle_safe":false,"reasons":["Needs internal lookup","Requires customer-specific information"]}
+{"root_id":582246,"auto_handle_safe":false,"reasons":["Requires company-specific reimbursement policy","Needs personal contact details","Potential compensation claim"]}
+{"root_id":1118351,"auto_handle_safe":true,"reasons":[]}
+{"root_id":69045,"auto_handle_safe":false,"reasons":["Requires investigation","Needs escalation to support team","Sensitive complaint about staff behavior"]}
+{"root_id":1085970,"auto_handle_safe":false,"reasons":["Unclear request","Needs follow‑up for compensation info","Requires policy details"]}
+{"root_id":1786857,"auto_handle_safe":true,"reasons":[]}
+{"root_id":121436,"auto_handle_safe":false,"reasons":["Requires operational action","Specific request beyond general info","Cannot be answered without follow‑up"]}
+{"root_id":2631819,"auto_handle_safe":false,"reasons":["Vague complaint, no specific request","Needs follow-up for assistance"]}
+{"root_id":751442,"auto_handle_safe":false,"reasons":["Requires specific service schedule info","Needs company operational details","Cannot answer without internal data"]}
+{"root_id":912814,"auto_handle_safe":true,"reasons":[]}
+{"root_id":1574133,"auto_handle_safe":true,"reasons":[]}
+{"root_id":2018098,"auto_handle_safe":false,"reasons":["Needs real-time station info","Unclear specifics","Requires follow‑up"]}
+{"root_id":59200,"auto_handle_safe":false,"reasons":["No clear request","Insufficient information"]}
+{"root_id":2534231,"auto_handle_safe":false,"reasons":["Unclear request","No specific question","Insufficient details"]}
+{"root_id":2221735,"auto_handle_safe":true,"reasons":[]}
+{"root_id":1854871,"auto_handle_safe":true,"reasons":[]}
+{"root_id":145571,"auto_handle_safe":false,"reasons":["Needs specific train schedule data","Requires company-specific tools","Cannot answer from general knowledge"]}
+{"root_id":2828411,"auto_handle_safe":false,"reasons":["No clear request","Insufficient details to respond"]}
+{"root_id":1461283,"auto_handle_safe":true,"reasons":[]}
+{"root_id":2847184,"auto_handle_safe":false,"reasons":["Unclear request","Needs specific compensation details","Requires follow‑up"]}
+{"root_id":2382306,"auto_handle_safe":false,"reasons":["Vague request without clear action","Needs specific policy details"]}
+{"root_id":2386768,"auto_handle_safe":true,"reasons":[]}
+{"root_id":1034004,"auto_handle_safe":true,"reasons":[]}

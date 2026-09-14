@@ -1,0 +1,110 @@
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":1267080}
+{"groundedness":1,"unsupported_claims":["I’m unable to provide the delay details for the 0932 BPW‑PAD at this time.","For the most up‑to‑date information, please check the live departure board on the GWR website or contact our live chat support."],"approach":"grounded_no_escalate","root_id":2022953}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":2703317}
+{"groundedness":3,"unsupported_claims":["You can purchase a ticket via the GWR app or website before you travel."],"approach":"grounded_no_escalate","root_id":1897157}
+{"groundedness":1,"unsupported_claims":["coach B is missing from the 9:45 service to Bristol Parkway","Please check the GWR app or website for the latest updates and any replacement services"],"approach":"grounded_no_escalate","root_id":1320194}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":2275104}
+{"groundedness":3,"unsupported_claims":["We can check the status of your seat reservation and advise on the next steps."],"approach":"grounded_no_escalate","root_id":1884566}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":2811081}
+{"groundedness":2,"unsupported_claims":["Please contact GWR Customer Service or visit the official GWR website for details."],"approach":"grounded_no_escalate","root_id":2189442}
+{"groundedness":1,"unsupported_claims":["We could help you stay on track for your London journey"],"approach":"grounded_no_escalate","root_id":1096341}
+{"groundedness":1,"unsupported_claims":["The 18.16 from Reading to Maidenhead has been cancelled due to a fault on the train."],"approach":"grounded_no_escalate","root_id":1939900}
+{"groundedness":1,"unsupported_claims":["I’m not able to change the refund","you can discuss this further with our customer service team","They’ll be able to review your case and explain the refund calculation"],"approach":"grounded_no_escalate","root_id":43978}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":1073073}
+{"groundedness":2,"unsupported_claims":["I don’t have that information.","Please check the GWR app or the timetable for the 8:24 service to confirm whether it stops at Filton."],"approach":"grounded_no_escalate","root_id":1317126}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":783612}
+{"groundedness":1,"unsupported_claims":["For details on train delays, please check the GWR app or contact GWR customer service."],"approach":"grounded_no_escalate","root_id":2781238}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":1609855}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":1561409}
+{"groundedness":1,"unsupported_claims":["Please check the live status on the GWR app or website, or contact GWR customer service for the most up‑to‑date information."],"approach":"grounded_no_escalate","root_id":2244762}
+{"groundedness":2,"unsupported_claims":["I don’t have information on whether the 6:43 Glos train will be held for you.","Please contact GWR Customer Support for the most up‑to‑date details on your journey."],"approach":"grounded_no_escalate","root_id":1940666}
+{"groundedness":1,"unsupported_claims":["We don’t have a specific resumption time for the 20:10 service from TVP to PAD at the moment.","Please check the live train times on the GWR website or the GWR app for the latest updates.","Contact our Customer Support team for further assistance."],"approach":"grounded_no_escalate","root_id":1960303}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":580725}
+{"groundedness":1,"unsupported_claims":["the train was delayed because the driver needed a mandatory break","We typically assign one driver per service","they must take breaks as required","We’re monitoring the situation and will keep you updated on the next departure"],"approach":"grounded_no_escalate","root_id":733207}
+{"groundedness":2,"unsupported_claims":["refund isn’t available for this situation","you can ask a staff member for help"],"approach":"grounded_no_escalate","root_id":1014147}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":1208104}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":926351}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":782121}
+{"groundedness":4,"unsupported_claims":["We’re aware of the punctuality issues"],"approach":"grounded_no_escalate","root_id":2514816}
+{"groundedness":2,"unsupported_claims":["Check the live service updates on the GWR website","Contact GWR Customer Services for the most up‑to‑date information"],"approach":"grounded_no_escalate","root_id":984031}
+{"groundedness":1,"unsupported_claims":["Feedback has been forwarded to the team responsible for train composition and service planning to investigate the reduced carriages and delay.","We will keep you updated if any changes are made."],"approach":"grounded_no_escalate","root_id":1480619}
+{"groundedness":1,"unsupported_claims":["We’re aware of the situation and are working to resolve it.","If you need further assistance, please refer to our official channels."],"approach":"grounded_no_escalate","root_id":2233353}
+{"groundedness":1,"unsupported_claims":["I don’t have real‑time status for those services.","please check the GWR app, the GWR website timetable, or contact the GWR customer helpline."],"approach":"grounded_no_escalate","root_id":2336670}
+{"groundedness":1,"unsupported_claims":["I’m not able to help with that here.","Please contact our customer support team for assistance."],"approach":"grounded_no_escalate","root_id":1570667}
+{"groundedness":1,"unsupported_claims":["I’m not able to change the service","you can let us know more about what happened by contacting GWR Customer Service through the official website or by phone. They’ll be able to look into the situation and provide further assistance."],"approach":"grounded_no_escalate","root_id":1855474}
+{"groundedness":1,"unsupported_claims":["You can still add a seat reservation to your ticket online or via the GWR app until the train departs","You can contact GWR customer service for assistance"],"approach":"grounded_no_escalate","root_id":2720778}
+{"groundedness":1,"unsupported_claims":["I don’t have information on when new trains will be introduced for this service.","For the most up‑to‑date details, please contact our Customer Support team or check the GWR app for live updates."],"approach":"grounded_no_escalate","root_id":2878357}
+{"groundedness":1,"unsupported_claims":["I don’t have access to cheque status information.","Please contact our customer support team directly via the official GWR Help Centre or call our helpline for assistance with your reference number."],"approach":"grounded_no_escalate","root_id":1690006}
+{"groundedness":1,"unsupported_claims":["We can’t provide an email address","We can’t reimburse show tickets","Contact our Customer Support team via the official GWR Help channels"],"approach":"grounded_no_escalate","root_id":582246}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":1118351}
+{"groundedness":1,"unsupported_claims":["We will investigate the incident further."],"approach":"grounded_no_escalate","root_id":69045}
+{"groundedness":1,"unsupported_claims":["I’m looking into the situation and will keep you updated","If you need further assistance, please contact our customer support team"],"approach":"grounded_no_escalate","root_id":1085970}
+{"groundedness":1,"unsupported_claims":["You can lodge a complaint by contacting our customer services team via the official channels."],"approach":"grounded_no_escalate","root_id":1786857}
+{"groundedness":3,"unsupported_claims":["speak to the train crew for assistance"],"approach":"grounded_no_escalate","root_id":121436}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":2631819}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":751442}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":912814}
+{"groundedness":1,"unsupported_claims":["you can still buy advance tickets at any ticket machine or ticket office at the station","or by calling GWR customer service","please contact us via the phone line or the GWR app"],"approach":"grounded_no_escalate","root_id":1574133}
+{"groundedness":1,"unsupported_claims":["We’re aware of a disruption at Westbury.","For the latest information, please check the GWR website or app for live updates."],"approach":"grounded_no_escalate","root_id":2018098}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":59200}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":2534231}
+{"groundedness":3,"unsupported_claims":["Check back on Friday 8th December for availability."],"approach":"grounded_no_escalate","root_id":2221735}
+{"groundedness":4,"unsupported_claims":["Suggesting staff can help with seating"],"approach":"grounded_no_escalate","root_id":1854871}
+{"groundedness":3,"unsupported_claims":["If you need further assistance, you can contact GWR customer service directly."],"approach":"grounded_no_escalate","root_id":145571}
+{"groundedness":1,"unsupported_claims":["I’ve logged your feedback and will make sure it’s reported to the relevant team for follow‑up."],"approach":"grounded_no_escalate","root_id":2828411}
+{"groundedness":1,"unsupported_claims":["Contact the station’s lost and found or the GWR Lost & Found service directly to retrieve the bag."],"approach":"grounded_no_escalate","root_id":1461283}
+{"groundedness":1,"unsupported_claims":["You can claim compensation if you missed a connection because a train was cancelled","Please contact our customer support team for assistance"],"approach":"grounded_no_escalate","root_id":2847184}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":2382306}
+{"groundedness":1,"unsupported_claims":["The reply states that there is no specific phone number or email address for the marketing team","The reply advises visiting the website's contact page or using the general enquiry form for marketing or partnership queries"],"approach":"grounded_no_escalate","root_id":2386768}
+{"groundedness":5,"unsupported_claims":[],"approach":"grounded_no_escalate","root_id":1034004}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":1267080}
+{"groundedness":1,"unsupported_claims":["I’m unable to provide the delay details for the 0932 BPW‑PAD at this time.","For the most up‑to‑date information, please check the live departure board on the GWR website or contact our live chat support."],"approach":"full_pipeline","root_id":2022953}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":2703317}
+{"groundedness":3,"unsupported_claims":["You can purchase a ticket via the GWR app or website before you travel."],"approach":"full_pipeline","root_id":1897157}
+{"groundedness":1,"unsupported_claims":["coach B is missing from the 9:45 service to Bristol Parkway","Please check the GWR app or website for the latest updates and any replacement services"],"approach":"full_pipeline","root_id":1320194}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":2275104}
+{"groundedness":3,"unsupported_claims":["We can check the status of your seat reservation and advise on the next steps."],"approach":"full_pipeline","root_id":1884566}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":2811081}
+{"groundedness":2,"unsupported_claims":["Please contact GWR Customer Service or visit the official GWR website for details."],"approach":"full_pipeline","root_id":2189442}
+{"groundedness":1,"unsupported_claims":["We could help you stay on track for your London journey"],"approach":"full_pipeline","root_id":1096341}
+{"groundedness":1,"unsupported_claims":["The 18.16 from Reading to Maidenhead has been cancelled due to a fault on the train."],"approach":"full_pipeline","root_id":1939900}
+{"groundedness":1,"unsupported_claims":["I’m not able to change the refund","you can discuss this further with our customer service team","They’ll be able to review your case and explain the refund calculation"],"approach":"full_pipeline","root_id":43978}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":1073073}
+{"groundedness":2,"unsupported_claims":["I don’t have that information.","Please check the GWR app or the timetable for the 8:24 service to confirm whether it stops at Filton."],"approach":"full_pipeline","root_id":1317126}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":783612}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":1609855}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":1561409}
+{"groundedness":1,"unsupported_claims":["Please check the live status on the GWR app or website, or contact GWR customer service for the most up‑to‑date information."],"approach":"full_pipeline","root_id":2244762}
+{"groundedness":2,"unsupported_claims":["I don’t have information on whether the 6:43 Glos train will be held for you.","Please contact GWR Customer Support for the most up‑to‑date details on your journey."],"approach":"full_pipeline","root_id":1940666}
+{"groundedness":1,"unsupported_claims":["We don’t have a specific resumption time for the 20:10 service from TVP to PAD at the moment.","Please check the live train times on the GWR website or the GWR app for the latest updates.","Contact our Customer Support team for further assistance."],"approach":"full_pipeline","root_id":1960303}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":580725}
+{"groundedness":1,"unsupported_claims":["the train was delayed because the driver needed a mandatory break","We typically assign one driver per service","they must take breaks as required","We’re monitoring the situation and will keep you updated on the next departure"],"approach":"full_pipeline","root_id":733207}
+{"groundedness":2,"unsupported_claims":["refund isn’t available for this situation","you can ask a staff member for help"],"approach":"full_pipeline","root_id":1014147}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":926351}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":782121}
+{"groundedness":2,"unsupported_claims":["Check the live service updates on the GWR website","Contact GWR Customer Services for the most up‑to‑date information"],"approach":"full_pipeline","root_id":984031}
+{"groundedness":1,"unsupported_claims":["Feedback has been forwarded to the team responsible for train composition and service planning to investigate the reduced carriages and delay.","We will keep you updated if any changes are made."],"approach":"full_pipeline","root_id":1480619}
+{"groundedness":1,"unsupported_claims":["I don’t have real‑time status for those services.","please check the GWR app, the GWR website timetable, or contact the GWR customer helpline."],"approach":"full_pipeline","root_id":2336670}
+{"groundedness":1,"unsupported_claims":["I’m not able to help with that here.","Please contact our customer support team for assistance."],"approach":"full_pipeline","root_id":1570667}
+{"groundedness":1,"unsupported_claims":["I’m not able to change the service","you can let us know more about what happened by contacting GWR Customer Service through the official website or by phone. They’ll be able to look into the situation and provide further assistance."],"approach":"full_pipeline","root_id":1855474}
+{"groundedness":1,"unsupported_claims":["You can still add a seat reservation to your ticket online or via the GWR app until the train departs","You can contact GWR customer service for assistance"],"approach":"full_pipeline","root_id":2720778}
+{"groundedness":1,"unsupported_claims":["I don’t have information on when new trains will be introduced for this service.","For the most up‑to‑date details, please contact our Customer Support team or check the GWR app for live updates."],"approach":"full_pipeline","root_id":2878357}
+{"groundedness":1,"unsupported_claims":["I don’t have access to cheque status information.","Please contact our customer support team directly via the official GWR Help Centre or call our helpline for assistance with your reference number."],"approach":"full_pipeline","root_id":1690006}
+{"groundedness":1,"unsupported_claims":["We can’t provide an email address","We can’t reimburse show tickets","Contact our Customer Support team via the official GWR Help channels"],"approach":"full_pipeline","root_id":582246}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":1118351}
+{"groundedness":1,"unsupported_claims":["We will investigate the incident further."],"approach":"full_pipeline","root_id":69045}
+{"groundedness":1,"unsupported_claims":["I’m looking into the situation and will keep you updated","If you need further assistance, please contact our customer support team"],"approach":"full_pipeline","root_id":1085970}
+{"groundedness":3,"unsupported_claims":["speak to the train crew for assistance"],"approach":"full_pipeline","root_id":121436}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":2631819}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":751442}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":912814}
+{"groundedness":1,"unsupported_claims":["you can still buy advance tickets at any ticket machine or ticket office at the station","or by calling GWR customer service","please contact us via the phone line or the GWR app"],"approach":"full_pipeline","root_id":1574133}
+{"groundedness":1,"unsupported_claims":["We’re aware of a disruption at Westbury.","For the latest information, please check the GWR website or app for live updates."],"approach":"full_pipeline","root_id":2018098}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":59200}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":2534231}
+{"groundedness":3,"unsupported_claims":["Check back on Friday 8th December for availability."],"approach":"full_pipeline","root_id":2221735}
+{"groundedness":4,"unsupported_claims":["Suggesting staff can help with seating"],"approach":"full_pipeline","root_id":1854871}
+{"groundedness":3,"unsupported_claims":["If you need further assistance, you can contact GWR customer service directly."],"approach":"full_pipeline","root_id":145571}
+{"groundedness":1,"unsupported_claims":["You can claim compensation if you missed a connection because a train was cancelled","Please contact our customer support team for assistance"],"approach":"full_pipeline","root_id":2847184}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":2382306}
+{"groundedness":5,"unsupported_claims":[],"approach":"full_pipeline","root_id":1034004}

@@ -1,0 +1,13 @@
+{
+  "chosen_approach": "ungrounded",
+  "n_test": 139,
+  "n_replies": 139,
+  "n_escalated": 0,
+  "automation_coverage": 1.0,
+  "mean_universal_auto": 13.37410071942446,
+  "unsupported_rate_auto": 0.19424460431654678,
+  "unsafe_automation_rate": 0.5971223021582733,
+  "unsafe_auto_n": 83,
+  "auto_n": 139,
+  "escalation_rate": 0.0
+}

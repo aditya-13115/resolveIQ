@@ -1,0 +1,86 @@
+{
+  "created_at": "2026-09-14T11:05:23+00:00",
+  "chosen_agent_sha": "f77aafcd0b97c253f21837f56ef60d9250d844fc626685f8d7ff8c391002ff17",
+  "artifacts": [
+    {
+      "path": "runs\\agent\\chosen_agent.json",
+      "size_bytes": 1545,
+      "sha256": "f77aafcd0b97c253f21837f56ef60d9250d844fc626685f8d7ff8c391002ff17"
+    },
+    {
+      "path": "runs\\agent\\comparison_dev.csv",
+      "size_bytes": 844,
+      "sha256": "228fa645212234de6fff8dbe3096940e53212f84a0e0896627eb96d60eb4de78"
+    },
+    {
+      "path": "runs\\agent\\escalate_all\\dev_replies.jsonl",
+      "size_bytes": 40136,
+      "sha256": "2a00669e1e58998b07ac53b6b7a749a1825a6f386593a9481cff87a9f613df68"
+    },
+    {
+      "path": "runs\\agent\\escalation_suitability_dev.jsonl",
+      "size_bytes": 6623,
+      "sha256": "db6dace673cffb4200e6acf8ad27ba70273c200e95661fca348141bc1249f296"
+    },
+    {
+      "path": "runs\\agent\\escalation_suitability_test.jsonl",
+      "size_bytes": 14603,
+      "sha256": "7b54414e48e0136a9ef5501e6268e53013ef9aee1af8a58ff1955a5986c16ee1"
+    },
+    {
+      "path": "runs\\agent\\final_metrics.json",
+      "size_bytes": 342,
+      "sha256": "d136aa1cb1d63be211fb149e468849abac0f7029353c16f9610cadedc0958296"
+    },
+    {
+      "path": "runs\\agent\\full_pipeline\\dev_replies.jsonl",
+      "size_bytes": 49226,
+      "sha256": "6f057e2e9f1c66a2479674729ae8edcc4548fea64d8e155a9fd670cefcd8a9bf"
+    },
+    {
+      "path": "runs\\agent\\grounded_no_escalate\\dev_replies.jsonl",
+      "size_bytes": 50478,
+      "sha256": "a50d6d86a4abb46d353b10ed08587c5bf1708438d3448179f596373beae33dc9"
+    },
+    {
+      "path": "runs\\agent\\groundedness_scores_dev.jsonl",
+      "size_bytes": 19401,
+      "sha256": "251a93032e4803c0322cfe124afbf6d9ffebd5be112ac528ed031deddecc5bc6"
+    },
+    {
+      "path": "runs\\agent\\handoff_to_07.json",
+      "size_bytes": 1228,
+      "sha256": "be4fad6d70cb4f56de94b454ff0a1a971a03a0c90e71735261c0464c79746232"
+    },
+    {
+      "path": "runs\\agent\\human_spot_check.csv",
+      "size_bytes": 6641,
+      "sha256": "f24a62c185a417bc5c469e1f3d4218db28bac21673c94e6de81ad177f6175a73"
+    },
+    {
+      "path": "runs\\agent\\predictions_test.jsonl",
+      "size_bytes": 123365,
+      "sha256": "ab08bce7efb7d04d61d444bb25e22e85b5f685e7790aa2a52fcc905e7f042f13"
+    },
+    {
+      "path": "runs\\agent\\TEST_LOCK.json",
+      "size_bytes": 235,
+      "sha256": "94f9804976f72c8e7f7247b7cbf52a2c897f774547005bdbd1f1724453613c76"
+    },
+    {
+      "path": "runs\\agent\\ungrounded\\dev_replies.jsonl",
+      "size_bytes": 52301,
+      "sha256": "08f3c4c8cfd6b6ceff94b8d0e03207a17dae9346f1459faa92604195f2dbb36b"
+    },
+    {
+      "path": "runs\\agent\\universal_scores_dev.jsonl",
+      "size_bytes": 34641,
+      "sha256": "8bb5eae77f2bb44cba6c8fa1d422cef37f7f6278eb87161cf820bb3527476b38"
+    },
+    {
+      "path": "runs\\agent\\universal_scores_test.jsonl",
+      "size_bytes": 21896,
+      "sha256": "504cdb2c4d0f04f8a22fb5267bef84d304db62fa4d1a73336ab456da338fde9d"
+    }
+  ]
+}

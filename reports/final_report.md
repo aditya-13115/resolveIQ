@@ -169,3 +169,53 @@ production corpus would contain thousands of substantive responses.
 Intent-conditioning helps **when the classifier is right** but hurts
 when it's wrong. With the classifier at 0.62 dev accuracy, conditioned
 retrieval underperforms unconditioned TF-IDF. Not used in the pipeline.
+
+## 06 — Agent: outcome
+
+The predeclared selection rule required `unsafe_automation_rate ≤ 0.10` on dev.
+No candidate satisfied this gate. The fallback rule proceeded with all
+candidates, and the simplicity tie-break selected `ungrounded`.
+
+### Dev comparison
+
+| Approach | Automation coverage | Mean universal | Unsupported rate | Unsafe automation rate |
+|---|---:|---:|---:|---:|
+| ungrounded | 1.000 | 13.19 | 0.254 | 0.678 |
+| grounded_no_escalate | 1.000 | 12.68 | 0.542 | 0.678 |
+| full_pipeline | 0.864 | 12.82 | 0.510 | 0.706 |
+| escalate_all | 0.000 | — | — | 0.000 |
+
+### Test results (chosen = ungrounded)
+
+- 139 rows evaluated
+- automation_coverage = 1.000
+- mean_universal_auto = 13.37
+- unsupported_rate_auto = 0.194
+- **unsafe_automation_rate = 0.597**
+
+### Findings
+
+1. **Grounding did not improve reply quality.** Δ_grounding (B − A) = −0.51
+   on dev. Grounded replies scored lower than ungrounded.
+2. **Escalation did not align with the suitability rubric.** Precision 0.50,
+   recall 0.10. The policy fires on 14% of dev; the suitability judge marks
+   68% unsafe.
+3. **The chosen agent is unsafe by the predeclared standard.** 59.7%
+   of auto-handled test rows were labeled unsafe by the independent
+   escalation-suitability judge.
+
+### Root cause
+
+The predeclared escalation thresholds (`τ_c = 0.40`, `τ_m = 0.15`) were
+conservative and produced few escalations. The escalation-suitability
+judge, using a closed-world rubric, marked a large majority of messages
+as needing a human. These two signals are not aligned. The policy would
+need to be re-derived from the suitability labels on dev to close the
+gap.
+
+### What this does NOT justify
+
+- Changing the choice post-hoc. `ungrounded` is the correct output of
+  the predeclared rule.
+- Re-running test. Test is spent.
+- Tuning against test. All thresholds were fixed before test.
