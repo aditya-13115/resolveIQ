@@ -1,0 +1,8 @@
+{
+  "approach": "predicted_intent_bm25",
+  "diagnostic_only": true,
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
+  "created_at": "2026-09-14T06:29:56+00:00"
+}

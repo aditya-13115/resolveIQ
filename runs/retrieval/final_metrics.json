@@ -1,0 +1,25 @@
+{
+  "approach": "tfidf",
+  "chosen_sha": "33dbaea4a95ad1484910ea38528d69769c22865b2914e002a4edca426504eeeb",
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
+  "metrics": {
+    "recall@1": 0.2014388489208633,
+    "recall@1_cov": 0.21374045801526717,
+    "recall@3": 0.38848920863309355,
+    "recall@3_cov": 0.4122137404580153,
+    "recall@5": 0.5323741007194245,
+    "recall@5_cov": 0.5648854961832062,
+    "recall@10": 0.7482014388489209,
+    "recall@10_cov": 0.7938931297709924,
+    "mrr": 0.3418779262304442,
+    "coverage": 0.9424460431654677
+  },
+  "response_type_mix_top5": {
+    "resolution": 0.37410071942446044,
+    "informational": 0.6187050359712231,
+    "investigation": 0.007194244604316547
+  },
+  "evaluated_at": "2026-09-14T06:38:25+00:00"
+}

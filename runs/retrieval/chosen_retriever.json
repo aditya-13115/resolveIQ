@@ -1,0 +1,41 @@
+{
+  "approach": "tfidf",
+  "metrics": {
+    "approach": "tfidf",
+    "recall@1": 0.3389830508474576,
+    "recall@3": 0.576271186440678,
+    "recall@5": 0.7457627118644068,
+    "recall@10": 0.847457627118644,
+    "recall@5_cov": 0.7586206896551724,
+    "mrr": 0.4929580306698951,
+    "coverage": 0.9830508474576272
+  },
+  "selection_rule": {
+    "primary_metric": "recall@5",
+    "tie_delta": 0.02,
+    "tie_break": "simpler_or_cheaper",
+    "precedence": [
+      "bm25",
+      "tfidf",
+      "embedding",
+      "hybrid_rrf",
+      "predicted_intent_bm25",
+      "random"
+    ]
+  },
+  "candidate_count": 6,
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "classifier_sha256": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
+  "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
+  "normalization_version": "retrieval_text_v1",
+  "locked_at": "2026-09-14T06:37:26+00:00",
+  "note": "Immutable lock written before test evaluation.",
+  "human_audit_diagnostic": {
+    "n_queries": 20,
+    "n_judgments": 100,
+    "ndcg_at_5": 0.592,
+    "graded_precision_at_5_ge1": 0.33,
+    "note": "Diagnostic only; does not affect winner selection. Intent-match Recall@5 overstates usefulness: only 1 in 3 retrieved docs is at least partially useful."
+  }
+}

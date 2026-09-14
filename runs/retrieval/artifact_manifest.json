@@ -1,0 +1,146 @@
+{
+  "created_at": "2026-09-14T06:38:26+00:00",
+  "taxonomy_sha256": "7a05e4af68a50981a3d38264b1aad8a4146fc90a342bb9804bcb5cb5148fe679",
+  "golden_sha256": "acde341dc09e85ae433d484ed8d38d4f388c0539c5523f861b6d1df36ba54817",
+  "classifier_sha256": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
+  "chosen_approach": "tfidf",
+  "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
+  "normalization_version": "retrieval_text_v1",
+  "artifacts": [
+    {
+      "path": "runs\\retrieval\\bm25\\meta.json",
+      "size_bytes": 488,
+      "sha256": "51cac0c7ca86d9001383daef67fe771aaf0c8eb41c00a278080ee8d2a73a897c"
+    },
+    {
+      "path": "runs\\retrieval\\bm25\\metrics_dev.json",
+      "size_bytes": 483,
+      "sha256": "9012c7bd2dd44414fa305d79ade0ab8fa5ff063a42b2279995f732f534faa5f9"
+    },
+    {
+      "path": "runs\\retrieval\\bm25\\predictions_dev.jsonl",
+      "size_bytes": 23511,
+      "sha256": "1b1dcffc8e1d9a98cf2c2301cfcdf6c23e0b396abeaa29cb08bd335f63081cd8"
+    },
+    {
+      "path": "runs\\retrieval\\chosen_retriever.json",
+      "size_bytes": 1462,
+      "sha256": "33dbaea4a95ad1484910ea38528d69769c22865b2914e002a4edca426504eeeb"
+    },
+    {
+      "path": "runs\\retrieval\\comparison_dev.csv",
+      "size_bytes": 1198,
+      "sha256": "bc29f44e4cc70df70c8f5d7757e9824ae772c6ebbeaa280a0a89ec3c59da7205"
+    },
+    {
+      "path": "runs\\retrieval\\corpus.jsonl",
+      "size_bytes": 29168,
+      "sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872"
+    },
+    {
+      "path": "runs\\retrieval\\corpus.sha256",
+      "size_bytes": 66,
+      "sha256": "f2030e83d593791b3ed783c287d9a48cef57c8cbfc3c5e80a98bc36bd70e12d8"
+    },
+    {
+      "path": "runs\\retrieval\\embedding\\meta.json",
+      "size_bytes": 542,
+      "sha256": "16a49950733e51c44d30d35bd047724daa05a2c04ce8d24bd583cbabc76ba784"
+    },
+    {
+      "path": "runs\\retrieval\\embedding\\metrics_dev.json",
+      "size_bytes": 526,
+      "sha256": "ffa10a463c4ca1a8e4224829410849f78f4359570c881855d10d468a0ae81ab4"
+    },
+    {
+      "path": "runs\\retrieval\\embedding\\predictions_dev.jsonl",
+      "size_bytes": 23637,
+      "sha256": "73efbfbda928ccff8a379d3b68acd2be22448e9b95e2adef67e06c515c9e1cbb"
+    },
+    {
+      "path": "runs\\retrieval\\excluded_no_substantive_response.csv",
+      "size_bytes": 63794,
+      "sha256": "2ade47014c43f28bef4be590ea6b56a6c7059813902deee348e7f2679c2b81b7"
+    },
+    {
+      "path": "runs\\retrieval\\final_metrics.json",
+      "size_bytes": 994,
+      "sha256": "cffaa0d72d9e5b52ac8f165fed4700c4ca684e136f9dad51b1e38198d4b433d3"
+    },
+    {
+      "path": "runs\\retrieval\\human_relevance_audit.csv",
+      "size_bytes": 53417,
+      "sha256": "24f08ea9b8501714ce43f33507ecee53ad57e8dd7cc12e2f1e8508639f14e4b5"
+    },
+    {
+      "path": "runs\\retrieval\\hybrid_rrf\\meta.json",
+      "size_bytes": 494,
+      "sha256": "5c8fc160c34dcf878eaed6c323a3febfe6f18bd05fd79d78a6f0a8aff3eebb67"
+    },
+    {
+      "path": "runs\\retrieval\\hybrid_rrf\\metrics_dev.json",
+      "size_bytes": 526,
+      "sha256": "1123b89b25290424341365a303f1b4a05b7e8fa100ee22b2d63b652e800d6a04"
+    },
+    {
+      "path": "runs\\retrieval\\hybrid_rrf\\predictions_dev.jsonl",
+      "size_bytes": 23604,
+      "sha256": "b3b33e0ce584ba5c2860ef4b99f11022d5afdefed6884b8e7bf6e7ac44946dec"
+    },
+    {
+      "path": "runs\\retrieval\\oracle_intent_bm25\\meta.json",
+      "size_bytes": 380,
+      "sha256": "965df377c8b9705946e1a6c32f61735e796755e35c914bc9be894d04dad5e968"
+    },
+    {
+      "path": "runs\\retrieval\\oracle_intent_bm25\\metrics_dev.json",
+      "size_bytes": 526,
+      "sha256": "22a82207c20b9089481f8f18960f456cf3429e436bda037faaac96ec6f7560e0"
+    },
+    {
+      "path": "runs\\retrieval\\oracle_intent_bm25\\predictions_dev.jsonl",
+      "size_bytes": 16958,
+      "sha256": "6660bb3da15e1f8f9f9efc0e2a581210b14dd747f1794c311896a55df7f93853"
+    },
+    {
+      "path": "runs\\retrieval\\predicted_intent_bm25\\meta.json",
+      "size_bytes": 383,
+      "sha256": "4fcc290a59a17c23d5f7322d5f54205d9b70d565eafa631bbb7057f91d7cfbf4"
+    },
+    {
+      "path": "runs\\retrieval\\predicted_intent_bm25\\metrics_dev.json",
+      "size_bytes": 527,
+      "sha256": "9d194f9590a16dd18eab6c41f20f062c7bcacfcbbc029130a3b43e764ae1af66"
+    },
+    {
+      "path": "runs\\retrieval\\predicted_intent_bm25\\predictions_dev.jsonl",
+      "size_bytes": 18377,
+      "sha256": "16f748a969d8fb1967d2be80acd08450daf5e9e87a431ab310a561e30349eacd"
+    },
+    {
+      "path": "runs\\retrieval\\predictions_test.jsonl",
+      "size_bytes": 55475,
+      "sha256": "57011b49718b5921a7c6da317556d03b91630391b6fea2e8be20d9c12a4440f1"
+    },
+    {
+      "path": "runs\\retrieval\\TEST_LOCK.json",
+      "size_bytes": 406,
+      "sha256": "a6ae9f059c6799b431a91cf2bf0c0ecddd52064ea79fb0ed6ead0c3ed3260b3b"
+    },
+    {
+      "path": "runs\\retrieval\\tfidf\\meta.json",
+      "size_bytes": 475,
+      "sha256": "179d908ea938f012489231d08898059f1f728da707e962cbdd7bb9b967bac353"
+    },
+    {
+      "path": "runs\\retrieval\\tfidf\\metrics_dev.json",
+      "size_bytes": 525,
+      "sha256": "8b8277489cf3a8f4b1c53ba9f3d680e9002913fcc42071e24153f349326836f5"
+    },
+    {
+      "path": "runs\\retrieval\\tfidf\\predictions_dev.jsonl",
+      "size_bytes": 23446,
+      "sha256": "6916dac525a861ecb85fa253c8ea31dd3651515a026bcf86d55521d551805ee8"
+    }
+  ]
+}

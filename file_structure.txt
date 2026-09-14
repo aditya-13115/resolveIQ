@@ -35,7 +35,9 @@ ResolveIQ
 ├── notebooks
 │   ├── 01_eda.ipynb
 │   ├── 02_taxonomy.ipynb
-│   └── 03_golden_set.ipynb
+│   ├── 03_golden_set.ipynb
+│   ├── 04_classifier.ipynb
+│   └── 05_retrieval.ipynb
 ├── prompts
 │   ├── classifier_v1.txt
 │   ├── grounding_v1.txt
@@ -47,6 +49,7 @@ ResolveIQ
 │   │   ├── brand_selection_score_v2.png
 │   │   ├── brand_selection_score.png
 │   │   ├── brand_summary_outbound_volume.png
+│   │   ├── classifier_reliability_test.png
 │   │   ├── first_inbound_message_length.png
 │   │   ├── taxonomy_msg_length.png
 │   │   ├── taxonomy_terms.png
@@ -76,6 +79,43 @@ ResolveIQ
 │   │   ├── sample_metadata.json
 │   │   ├── selection.json
 │   │   └── thread_stats.csv
+│   ├── classifier
+│   │   ├── llm_zeroshot
+│   │   │   ├── confusion_dev.csv
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   ├── per_intent_dev.csv
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── rules
+│   │   │   ├── confusion_dev.csv
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   ├── per_intent_dev.csv
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── tfidf_lr_human_labels
+│   │   │   ├── confusion_dev.csv
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   ├── per_intent_dev.csv
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── tfidf_lr_rule_labels
+│   │   │   ├── confusion_dev.csv
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   ├── per_intent_dev.csv
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── artifact_manifest.json
+│   │   ├── chosen.json
+│   │   ├── comparison_dev.csv
+│   │   ├── confidence_calibration_test.csv
+│   │   ├── confusion_test.csv
+│   │   ├── failure_analysis_test.csv
+│   │   ├── final_metrics.json
+│   │   ├── handoff_to_05.json
+│   │   ├── per_intent_test.csv
+│   │   ├── predictions_test.jsonl
+│   │   ├── reliability_for_escalation.csv
+│   │   └── TEST_LOCK.json
 │   ├── golden_set
 │   │   ├── artifact_manifest.json
 │   │   ├── golden_set.csv
@@ -85,6 +125,43 @@ ResolveIQ
 │   │   ├── labeling_sheet.csv
 │   │   ├── review_sheet.csv
 │   │   └── verification_sheet.csv
+│   ├── retrieval
+│   │   ├── bm25
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── embedding
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── hybrid_rrf
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── oracle_intent_bm25
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── predicted_intent_bm25
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── tfidf
+│   │   │   ├── meta.json
+│   │   │   ├── metrics_dev.json
+│   │   │   └── predictions_dev.jsonl
+│   │   ├── artifact_manifest.json
+│   │   ├── chosen_retriever.json
+│   │   ├── comparison_dev.csv
+│   │   ├── corpus.jsonl
+│   │   ├── corpus.sha256
+│   │   ├── excluded_no_substantive_response.csv
+│   │   ├── failure_analysis_test.csv
+│   │   ├── final_metrics.json
+│   │   ├── handoff_to_06.json
+│   │   ├── human_relevance_audit.csv
+│   │   ├── predictions_test.jsonl
+│   │   └── TEST_LOCK.json
 │   └── taxonomy
 │       ├── frozen
 │       │   ├── intents_v1.meta.json
@@ -156,6 +233,7 @@ ResolveIQ
 │   ├── test_metrics.py
 │   ├── test_schemas.py
 │   └── test_threads.py
+├── .env
 ├── .env.example
 ├── .gitignore
 ├── .python-version
