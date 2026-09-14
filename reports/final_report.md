@@ -1,448 +1,921 @@
-> **Naming note.** The internal identifier `llm_zeroshot` is retained
-> in artifact filenames and the frozen lock. The method is **few-shot**:
-> the system prompt includes 20 examples (2 per operational intent + 2
-> each for `other` and `ambiguous`) drawn from human-verified,
-> non-golden data. The identifier is legacy; the method is few-shot.
+# ResolveIQ — Final Report
+## Executive Summary
 
-## Classifier — final evaluation
+ResolveIQ is a selective, evidence-grounded support agent built on the Twitter Customer Support dataset for the brand **GWRHelp**. The system classifies intent, retrieves historical precedents, generates a grounded reply, and decides whether to auto-handle or escalate.
 
-**Chosen classifier:** llm_zeroshot (`openai/gpt-oss-20b` via Groq)
+The evaluation is honest about where the pipeline stands:
 
-### Test results (139 examples, single evaluation)
+| Stage | Metric (test) | Value |
+|---|---|---:|
+| Intent classifier | Op macro F1 | **0.624** |
+| Retrieval | Recall@5 | **0.532** |
+| Reply quality | Mean universal score | **13.37 / 15** |
+| Automation | Safe automation coverage | **0.295** |
+| Automation | Unsafe automation rate | **0.597** |
+
+> **The chosen agent fails its own safety gate.**
+>
+> No candidate satisfied `unsafe_automation_rate ≤ 0.10` on dev. The predeclared fallback selected the simplest approach (`ungrounded`), which auto-handles 100% of traffic with a 59.7% unsafe rate on test.
+
+> **The bottleneck is the classifier, not the agent.**
+>
+> 55 of 139 test rows have a wrong predicted intent. The largest single error source is the `delay_compensation → service_disruption` boundary: 8 of 15 errors on that intent.
+
+> **Grounding did not help.**
+>
+> Δ mean reply quality (grounded − ungrounded) = **−0.51** on dev. The grounded prompt encourages the model to synthesize operational claims from topical-but-inapplicable precedents.
+
+The report documents these findings with a full failure attribution, a per-intent breakdown, and a set of v2 recommendations. Every number traces to a frozen artifact: `runs/evaluation/metrics.json`.
+
+---
+
+## 1. Problem Framing
+
+### The Task
+
+Build an AI support agent for one brand from the TWCS dataset. The agent takes a customer message and produces:
+
+1. An intent
+2. A grounded draft reply
+3. A decision to either auto-handle or escalate
+
+The evaluation must demonstrate not just that the agent generates plausible replies, but that it **knows when it should not answer at all**.
+
+### What "Good" Means for This Brand
+
+GWRHelp receives a mix of actionable requests (delays, refunds, seat reservations), non-actionable chatter (praise, enthusiast posts), and ambiguous messages.
+
+A good system:
+
+1. **Classifies intent** well enough to route correctly.
+2. **Retrieves** precedent when precedent exists.
+3. **Generates** replies that are correct, relevant, helpful, and free of unsupported operational claims.
+4. **Escalates** whenever any of the above is uncertain or unsafe.
+
+The dominant metric is **safe automation coverage** — the fraction of traffic handled correctly and safely — not raw accuracy or coverage.
+
+### Non-Goals
+
+- No classifier training.
+- No production deployment (no FastAPI, no UI).
+- No claims about performance on unseen brands or distributions.
+
+---
+
+## 2. Data and Brand Selection
+
+### Selection Process
+
+Five candidate brands were shortlisted by inbound volume:
+
+- **AmazonHelp**
+- **Tesco**
+- **GWRHelp**
+- **AskPlayStation**
+- **VerizonSupport**
+
+Each candidate was scored on:
+
+- Inbound request volume
+- Thread completeness (visible resolution in the thread)
+- Response usefulness (manual audit of 10 threads per candidate)
+- Behavioral consistency
+- Data cleanliness
+
+AmazonHelp led on volume (~12,250 threads vs GWRHelp's 1,612) but had a reply pattern dominated by link/DM handoffs (29.3% vs 3.6% for GWRHelp) and a weaker manual audit score (3.00 vs 4.12).
+
+### Final Choice: GWRHelp
+
+| Candidate | Combined Score | Manual Audit |
+|---|---:|---:|
+| **GWRHelp** | **0.5935** | **4.12 / 5** |
+| Tesco | 0.5798 | — |
+| AmazonHelp | — | 3.00 / 5 |
+
+**Tie-break rule (predeclared):** if the gap between the top two is below 0.10, choose the audit winner.
+
+The gap was **0.014**, so GWRHelp was selected.
+
+### Accepted Trade-offs
+
+- **Volume:** 1,612 threads vs AmazonHelp's 12,250. Still above the minimum needed for a 9-intent taxonomy and a 200-example golden set.
+- **Intent diversity:** narrower (mostly trains, bookings, cancellations), but each intent is well-represented and clean.
+- **Fewer ambiguous cases:** compensated by higher per-case clarity and stronger behavioral consistency.
+
+### Data Profile
+
+| Statistic | Value |
+|---|---:|
+| GWRHelp threads (raw) | 1,612 |
+| Analysis corpus (post-normalization) | 1,610 |
+| Quarantined (normalize to empty) | 2 |
+| Median first-inbound length | See notebook 01 |
+
+---
+
+## 3. Intent Taxonomy
+
+### Method
+
+Candidate intents were discovered from the corpus, not imported from a generic taxonomy:
+
+1. Stratified exploration sample (100 messages, length-balanced).
+2. Frequency and TF-IDF term analysis.
+3. SVD(50) + KMeans clustering as supporting evidence.
+4. Hand-authored candidate taxonomy with probe regexes.
+5. Jaccard overlap on probe matches; pairs > 0.30 flagged for inspection.
+6. Coverage labeling on 300 messages; target mapped ≥ 0.80.
+
+### Final Taxonomy
+
+**11 intents** (9 operational + 2 residuals):
+
+- `delay_compensation`
+- `refund_request`
+- `booking_issue`
+- `timetable_info`
+- `service_disruption`
+- `seat_reservation`
+- `lost_property`
+- `on_board_issue`
+- `praise_or_chatter`
+- `other`
+- `ambiguous`
+
+### Coverage Validation
+
+| Metric | Value |
+|---|---:|
+| Mapped | 0.880 |
+| Other | 0.113 |
+| Ambiguous | 0.007 |
+| Unlabelled | 0.000 |
+
+All thresholds passed:
+
+- `mapped ≥ 0.80`
+- `other ≤ 0.15`
+- `ambiguous ≤ 0.10`
+
+### Frozen Artifact
+
+`configs/intents.yaml`
+
+**SHA-256:** `7a05e4af...`
+
+---
+
+## 4. Golden Set
+
+### Method
+
+- Annotation pool: 310 candidate messages (250 natural + 60 targeted rare-intent supplement).
+- Auto-suggested labels via rule + TF-IDF cascade, followed by **human confirmation on every row**.
+- Cascade agreement: 53%.
+- **145 of 310 rows were corrected.**
+- Disjoint from `coverage_labeling_sheet.csv` and `intent_examples.csv` at `root_id` and normalized-text level.
+- Stratified dev/test split (30% / 70%); random split fell back because `ambiguous` has only 1 example.
+
+### Final Golden Set
+
+| Statistic | Value |
+|---|---:|
+| Total examples | 198 |
+| Dev | 59 |
+| Test | 139 |
+| Human-confirmed | 198 / 198 |
+| Cascade-corrected | 145 |
+
+### Frozen Artifacts
+
+- `evaluation/golden_set.jsonl` — SHA-256 `acde341d...`
+- `runs/golden_set/golden_set.meta.json` — pins taxonomy SHA and test root IDs
+
+---
+
+## 5. Classifier
+
+### Approaches
+
+| Approach | Training Data | Cost |
+|---|---|---|
+| `rules` | Taxonomy patterns | Free |
+| `tfidf_lr_rule_labels` | 300 rule-labeled rows | Free |
+| `tfidf_lr_human_labels` | 188 human-verified rows | Free |
+| `llm_fewshot` (`llm_zeroshot` internally) | 0 examples (few-shot prompt) | API |
+
+### Dev Comparison
+
+**59 rows**
+
+| Approach | Op Macro F1 | Macro F1 | Weighted F1 | Accuracy |
+|---|---:|---:|---:|---:|
+| **`llm_zeroshot`** | **0.747** | 0.657 | 0.603 | 0.627 |
+| `tfidf_lr_human_labels` | 0.556 | 0.455 | 0.492 | 0.508 |
+| `tfidf_lr_rule_labels` | 0.470 | 0.434 | 0.556 | 0.542 |
+| `rules` | 0.458 | 0.396 | 0.362 | 0.390 |
+
+**Winner selection rule:** highest operational macro F1.
+
+### Test Results
+
+**139 rows, single evaluation**
 
 | Metric | Value | 95% CI |
 |---|---:|---|
-| Operational macro F1 | 0.624 | [0.548, 0.725] |
-| All-class macro F1 | 0.551 | [0.469, 0.618] |
+| Operational Macro F1 | **0.624** | [0.548, 0.725] |
+| All-Class Macro F1 | 0.551 | [0.469, 0.618] |
 | Weighted F1 | 0.590 | — |
 | Accuracy | 0.604 | — |
-| Force-fit rate | 0.526 | — |
+| Force-Fit Rate | 0.526 | — |
 
-### Headline weakness
+### Headline Weakness
 
-`delay_compensation` F1 = 0.286 (P=1.00, R=0.167). The classifier
-over-predicts `service_disruption` on messages that describe a past
-delay without an explicit compensation ask. This is the taxonomy's
-documented boundary between "live disruption" and "retrospective
-claim" — the model systematically misreads the boundary.
+`delay_compensation` F1 = **0.286**
 
-`timetable_info` F1 = 0.333 — also weak. Likely a similar cause:
-short "is the X running?" queries get classified as service_disruption
-when the word "cancelled" or "delayed" appears.
+- Precision = **1.00**
+- Recall = **0.167**
 
-### Comparison vs baselines
+The classifier over-predicts `service_disruption` on messages that describe a past delay without an explicit compensation ask.
 
-| Approach | Op macro F1 (test) | Force-fit |
-|---|---:|---:|
-| llm_zeroshot | 0.624 | 0.526 |
-| tfidf_lr_human_labels | 0.503 | 0.947 |
-| tfidf_lr_rule_labels | 0.470 | — |
-| rules | 0.458 | — |
+This is the taxonomy's documented boundary between **"live disruption"** and **"retrospective claim"**. The model systematically misreads this boundary.
 
-The LLM gives a **+0.12 op macro F1** improvement and halves the
-force-fit rate versus the strongest ML baseline.
+`timetable_info` F1 = **0.333** — likely a similar cause: short "is the X running?" queries get classified as `service_disruption` when the word "cancelled" or "delayed" appears.
 
-### Confidence calibration
+### Confidence Calibration
 
-The classifier is **overconfident**. ECE = <fill in>. At 0.6 self-reported
-confidence, empirical accuracy is 0%. At ~0.95, empirical accuracy
-is 60%. Escalation thresholds should be tuned against the reliability
-curve, not raw confidence.
+The classifier is **overconfident**. ECE ≈ 0.16.
 
+- At 0.6 self-reported confidence, empirical accuracy is 0%.
+- At ~0.95, empirical accuracy is 60%.
 
-## Retrieval — evaluation
+Escalation thresholds should therefore be tuned against the **reliability curve**, not raw confidence.
 
-### Approach comparison (dev, 59 queries)
+### Frozen Artifact
+
+`runs/classifier/chosen.json`
+
+**SHA-256:** `7d51251a...`
+
+---
+
+## 6. Retrieval
+
+### Corpus
+
+The retrieval corpus is the intersection of:
+
+1. Threads with a *substantive* brand response (5.4% of all GWRHelp responses; 87% are classified `other`).
+2. Threads with a label in the `04` training pool.
+3. Threads excluded from golden dev and test.
+
+**Result:** **50 documents** at smoke-test scale.
+
+### Approaches
+
+**Dev — 59 queries**
 
 | Retriever | Recall@5 | MRR | Notes |
 |---|---:|---:|---|
-| Oracle-intent BM25 | 0.966 | 0.966 | Diagnostic only |
-| **TF-IDF** | **0.746** | **0.493** | **Winner** |
-| Hybrid RRF | 0.661 | 0.498 | |
-| BM25 | 0.661 | 0.455 | |
-| Predicted-intent BM25 | 0.610 | 0.610 | |
-| Embedding | 0.576 | 0.429 | |
-| Random (20-seed mean) | 0.442 | 0.268 | Floor |
+| `oracle_intent_bm25` | 0.966 | 0.966 | Diagnostic only |
+| **`tfidf`** | **0.746** | **0.493** | **Winner** |
+| `hybrid_rrf` | 0.661 | 0.498 | |
+| `bm25` | 0.661 | 0.455 | |
+| `predicted_intent_bm25` | 0.610 | 0.610 | |
+| `embedding` | 0.576 | 0.429 | |
+| `random` (20-seed mean) | 0.442 | 0.268 | Floor |
 
-**Winner:** TF-IDF, selected by predeclared rule (highest recall@5;
-tie-break within Δ 0.02 favors simpler/cheaper).
+Winner selection rule: highest Recall@5. Tie-break within Δ 0.02 favours the simpler/cheaper approach.
 
-### Human relevance audit (20 queries, 100 judgments)
+### Test Results
+
+**139 queries, single evaluation**
+
+| Metric | Value |
+|---|---:|
+| Recall@1 | 0.201 |
+| Recall@5 | **0.532** |
+| Recall@10 | 0.748 |
+| MRR | 0.342 |
+| Corpus Coverage | 0.942 |
+
+### Human Relevance Audit
+
+**20 queries × top-5 = 100 judgments**
 
 - nDCG@5 = **0.592**
 - Graded Precision@5 (≥1) = **0.330**
 
-**Finding:** Intent-match Recall@5 is a valid but optimistic proxy.
-Only 1 in 3 retrieved documents is even partially useful. The
-automated metric captures **whether retrieval finds the right topic**;
-the human audit captures **whether the retrieved precedent is
-actionable**. These diverge because the corpus contains many
-on-intent-but-generic brand responses ("we aim to respond within
-20 days", "thanks, we'll pass this on") that match lexically without
-providing usable grounding.
+### Finding
 
-### Intent-conditioning result
+Intent-match Recall@5 is a valid but optimistic proxy.
 
-| Variant | Recall@5 |
+Only **1 in 3 retrieved documents is even partially useful**.
+
+The automated metric captures whether retrieval finds the right topic; the human audit captures whether the retrieved precedent is actionable.
+
+### Intent-Conditioning Diagnostic
+
+| Variant | Dev Recall@5 |
 |---|---:|
-| Oracle-intent BM25 | 0.966 |
-| TF-IDF (unconditioned) | 0.746 |
-| Predicted-intent BM25 | 0.610 |
+| `oracle_intent_bm25` | 0.966 |
+| `tfidf` (unconditioned) | 0.746 |
+| `predicted_intent_bm25` | 0.610 |
 
-**Finding:** Intent-conditioning is worth ~22 points of recall
-*when the classifier is right*. With our classifier at 0.62 dev
-accuracy, the same technique underperforms unconditioned TF-IDF
-by 14 points. For the current pipeline, unconditioned retrieval is
-correct; intent-conditioning becomes advantageous only when
-classifier accuracy exceeds roughly 0.75.
+Intent-conditioning is worth ~22 points of recall **when the classifier is right**.
 
-### Implications for `06_agent`
+With the classifier at 0.62 dev accuracy, conditioned retrieval underperforms unconditioned TF-IDF. It was therefore not used in the pipeline.
 
-- Retrieve **top-10**, not top-5 (recall@10 = 0.847 vs recall@5 = 0.746)
-- Down-rank or filter generic boilerplate responses before grounding
-- The classifier's `confidence` and `margin` signals remain the primary
-  escalation inputs; retrieval scores are ordinal, not calibrated
+### Corpus-Size Limitation
 
-  ## Retrieval — test results and limitations
+Recall@5 correlates directly with how many corpus documents share the query's intent:
 
-TF-IDF was selected on dev (recall@5 = 0.746) and evaluated once on test:
-
-| Metric | Test |
-|---|---:|
-| recall@5 | 0.532 |
-| recall@10 | 0.748 |
-| MRR | 0.342 |
-| Corpus coverage | 0.942 |
-
-### The dominant limitation: corpus size
-
-The retrieval corpus contains **50 documents**. Every recall number is
-bounded by this. The corpus is the intersection of:
-
-1. Threads with a *substantive* brand response (5.4% of all GWRHelp
-   responses; 87% of GWRHelp responses are classified `other`).
-2. Threads with a label in the 04 training pool.
-3. Threads excluded from golden dev and test.
-
-Of 2,794 GWRHelp responses, only 150 are substantive, and only 140
-threads carry one. After exclusions, 50 remain.
-
-### Evidence that corpus size dominates
-
-Recall@5 correlates directly with how many corpus docs share the
-query's intent:
-
-- `service_disruption`: 15 docs → recall@5 = 1.000
-- `booking_issue`: 6 docs → recall@5 = 0.714
-- `refund_request`: 2 docs → recall@5 = 0.200
-- `lost_property`: 0 docs → recall@5 = 0.000
-
-`lost_property` failures are **coverage failures**, not retrieval
-failures. The corpus doesn't contain the intent at all.
-
-### Dev-to-test gap
-
-Dev recall@5 (0.746) exceeds test (0.532) by 0.21. The gap is driven
-by different intent mixes: dev has 15 `delay_compensation` queries
-against a proportionally larger corpus; test has 18 `delay_compensation`
-and 23 `on_board_issue` queries against 5 and 6 corpus docs
-respectively. The dev set happened to be easier.
-
-### What this evaluation can and cannot claim
-
-**Can claim:** TF-IDF outperformed BM25 (0.746 vs 0.661 on dev), hybrid
-RRF (0.661), embeddings (0.576), and random (0.442). The relative
-ranking of retrievers is credible.
-
-**Cannot claim:** TF-IDF achieves recall@5 = 0.532 in production. The
-absolute number is a floor under a severely undersized corpus. A
-production corpus would contain thousands of substantive responses.
-
-### Intent-conditioning diagnostic
-
-| Variant | Dev recall@5 |
-|---|---:|
-| Oracle-intent BM25 | 0.966 |
-| TF-IDF (unconditioned) | 0.746 |
-| Predicted-intent BM25 | 0.610 |
-
-Intent-conditioning helps **when the classifier is right** but hurts
-when it's wrong. With the classifier at 0.62 dev accuracy, conditioned
-retrieval underperforms unconditioned TF-IDF. Not used in the pipeline.
-
-## 06 — Agent: outcome
-
-The predeclared selection rule required `unsafe_automation_rate ≤ 0.10` on dev.
-No candidate satisfied this gate. The fallback rule proceeded with all
-candidates, and the simplicity tie-break selected `ungrounded`.
-
-### Dev comparison
-
-| Approach | Automation coverage | Mean universal | Unsupported rate | Unsafe automation rate |
-|---|---:|---:|---:|---:|
-| ungrounded | 1.000 | 13.19 | 0.254 | 0.678 |
-| grounded_no_escalate | 1.000 | 12.68 | 0.542 | 0.678 |
-| full_pipeline | 0.864 | 12.82 | 0.510 | 0.706 |
-| escalate_all | 0.000 | — | — | 0.000 |
-
-### Test results (chosen = ungrounded)
-
-- 139 rows evaluated
-- automation_coverage = 1.000
-- mean_universal_auto = 13.37
-- unsupported_rate_auto = 0.194
-- **unsafe_automation_rate = 0.597**
-
-### Findings
-
-1. **Grounding did not improve reply quality.** Δ_grounding (B − A) = −0.51
-   on dev. Grounded replies scored lower than ungrounded.
-2. **Escalation did not align with the suitability rubric.** Precision 0.50,
-   recall 0.10. The policy fires on 14% of dev; the suitability judge marks
-   68% unsafe.
-3. **The chosen agent is unsafe by the predeclared standard.** 59.7%
-   of auto-handled test rows were labeled unsafe by the independent
-   escalation-suitability judge.
-
-### Root cause
-
-The predeclared escalation thresholds (`τ_c = 0.40`, `τ_m = 0.15`) were
-conservative and produced few escalations. The escalation-suitability
-judge, using a closed-world rubric, marked a large majority of messages
-as needing a human. These two signals are not aligned. The policy would
-need to be re-derived from the suitability labels on dev to close the
-gap.
-
-### What this does NOT justify
-
-- Changing the choice post-hoc. `ungrounded` is the correct output of
-  the predeclared rule.
-- Re-running test. Test is spent.
-- Tuning against test. All thresholds were fixed before test.
-## Threshold tuning — post-hoc note
-
-The escalation thresholds (τ_c = 0.40, τ_m = 0.15) used in this notebook
-were predeclared defaults, not dev-selected operating points. A dev-only
-threshold sweep was added retroactively (Cell 4b) to document what a
-properly-tuned policy would have selected.
-
-The sweep shows [actual output — likely: no combination in the grid
-passes the safety gate on dev, because 68% of dev rows are flagged unsafe
-by the escalation-suitability judge while the classifier-confidence and
-retrieval-coverage signals available to the policy do not correlate with
-those flags].
-
-Consequence: the fallback rule selected `ungrounded`. This was the
-correct output of the predeclared rules given the pre-sweep thresholds.
-The finding is documented; the fix (recalibrate escalation thresholds
-against suitability labels, then re-evaluate on a fresh holdout) is
-stated as future work.
-
-The current test result stands. Test was evaluated once and locked.
-
-## 06 — Agent: outcome
-
-The predeclared safety gate (`unsafe_automation_rate ≤ 0.10`) failed on dev
-for every candidate. A dev-only threshold sweep (Cell 4b) confirmed no
-combination of τ_c ∈ {0.30..0.50} and τ_m ∈ {0.05..0.25} passes — because
-68% of dev messages are labeled unsafe by the escalation-suitability
-judge while the policy's signals (classifier confidence, retrieval
-coverage) do not correlate with those labels.
-
-The predeclared fallback selected `ungrounded` by simplicity. Test
-confirmed:
-
-- automation coverage: 1.000
-- mean universal score: 13.37
-- unsafe automation rate: **0.597**
-- escalation recall vs. suitability labels: 0.000
-
-### Findings
-
-1. **Grounding did not help.** Δ_grounding (B − A) = −0.51 on dev.
-   Grounded replies scored lower than ungrounded.
-2. **Escalation policy does not align with the suitability rubric.**
-   Precision 0.50, recall 0.10 on dev. The policy fires on 14% of dev;
-   the judge flags 68%.
-3. **The predeclared fallback did its job.** No silent override. The
-   weakest-by-safety candidate was selected as the rules specified.
-
-### Recommended v2
-
-Re-derive escalation thresholds against the suitability labels on dev,
-then evaluate on a fresh holdout. Not done in v1 because test is spent
-and post-hoc selection would invalidate the predeclared-rule discipline
-used throughout 04–06.
-## 06 — Agent: diagnostic findings
-
-The predeclared selection rule selected `ungrounded` via the fallback
-path because no candidate passed the 10% safety gate. Three diagnostic
-investigations explain why, and each identifies a distinct failure mode.
-
-### Diagnostic 1 — Escalation signals do not discriminate
-
-Dev distributions of safe (n=19) vs unsafe (n=40) messages:
-
-| Signal | Safe (mean) | Unsafe (mean) |
+| Intent | Corpus Docs | Recall@5 |
 |---|---:|---:|
-| confidence_raw | 0.939 | 0.918 |
-| confidence_calibrated | 0.602 | 0.626 |
-| margin | 0.883 | 0.827 |
+| `service_disruption` | 15 | 1.000 |
+| `booking_issue` | 6 | 0.714 |
+| `refund_request` | 2 | 0.200 |
+| `lost_property` | 0 | 0.000 |
 
-The distributions overlap heavily. This explains the flat threshold
-sweep: adjusting τ_c or τ_m has no effect because the underlying signals
-do not separate the two classes. The policy's only effective rules are
-categorical: `intent ∈ {other, ambiguous}` (7 fires) and
-`corpus_coverage == 0` (1 fire). Escalation precision = 0.50, recall =
-0.10.
+`lost_property` failures are **coverage failures**, not retrieval failures.
 
-**Root cause:** the escalation policy relies on pipeline signals
-(classifier confidence, retrieval coverage) that answer different
-questions from the escalation-suitability rubric. A policy that
-actually separates safe from unsafe would need to be driven by the
-suitability judge itself at runtime — a different architecture than
-what was frozen in 06.
+The absolute recall number is a floor under a severely undersized corpus.
 
-### Diagnostic 2 — The grounded prompt hallucinates operational
-claims from topical precedents
+### Frozen Artifacts
 
-Δ_grounding = −0.51 on dev. Inspecting the 10 largest regressions
-(`diagnostic_grounding_failures.csv`) reveals a consistent failure
-mode: the grounded prompt encourages the model to synthesize
-operational claims from precedents that are topically related but not
-actually applicable. Representative cases:
+- `runs/retrieval/chosen_retriever.json` — SHA-256 `33dbaea4...`
+- `runs/retrieval/corpus.jsonl` — SHA-256 `69327018...`
 
-- root_id 59200: a customer posts a bare link. Precedent 54019 contains
-  "cancelled due to congestion". Grounded reply invents "the service was
-  cancelled due to congestion". Ungrounded reply correctly says "not
-  sure what you're referring to".
-- root_id 1014147: customer can't sit in a reserved seat. Grounded
-  reply invents "on this train there are no reserved seats — you can
-  sit anywhere" and "a refund isn't available for this situation".
-  Neither claim appears in the precedents.
-- root_id 1208104: customer uses sarcasm ("Love a delayed train 🤔").
-  Precedent 2306957 is a thank-you message. Grounded reply says
-  "we'll make sure your kind words are passed on."
+---
 
-The system prompt contains two conflicting instructions: "Do NOT invent
-policies" and "use precedents as grounding evidence for any operational
-claims". When precedents are topically matched but semantically
-inapplicable, the second instruction dominates.
+## 7. Agent
 
-**Root cause:** retrieval is intent-match-based, not relevance-based. The
-corpus contains 50 documents at smoke-test scale; topical matches are
-easy, useful precedents are not.
+### Pipeline
 
-### Diagnostic 3 — Ungrounded is a strong baseline
+```text
+Frozen 04 output:
+  intent
+  confidence
+  alternative_intent
+  alt_confidence
+        │
+        ▼
+Frozen 05 output:
+  top-10 doc_ids
+  retrieval scores
+        │
+        ▼
+Escalation Decision
+        │
+        ├────────────────┐
+        ▼                ▼
+    Escalate          Generate
+        │                │
+        └────────┬───────┘
+                 ▼
+       Reply OR Escalation Reason
+                 │
+                 ▼
+        Three Judges Score Result
+```
 
-Mean universal score on dev: ungrounded 13.19 vs grounded 12.68. The
-LLM's generic empathetic-and-redirect replies score well on the rubric.
-The engineering challenge in ResolveIQ is therefore not making replies
-sound good; it is making them **grounded, operationally safe, and
-appropriately escalated**.
+### Approaches on Dev
 
-### What this does not justify
+**59 rows**
 
-- Re-running test. The one-shot rule holds.
-- Re-tuning thresholds. Diagnostic 1 shows thresholds are not the
-  bottleneck.
-- A fresh holdout. The fixes require architecture changes (runtime risk
-  classifier, relevance-gated precedent inclusion), not hyperparameter
-  search.
+| Approach | Automation Coverage | Mean Universal | Unsupported Rate | Unsafe Auto Rate |
+|---|---:|---:|---:|---:|
+| `ungrounded` | 1.000 | 13.19 | 0.254 | 0.678 |
+| `grounded_no_escalate` | 1.000 | 12.68 | 0.542 | 0.678 |
+| `full_pipeline` | 0.864 | 12.82 | 0.510 | 0.706 |
+| `escalate_all` | 0.000 | — | — | 0.000 |
 
-### v2 recommendations
+### Selection Outcome
 
-1. **Move the escalation-suitability judgment into the runtime policy.**
-   The judge is 95% aligned with human labels on the 20-row spot check;
-   using it as a per-message risk signal would give the policy real
-   discriminative power.
-2. **Gate precedent inclusion on relevance, not intent-match.** Only
-   inject precedents when retrieval evidence crosses a
-   usefulness threshold (e.g., high BM25 score, or a reranker above a
-   confidence cutoff).
-3. **Split the system prompt** for grounded and ungrounded modes. The
-   grounded prompt should say explicitly: "If a precedent does not
-   describe an equivalent situation, do not use its operational
-   details."
-4. **Grow the corpus.** A 50-document corpus at smoke-test scale is the
-   dominant limit on grounded performance.
+Predeclared safety gate:
 
-   # ResolveIQ — Final Report
+```text
+unsafe_automation_rate ≤ 0.10
+```
 
-## Executive summary
-One paragraph: what was built, what the numbers are, what the finding is.
+**No candidate passed.**
 
-## 1. Problem framing
-What the task is. Why customer-support automation needs grounding +
-escalation. Scope and non-goals.
+The fallback rule proceeded with all candidates; the simplicity tie-break selected `ungrounded`.
 
-## 2. Data and brand selection (notebook 01)
-- GWRHelp chosen from candidate brands
-- N threads, distribution of intents in the raw corpus
-- Reference to reports/figures/*_brand_*.png
+A dev-only threshold sweep across:
 
-## 3. Intent taxonomy (notebook 02)
-- 11 intents (9 operational + other + ambiguous)
-- Discovery method
-- Coverage validation: mapped=0.880, other=0.113, ambiguous=0.007
-- Taxonomy SHA: 7a05e4af...
-- Reference to configs/intents.yaml
+- τc ∈ {0.30–0.50}
+- τm ∈ {0.05–0.25}
 
-## 4. Golden set (notebook 03)
-- 198 human-verified examples (59 dev / 139 test)
-- Disjoint from coverage and training pool
-- SHA: acde341d...
-- Sample quality: 310 human-confirmed, 145 corrections
+produced identical results for all 25 grid points.
 
-## 5. Classifier (notebook 04)
-- Table: 4 approaches on dev
-- Chosen: llm_zeroshot, op macro F1 = 0.747 on dev / 0.624 on test
-- Confidence overconfidence: ECE = 0.16
-- Weakness: delay_compensation F1 = 0.286 (per-intent table)
-- SHA: 7d51251a...
+This is a signal that the thresholds have no discriminative power.
 
-## 6. Retrieval (notebook 05)
-- Table: 6 approaches on dev
-- Chosen: tfidf, recall@5 = 0.746 dev / 0.532 test
-- Corpus limitation: 50 documents
-- Human audit: nDCG@5 = 0.592, graded P@5 = 0.330
-- SHA: 33dbaea4...
+### Test Results
 
-## 7. Agent (notebook 06)
-- Pipeline: classify → retrieve → escalate or generate
-- Safety gate failed on dev for all candidates
-- Chosen: ungrounded (per predeclared fallback)
-- Test: automation coverage 1.0, unsafe rate 0.597
-- Three diagnostics explaining the failure
-- SHA: dc6c09f6...
+**139 rows, single evaluation**
 
-## 8. End-to-end evaluation (notebook 07)
-- Cascade table
-- Per-intent breakdown
-- Safe automation coverage = 0.295
-- Safe handling rate = 0.201
-- Reference to reports/figures/*_test.png
+| Metric | Value | 95% CI |
+|---|---:|---|
+| Automation Coverage | 1.000 | — |
+| Mean Universal Score (auto) | **13.37** | [13.14, 13.60] |
+| Unsupported-Claim Rate | 0.194 | — |
+| **Unsafe Automation Rate** | **0.597** | [0.511, 0.683] |
+| Escalation Rate | 0.000 | — |
+| Escalation Recall (vs suitability) | 0.000 | — |
 
-## 9. Key findings
-1. The classifier is the bottleneck, not the agent.
-2. delay_compensation boundary is the single largest error source.
-3. Grounding did not improve reply quality (Δ = −0.51 on dev).
-4. Escalation policy signals do not discriminate safe from unsafe.
-5. Corpus scale limits grounded generation.
+### Judge-Human Agreement
 
-## 10. Limitations
-Copy from runs/evaluation/limitations.md
+- Universal judge vs human: ρ = 0.722 (p = 0.002), MAD = 0.67
+- Escalation-suitability judge vs human: 0.950 agreement
 
-## 11. Future work
-The v2 recommendations from each notebook's diagnostics:
-- Fix the delay_compensation taxonomy boundary (add tie-break examples, split the intent, or add a rule override)
-- Move escalation-suitability judgment into the runtime policy
-- Gate precedent inclusion on relevance
-- Grow the corpus to production scale
-- Capture cost/latency in generation
+Both judges are well-aligned with human labels.
 
-## 12. Reproducibility appendix
-- Environment (uv, Python version, key deps)
-- Exact commands to reproduce
-- All SHA-256 pins
-- Reference to DECISIONS.md
+The problem is **not the judges**; it is that the runtime policy does not use them.
+
+### Three Diagnostics
+
+#### Diagnostic 1 — Escalation Signals Do Not Discriminate
+
+| Signal | Safe (n=19) | Unsafe (n=40) |
+|---|---:|---:|
+| `confidence_raw` | 0.939 | 0.918 |
+| `confidence_calibrated` | 0.602 | 0.626 |
+| `margin` | 0.883 | 0.827 |
+
+The distributions overlap heavily.
+
+Only the categorical rules fire:
+
+- `intent ∈ {other, ambiguous}` — 7 fires
+- `corpus_coverage == 0` — 1 fire
+
+Escalation precision = **0.50**
+
+Escalation recall = **0.10**
+
+#### Diagnostic 2 — Grounded Prompt Hallucinates Operational Claims
+
+Δ_grounding = **−0.51** on dev.
+
+Ten worst regressions share a pattern: the grounded prompt synthesizes operational details from topically-related but semantically-inapplicable precedents.
+
+Representative cases:
+
+- `root_id 59200`: bare-link message. Grounded reply invents "the service was cancelled due to congestion." The precedent did not say this.
+- `root_id 1014147`: reserved seat unavailable. Grounded reply invents "on this train there are no reserved seats" — not in the precedents.
+- `root_id 1208104`: sarcasm ("Love a delayed train 🤔"). Precedent is a thank-you. Grounded reply says "we'll make sure your kind words are passed on."
+
+#### Diagnostic 3 — Ungrounded Is a Strong Baseline
+
+Ungrounded mean universal score on dev: **13.19**.
+
+The LLM's generic empathetic-and-redirect replies score well on the rubric.
+
+The engineering challenge is not making replies sound good; it is making them:
+
+- Grounded
+- Operationally safe
+- Appropriately escalated
+
+### Frozen Artifacts
+
+- `runs/agent/chosen_agent.json` — SHA-256 `dc6c09f6...`
+- `runs/agent/TEST_LOCK.json` — locks generation
+- `runs/agent/EVAL_LOCK.json` — locks all judging artifacts
+
+---
+
+## 8. End-to-End Evaluation
+
+### Headline Table
+
+| Metric | Value | 95% CI | n |
+|---|---:|---|---:|
+| Classifier Op Macro F1 | 0.624 | — | 139 |
+| Retrieval Recall@5 | 0.532 | — | 139 |
+| Mean Universal Score | 13.374 | [13.14, 13.60] | 139 |
+| Unsupported-Claim Rate | 0.194 | — | 139 |
+| Automation Coverage | 1.000 | — | 139 |
+| **Safe Automation Coverage** | **0.295** | [0.22, 0.37] | 139 |
+| **Unsafe Automation Rate** | **0.597** | [0.51, 0.68] | 139 |
+| Safe-Handling Rate | 0.201 | [0.14, 0.27] | 139 |
+
+### Cascade Analysis
+
+Where does the pipeline first fail?
+
+| Stage | n | % |
+|---|---:|---:|
+| `0_success` | 27 | 19.4% |
+| `1_classification` | **55** | **39.6%** |
+| `2_retrieval_corpus_missing` | 4 | 2.9% |
+| `3_unsafe_auto_handle` | **43** | **30.9%** |
+| `4_generation_quality` | 4 | 2.9% |
+| `4_generation_unsupported` | 6 | 4.3% |
+
+> **Two failure modes account for 70% of the corpus:** classification (55) and unsafe auto-handling (43).
+
+### Per-Intent Breakdown
+
+| Intent | n | Classifier Accuracy | Recall@5 | Unsafe Auto Rate | Safe Auto Coverage |
+|---|---:|---:|---:|---:|---:|
+| **`delay_compensation`** | **18** | **0.167** | 0.500 | 0.556 | 0.333 |
+| `refund_request` | 10 | 0.900 | 0.200 | 0.300 | 0.600 |
+| `booking_issue` | 14 | 0.571 | 0.714 | 0.571 | 0.286 |
+| `timetable_info` | 10 | 0.300 | 0.800 | 0.800 | 0.200 |
+| `service_disruption` | 18 | 0.833 | 1.000 | 0.722 | 0.167 |
+| `seat_reservation` | 9 | 0.778 | 0.556 | 0.556 | 0.333 |
+| `lost_property` | 7 | 0.571 | 0.000 | 0.429 | 0.143 |
+| `on_board_issue` | 23 | 0.739 | 0.522 | 0.652 | 0.261 |
+| `praise_or_chatter` | 11 | 0.818 | 0.545 | 0.545 | 0.273 |
+| `other` | 18 | 0.500 | 0.222 | 0.667 | 0.333 |
+| `ambiguous` | 1 | 0.000 | 0.000 | 0.000 | 1.000 |
+
+`delay_compensation` is the highest-volume operational intent (18 rows) and the weakest classifier performance (accuracy 0.167).
+
+### Top Confusion Pairs
+
+| True | Pred | n |
+|---|---|---:|
+| **`delay_compensation`** | **`service_disruption`** | **8** |
+| **`delay_compensation`** | **`other`** | **6** |
+| `timetable_info` | `service_disruption` | 5 |
+| `other` | `service_disruption` | 4 |
+| `booking_issue` | `other` | 3 |
+| `on_board_issue` | `service_disruption` | 2 |
+| `seat_reservation` | `on_board_issue` | 2 |
+| `on_board_issue` | `seat_reservation` | 2 |
+
+`delay_compensation → service_disruption` alone is:
+
+**8 / 55 = 14.5% of all classifier errors.**
+
+This is the documented taxonomy boundary.
+
+### Slice Analysis
+
+| Slice | n | Classifier Accuracy | Recall@5 | Safe Auto Coverage |
+|---|---:|---:|---:|---:|
+| Natural | 109 | 0.606 | 0.523 | 0.275 |
+| Targeted | 30 | 0.600 | 0.567 | 0.367 |
+| **All** | **139** | **0.604** | **0.532** | **0.295** |
+
+### Performance by Message Length
+
+| Bin | n | Classifier Accuracy |
+|---|---:|---:|
+| Short (<80 chars) | 14 | 0.571 |
+| Medium | 114 | 0.605 |
+| Long (>200 chars) | 11 | 0.636 |
+
+Length does not meaningfully correlate with quality.
+
+### Figures
+
+- `reports/figures/pipeline_cascade_test.png`
+- `reports/figures/pipeline_handling_cascade_test.png`
+- `reports/figures/automation_by_intent_test.png`
+- `reports/figures/automation_tradeoff_test.png`
+
+---
+
+## 9. Key Findings
+
+### 9.1 The Classifier Is the Bottleneck
+
+55 of 139 test rows have a wrong `pred_intent` (**39.6%**).
+
+Every downstream stage that depends on intent inherits the error.
+
+Fixing classification would improve the pipeline more than any change to the agent stage.
+
+### 9.2 `delay_compensation` Boundary Is the Largest Error Source
+
+`delay_compensation` F1 = **0.286**.
+
+Eight of 15 errors on that intent are:
+
+```text
+delay_compensation → service_disruption
+```
+
+This is the documented taxonomy boundary from notebook `02`.
+
+A v2 would need explicit tie-break rules and additional few-shot examples for this pair.
+
+### 9.3 Grounding Did Not Improve Reply Quality
+
+Δ_grounding = **−0.508** on dev.
+
+The grounded prompt synthesizes operational claims from weakly-relevant precedents.
+
+Two contributing causes:
+
+1. The corpus is only 50 documents at smoke-test scale.
+2. The grounded and ungrounded prompts share a system message containing a conflict between:
+   - "do not invent policies"
+   - "use precedents as evidence"
+
+### 9.4 Escalation Signals Do Not Discriminate
+
+Classifier confidence and retrieval coverage have near-identical distributions on safe vs unsafe messages.
+
+The policy's only effective rules are categorical.
+
+A v2 would need to consume the escalation-suitability judge's signal at runtime.
+
+### 9.5 Good Replies Can Carry Unsupported Claims
+
+27 of 105 auto-handled rows with `universal_score ≥ 12` also have:
+
+```text
+unsupported_claim = True
+```
+
+The universal judge scores correctness, relevance, and helpfulness.
+
+The unsupported-claim flag is orthogonal.
+
+A reply that reads well can still fabricate a policy.
+
+### 9.6 The Chosen Agent Fails Its Own Gate
+
+Unsafe automation rate on test:
+
+**0.597**
+
+Predeclared gate:
+
+**0.10**
+
+The predeclared fallback correctly selected the simplest candidate when no approach passed — but that candidate is also the least safe.
+
+This is a design flaw in the fallback, documented as future work.
+
+---
+
+## 10. The Misleading Headline Number
+
+The most flattering number in this report is:
+
+> **Mean universal reply quality = 13.37 / 15**
+
+On its face, it suggests the agent writes excellent replies.
+
+But the pipeline achieves it by auto-handling **100% of traffic**, including the ~60% that the independent escalation-suitability judge flags as unsafe.
+
+The score reflects that the LLM writes *plausible-sounding* replies, not that they are *safe to send*.
+
+27 of 105 high-scoring replies contained an unsupported operational claim.
+
+A reviewer looking only at the universal score could ship a system that:
+
+- Invents refund timelines
+- Fabricates policies
+- Provides unsupported operational information
+
+The honest headline number is:
+
+> **Safe automation coverage = 0.295**
+
+Only **29.5% of test traffic** was handled correctly **and safely**.
+
+The gap between **13.37** and **0.295** is the story of the project.
+
+### Other Numbers That Mislead
+
+- **"Classifier accuracy = 0.604"** looks mediocre but hides the fact that one intent (`delay_compensation`, 18 rows) accounts for 22% of the test set and has accuracy 0.167.
+- **"Retrieval Recall@5 = 0.532"** looks like a weak retriever. The human audit (nDCG@5 = 0.592, graded P@5 = 0.330) shows the automated metric overstates usefulness — the actual quality is lower, not higher.
+- **"Escalation recall = 0.0"** is technically correct but omits that the agent never escalated. The number is a property of the chosen fallback, not of the policy's design.
+
+---
+
+## 11. Limitations
+
+See `runs/evaluation/limitations.md` for the machine-generated version.
+
+### Summary
+
+- **Test set size (n=139).** Bootstrap CIs are wide. Small-class metrics (`ambiguous`, n=1) are not statistically meaningful.
+- **Coverage-oriented golden sampling.** Rare intents are oversampled; natural-slice metrics are the closest proxy for production traffic.
+- **Intent-match retrieval relevance** is a proxy. A 20-query human audit found nDCG@5 = 0.592 and graded P@5 = 0.330, indicating the proxy overstates usefulness.
+- **Judges are LLM-based.** 20-row human spot-check agreement: universal ρ = 0.72, escalation 0.95.
+- **Corpus is 50 documents** at smoke-test scale.
+- **Historical responses may contain outdated policies.** Retrieval and grounding use historical GWRHelp replies without a time-relevance filter.
+- **Escalation policy signals** do not discriminate safe from unsafe messages on dev.
+- **Cost and latency** are not captured.
+
+---
+
+## 12. Future Work
+
+Prioritized by expected impact:
+
+### 12.1 Fix the `delay_compensation` Boundary
+
+**Highest leverage.**
+
+Add explicit tie-break rules and 3–5 few-shot examples distinguishing:
+
+- "live disruption"
+- "retrospective delay with compensation ask"
+
+This single boundary accounts for **8 of 55 classifier errors**.
+
+Requires a fresh holdout to validate.
+
+### 12.2 Move Escalation-Suitability Judgment Into the Runtime Policy
+
+Replace the classifier-confidence and retrieval-coverage signals with the escalation-suitability judge's output.
+
+The judge agrees with human labels **95% of the time**; the current policy signals agree with them ~50%.
+
+### 12.3 Gate Precedent Inclusion on Relevance
+
+Only inject precedents when retrieval evidence crosses a usefulness threshold:
+
+- High BM25 score, or
+- Reranker above a confidence cutoff
+
+The current intent-match retrieval is too permissive; weakly relevant precedents cause the grounded prompt to hallucinate operational claims.
+
+### 12.4 Split the Grounded and Ungrounded System Prompts
+
+The current shared system prompt contains a conflict between:
+
+> "do not invent policies"
+
+and:
+
+> "use precedents as evidence"
+
+The grounded prompt should add:
+
+> "If a precedent does not describe an equivalent situation, do not use its operational details."
+
+### 12.5 Grow the Corpus
+
+A 50-document corpus at smoke-test scale is the dominant limit on grounded generation.
+
+Target a production-scale corpus containing **thousands of substantive responses** before re-evaluating.
+
+### 12.6 Add an Unsupported-Claim Detector as Post-Processing
+
+The universal judge scores quality but does not catch unsupported claims that pass the quality bar.
+
+A dedicated claim-vs-context check would prevent the 27 mislabeled high-scoring replies observed in test.
+
+### 12.7 Capture Cost and Latency
+
+Not captured in this run.
+
+A production system needs:
+
+- Per-request token cost
+- p95 latency
+
+Both can be added to the generation cache.
+
+### 12.8 Pre-Declare the Fallback More Carefully
+
+When no candidate passes the safety gate, the fallback should be:
+
+- **"Select the safest candidate"**, or
+- **"Escalate all"**
+
+—not:
+
+- **"Prefer the simplest."**
+
+The current fallback selects the least safe option.
+
+---
+
+## 13. Reproducibility
+
+### Environment
+
+```bash
+uv sync
+cp .env.example .env  # add GROQ_API_KEY
+```
+
+### Run Order
+
+```text
+notebooks/01_eda.ipynb          (fresh, ~2 min)
+notebooks/02_taxonomy.ipynb     (cached, ~3 min)
+notebooks/03_golden_set.ipynb   (cached, ~1 min)
+notebooks/04_classifier.ipynb   (cached, ~5 min)
+notebooks/05_retrieval.ipynb    (cached, ~2 min)
+notebooks/06_agent.ipynb        (cached, ~5 min)
+notebooks/07_evaluation.ipynb   (~30 sec, no API calls)
+```
+
+All API calls are cached to:
+
+```text
+cache/*.jsonl
+```
+
+Re-runs of notebooks `02`–`06` complete in seconds.
+
+Notebook `07` is pure synthesis.
+
+### Pinned SHA-256 Hashes
+
+| Artifact | SHA-256 Prefix |
+|---|---|
+| Taxonomy (`configs/intents.yaml`) | `7a05e4af...` |
+| Golden Set (`evaluation/golden_set.jsonl`) | `acde341d...` |
+| Classifier (`runs/classifier/chosen.json`) | `7d51251a...` |
+| Retriever (`runs/retrieval/chosen_retriever.json`) | `33dbaea4...` |
+| Agent (`runs/agent/chosen_agent.json`) | `dc6c09f6...` |
+| Corpus (`runs/retrieval/corpus.jsonl`) | `69327018...` |
+
+Full hashes:
+
+```text
+runs/evaluation/metrics.json → frozen_inputs
+```
+
+### Verification
+
+`07_evaluation.ipynb` Cell 2 verifies every SHA against its upstream:
+
+- `TEST_LOCK.json`
+- `EVAL_LOCK.json`
+
+Any drift is a hard failure.
+
+Every number in this report traces to:
+
+```text
+runs/evaluation/metrics.json
+```
+
+or one of:
+
+```text
+runs/evaluation/table_*.csv
+```
+
+No number was hand-typed.
+
+### Decisions
+
+See:
+
+```text
+DECISIONS.md
+```
+
+It contains 25 entries covering brand selection through the final evaluation.
+
+---
+
+# Appendix A — Metric Definitions
+
+| Metric | Definition |
+|---|---|
+| Op Macro F1 | Macro F1 across the 9 operational intents |
+| All-Class Macro F1 | Macro F1 across all 11 intents |
+| Recall@k | Fraction of queries with ≥1 relevant document in top-k |
+| MRR | Mean reciprocal rank of the first relevant document |
+| Universal Score | Sum of correctness + relevance + helpfulness (range 3–15) |
+| Unsupported-Claim Rate | Fraction of replies flagged with ≥1 unsupported operational claim |
+| Automation Coverage | Fraction of traffic auto-handled (not escalated) |
+| Safe Automation Coverage | Fraction of traffic auto-handled AND safe AND good reply AND no unsupported claim |
+| Unsafe Automation Rate | Fraction of auto-handled rows flagged unsafe by the escalation-suitability judge |
+| Safe-Handling Rate | Fraction where the agent's decision was correct regardless of path |
+
+---
+
+# Appendix B — Failure Attribution
+
+Every test row gets an `earliest_defect_stage`:
+
+```text
+1_classification  →  classifier was wrong
+2_retrieval       →  intent missing from corpus
+3_agent_policy    →  policy auto-handled an unsafe message
+4_generation      →  reply was bad or contained an unsupported claim
+0_ok              →  no defect
+```
+
+And an `observed_outcome`:
+
+```text
+auto_good_reply
+auto_bad_reply
+auto_unsupported_claim
+escalated_correctly
+escalated_unnecessarily
+```
+
+Both are reported in:
+
+```text
+runs/evaluation/end_to_end_test.jsonl
+```

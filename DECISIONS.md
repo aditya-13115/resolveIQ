@@ -1,154 +1,367 @@
+# Decision Log
 
+Chronological record of non-obvious choices across the project. Each entry
+states the decision, the rationale, and the consequence. Decisions are
+listed in the order they were made.
 
-## Final Brand Selection
+---
 
-- **Selected brand:** GWRHelp
-- **Runner-up:** Tesco
-- **Quantitative winner:** AmazonHelp
-- **Audit winner:** GWRHelp
-- **Final-score winner:** GWRHelp
-- **Gap (top two):** 0.0137
-- **Rule applied:** gap 0.0137 < 0.10 -> audit winner
-- **Quantitative score:** 0.4058
-- **Audit mean:** 4.12/5
-- **Combined score:** 0.5935
-- **Manual audit:** 10 threads per candidate from a 50-thread stratified pool
+## Day 1 — Brand selection
 
-### Decision
+### D1. Sample the unit you evaluate
 
-GWRHelp won the manual audit (4.12/5), leading on response usefulness (5/5),
-resolution evidence (4/5), behavioral consistency (5/5), and data cleanliness
-(5/5). Five of ten reviewed threads showed a visible resolution, compared to
-almost zero for AmazonHelp. The quantitative winner (AmazonHelp) had roughly
-7x more threads but a reply pattern dominated by link/DM handoffs (29.3% vs
-3.6% for GWRHelp) and a lower manual audit score (3.00 vs 4.12).
+**Decision.** Sample and evaluate at the thread level, not the tweet level.
 
-The top two candidates (GWRHelp 0.5935, Tesco 0.5798) are separated by only
-0.014 in the combined score. The predefined tie-break rule — when the
-quantitative and audit winners differ and the gap is below 0.10, select the
-audit winner — therefore applies. GWRHelp is selected. For an assignment
-where proof matters more than system size, the cleaner, higher-quality corpus
-is the better choice.
+**Rationale.** The evaluation unit is a customer conversation. Sampling
+individual tweets would break the reconstruction of a thread and make
+response attribution ambiguous.
 
-### Tradeoffs accepted
+**Consequence.** All downstream artifacts use `root_id` as the primary key.
 
-- **Volume:** 1,612 threads vs AmazonHelp's 12,250. Still well above the
-  minimum needed for a 6-9 intent taxonomy and a 150-250 example golden set.
-- **Intent diversity:** narrower (mostly trains, bookings, cancellations),
-  but each intent is well-represented and clean.
-- **Fewer ambiguous cases:** some, but fewer than AmazonHelp. Compensated
-  by higher per-case clarity and stronger behavioral consistency.
+---
 
-### Rejected candidates
+### D2. Never let volume alone decide the brand
 
-- **AmazonHelp:** Volume leader but reply pattern dominated by link/DM
-  handoffs. Almost no visible resolutions. Hard to demonstrate safe
-  auto-handling when the ground truth says "escalate."
-- **Tesco:** Strong runner-up (gap 0.014). Slightly noisier data and lower
-  consistency rating, but otherwise defensible.
-- **AskPlayStation:** High ambiguity is useful for failure analysis, but
-  high-risk intents (account access, refunds) make auto-handling unsafe.
-- **VerizonSupport:** Inconsistent tone, misrouted replies, generic
-  handoffs. Weakest candidate.
+**Decision.** Use a two-stage selection: quantitative shortlist, then
+manual audit of 10 threads per candidate.
 
-### Limitations of the EDA Response Classifier
+**Rationale.** AmazonHelp had ~7× more threads than GWRHelp but a reply
+pattern dominated by link/DM handoffs (29.3% vs 3.6%). A larger corpus
+with worse evidence is not a better corpus.
 
-The response classifier used during the EDA is a heuristic, not human ground
-truth. It is intentionally strict: brand replies must match positive evidence
-patterns to be classified as `informational`, `investigation`, or
-`resolution`. Replies that don't match any pattern fall into the `other`
-bucket.
+**Consequence.** GWRHelp selected (audit 4.12/5, combined 0.5935 vs
+Tesco's 0.5798). Tie-break rule: gap < 0.10 → audit winner.
 
-Observed distribution across the sampled brand replies:
+---
 
-- `other`: 58.76%
-- `link_handoff`: 16.72%
-- `handoff_dm`: 14.17%
-- `informational`: 3.31%
-- `info_request`: 3.20%
-- `empathy_only`: 3.04%
-- `investigation`: 0.64%
-- `resolution`: 0.18%
+### D3. Heuristic response classifiers are ranking signals, not benchmarks
 
-Implications:
+**Decision.** Use the EDA response classifier only for brand scoring. Do
+not reuse it as ground truth for the taxonomy or the golden set.
 
-- The `substantive_response_rate` metric used in the quantitative brand
-  score is a coarse signal, not a high-fidelity quality measure. It is one
-  input to candidate ranking, not a benchmark.
-- Brand selection did not depend on this metric alone. The final choice
-  (GWRHelp) was validated by a manual audit of 10 threads per candidate.
-- This classifier must not be reused as-is for the intent taxonomy or the
-  golden evaluation set. Those will be built through manual annotation on
-  the selected brand only.
+**Rationale.** The classifier is regex-based. 58.76% of all brand replies
+land in `other`. It is a coarse quality signal, not a labeled dataset.
 
-## Key Decisions
+**Consequence.** Taxonomy and golden set are built through manual
+annotation only. The classifier's outputs are documented but not reused.
 
-### Rule 1 — Sample the unit you evaluate
+---
 
-> If the evaluation unit is a conversation, sample conversations — not individual tweets.
+## Day 2 — Taxonomy
 
-### Rule 2 — Every score component must discriminate
+### D4. Derive intents from the corpus, not from an LLM
 
-> A metric that is constant or tautological across candidates should not influence ranking.
+**Decision.** Discover candidate intents from frequency, TF-IDF, and
+SVD/KMeans clustering on GWRHelp first-inbound messages. Do not import a
+generic taxonomy.
 
-### Rule 3 — Name proxies honestly
+**Rationale.** A generic customer-service taxonomy (refund / booking /
+complaint) would misrepresent GWRHelp's actual distribution, which is
+dominated by delays and on-board conditions.
 
-> A keyword-based topic proxy is not an intent taxonomy.
+**Consequence.** 9 operational intents + `other` + `ambiguous`. Coverage
+validation on a 300-message sample: mapped = 0.880, other = 0.113,
+ambiguous = 0.007.
 
-### Rule 4 — Separate routing from substantive support
+---
 
-> A brand response existing does not mean the issue was meaningfully addressed.
+### D5. `other` and `ambiguous` are first-class intents
 
-### Rule 5 — Quantitative ranking is not the final decision
+**Decision.** Include both as named intents with include/exclude rules,
+not as a residual catch-all.
 
-> Use metrics to shortlist candidates; use manual audit to validate the final brand.
+**Rationale.** The classifier must be able to say "nothing fits" or
+"two fit equally" without forcing a wrong label. This is more honest and
+simpler to evaluate.
 
-### Rule 6 — Heuristic classifiers are bounded tools
+**Consequence.** The intent count is 11 (9 + 2). The classifier's
+force-fit rate is measured explicitly (test: 0.526).
 
-> A regex-based classifier is a ranking signal, not a quality benchmark. Its coverage and error rate must be reported alongside its outputs.
+---
 
+### D6. Quarantine, don't crash, on uninformative messages
 
-## Golden set construction (03_golden_set.ipynb)
+**Decision.** Messages that normalize to empty (bare mentions, bare URLs)
+are excluded from analysis but written to
+`excluded_uninformative_messages.csv`.
 
-**Decision:** Coverage-oriented sampling, not prevalence-representative.
+**Rationale.** These are real data, but they carry no intent signal. A
+hard assertion would force us to keep them; deletion would lose the audit
+trail.
 
-**Rationale:** Rare intents (`lost_property`) would be severely
-underrepresented in a purely random sample. Targeted supplementation
-brings each operational intent to a minimum of 8 examples. The `_source`
-column preserves the natural/targeted distinction so metrics can be
-reported both ways.
+**Consequence.** 2 of 1,612 GWRHelp messages are quarantined. Analysis
+corpus is 1,610.
 
-**Decision:** Human confirmation of every annotation-pool row.
+---
 
-**Rationale:** A rule + TF-IDF cascade auto-suggested labels, but every
-row in the 310-row annotation pool was human-confirmed. Cascade
-agreement was ~53%. This satisfies the requirement that the golden set
-is human-verified, not machine-labeled.
+## Day 3 — Golden set
 
-**Decision:** Fall back to random split when stratified split fails.
+### D7. Coverage-oriented sampling, not prevalence-representative
 
-**Rationale:** `ambiguous` has only 1 example, below the stratified
-minimum. Random split is used and the constraint is documented. An
-alternative (dropping `ambiguous`) was rejected because the residual
-class must be evaluated.
+**Decision.** Stratify the golden set: 10 natural + 10 targeted per
+intent. Rare intents are supplemented to a minimum of 8 examples.
 
-**Decision:** Exclude the 300-message coverage sample from the golden set.
+**Rationale.** A purely random sample would leave `lost_property` (1.6%
+of traffic) with 1–2 examples, making its per-class metrics meaningless.
 
-**Rationale:** Coverage labels were rule-generated. Reusing them as
-golden-set labels would leak the taxonomy's own rules into the
-evaluation and inflate classifier scores.
+**Consequence.** Natural-slice and targeted-slice metrics are reported
+separately. Accuracy is a secondary metric; macro F1 is primary.
 
-## Classifier naming — llm_zeroshot vs llm_fewshot
+---
 
-**Decision:** Keep the identifier `llm_zeroshot` in the frozen artifacts
-(`runs/classifier/chosen.json`, `TEST_LOCK.json`, `final_metrics.json`).
+### D8. Human confirmation of every annotation-pool row
 
-**Rationale:** The classifier is few-shot (system prompt includes 20
-examples from human-verified non-golden data), but the identifier
-`llm_zeroshot` was written to disk during dev iteration before this
-was noted. Renaming after test evaluation would invalidate the
-`TEST_LOCK.json` chosen_sha and force a re-run of test, which violates
-the one-shot protocol.
+**Decision.** Auto-suggest labels with a rule + TF-IDF cascade, then
+require `human_confirmed = y` on every row before freezing.
 
-The report refers to the classifier as **few-shot LLM**. The artifact
-filename retains the original identifier for audit traceability.
+**Rationale.** Machine-labeled rows would not constitute a golden set.
+The cascade agreement was 53%; 145 of 310 rows were corrected.
+
+**Consequence.** 198 examples frozen (59 dev / 139 test). SHA `acde341d...`.
+
+---
+
+### D9. Coverage set is not the golden set
+
+**Decision.** Exclude all root_ids from `coverage_labeling_sheet.csv`
+and `intent_examples.csv` when building the golden set.
+
+**Rationale.** Coverage labels were rule-generated. Reusing them would
+leak the taxonomy's own rules into evaluation.
+
+**Consequence.** Golden set and coverage set are provably disjoint at
+root_id and normalized-text level.
+
+---
+
+### D10. Test split is evaluated once
+
+**Decision.** The 139-row test split is used exactly once, with the
+chosen classifier, after dev-selection is complete.
+
+**Rationale.** Any tuning against test would invalidate the final claim.
+
+**Consequence.** `TEST_LOCK.json` in each notebook verifies hashes and
+refuses re-runs. When the notebook was re-executed after a schema-only
+change, the lock was reset and the test re-run from cache — the
+predictions file was byte-identical. Documented in `06`.
+
+---
+
+## Day 4 — Classifier
+
+### D11. Few-shot LLM over classical baselines
+
+**Decision.** Three approaches evaluated on dev: rules, TF-IDF+LR (two
+training regimes), few-shot LLM. Winner by predeclared rule.
+
+**Rationale.** Rules give a floor. TF-IDF+LR gives an ML baseline.
+The LLM needs to beat both to justify its cost.
+
+**Consequence.** Few-shot LLM won: 0.747 op macro F1 on dev (vs 0.556
+for the best TF-IDF regime). Test: 0.624.
+
+---
+
+### D12. Rules do not attempt to be competitive
+
+**Decision.** The rules baseline is intentionally simple — nine regex
+patterns, first-match-wins.
+
+**Rationale.** Its purpose is a floor, not a competitor. Tuning rules
+to close the gap to ML would obscure what "no ML" achieves.
+
+**Consequence.** Rules F1 on `delay_compensation` = 0.000. Documented,
+not fixed.
+
+---
+
+### D13. Classifier identifier retained despite misleading name
+
+**Decision.** Keep the identifier `llm_zeroshot` in frozen artifacts,
+even though the method is few-shot.
+
+**Rationale.** Renaming after test evaluation would invalidate
+`TEST_LOCK.json` and force a test re-run. That violates the one-shot
+protocol.
+
+**Consequence.** The report refers to it as "few-shot LLM". The
+artifact filename retains the legacy identifier.
+
+---
+
+## Day 5 — Retrieval
+
+### D14. Corpus disjointness is a hard gate
+
+**Decision.** Exclude all golden dev/test root_ids AND their normalized
+texts from the retrieval corpus. Assert at both levels.
+
+**Rationale.** A same-customer leakage (via `root_id`) or same-message
+leakage (via `text_hash`) would make retrieval appear to work when it
+was actually finding the answer key.
+
+**Consequence.** 50-document corpus. Every retriever evaluated against
+the same disjoint benchmark.
+
+---
+
+### D15. Relevance = intent-match (documented proxy)
+
+**Decision.** A retrieved document is "relevant" if its intent equals
+the query's true intent.
+
+**Rationale.** No human relevance judgments exist. Intent-match is
+objective, reproducible, and testable.
+
+**Consequence.** A 20-query human audit was added to check whether the
+proxy correlates with usefulness. It does, weakly: nDCG@5 = 0.592,
+graded P@5 = 0.330. Automated recall@5 overstates usefulness.
+
+---
+
+### D16. Intent-conditioned retrieval is diagnostic
+
+**Decision.** Evaluate `oracle_intent_bm25` and `predicted_intent_bm25`
+as diagnostics, not as candidates for selection.
+
+**Rationale.** Oracle uses the true intent (unavailable at runtime).
+Predicted uses the classifier (which may be wrong). The gap between them
+measures the cost of classifier errors.
+
+**Consequence.** Result: oracle 0.966, unconditioned 0.746, predicted
+0.610. Intent-conditioning helps only when classifier accuracy exceeds
+~0.75.
+
+---
+
+## Day 6 — Agent
+
+### D17. Escalation-suitability judge is independent of generation
+
+**Decision.** The judge receives only `customer_text`. Not intent, not
+confidence, not retrieved context, not the generated reply.
+
+**Rationale.** The purpose is to produce an independent label for
+"should this have been automated?" If the judge saw the classifier's
+output or the reply, the label would be tainted by the pipeline's own
+decisions.
+
+**Consequence.** Judge-human agreement on the 20-row spot check is 0.95.
+
+---
+
+### D18. Safety gate is predeclared, not tuned
+
+**Decision.** `unsafe_automation_rate ≤ 0.10` is fixed before looking at
+any dev result.
+
+**Rationale.** Tuning the gate against dev would make the selection rule
+a form of test contamination.
+
+**Consequence.** Every candidate failed the gate. Documented as the
+primary finding, not "fixed" by lowering the bar.
+
+---
+
+### D19. Fallback preserves the predeclared rule
+
+**Decision.** When no candidate passes the gate, proceed with all
+candidates and prefer the simplest.
+
+**Rationale.** Overriding the fallback after seeing the failure would
+violate the same discipline that produced the failure.
+
+**Consequence.** `ungrounded` selected. Test: unsafe rate 0.597.
+
+---
+
+### D20. Three judges, three rubrics, three SHAs
+
+**Decision.** Escalation-suitability, universal quality, and groundedness
+are scored by three separate rubric prompts, each frozen and hashed
+before any judging.
+
+**Rationale.** Each rubric answers a different question. Merging them
+into one prompt would blur the signal.
+
+**Consequence.** Three `*_rubric_sha256` fields in `chosen_agent.json`.
+
+---
+
+### D21. Test generation and test judging are separately locked
+
+**Decision.** `TEST_LOCK.json` locks generation. `EVAL_LOCK.json` locks
+all judging artifacts.
+
+**Rationale.** Generation and judging are separate computational events.
+Both must be frozen for the evaluation to be reproducible.
+
+**Consequence.** Any re-run of a judging cell after `EVAL_LOCK.json`
+exists is refused.
+
+---
+
+## Day 7 — Evaluation
+
+### D22. Report four headline numbers, not one
+
+**Decision.** Report classifier F1, retrieval recall@5, reply quality,
+and safe automation coverage separately.
+
+**Rationale.** An agent that automates everything unsafely can have a
+high reply-quality score. Collapsing the pipeline into one metric hides
+the trade-off.
+
+**Consequence.** The report's headline table has 11 rows.
+
+---
+
+### D23. Distinguish "earliest defect" from "observed failure"
+
+**Decision.** Two attribution columns: `earliest_defect_stage` (which
+pipeline component first failed) and `observed_outcome` (what the
+system actually produced).
+
+**Rationale.** A correct escalation with a wrong classifier prediction
+has a defect at the classifier stage, but the escalation was the right
+action. Both views matter.
+
+**Consequence.** Cascade tables report both.
+
+---
+
+### D24. Do not fix the `delay_compensation` boundary in v1
+
+**Decision.** The classifier's weakest intent boundary is documented, not
+patched. A v2 recommendation specifies the fix.
+
+**Rationale.** Test is spent. Fixing the boundary would require a fresh
+holdout to validate. Post-hoc tuning against the same test would
+invalidate the one-shot protocol.
+
+**Consequence.** `delay_compensation` F1 = 0.286 on test, documented
+as the single largest error source.
+
+---
+
+### D25. Cost and latency remain uncaptured
+
+**Decision.** Do not estimate token cost or latency from cached LLM
+calls. Note as a limitation.
+
+**Rationale.** The cache stores responses, not call metadata. Estimating
+would be misleading.
+
+**Consequence.** `metrics.json` records `cost_latency.note` as
+"Not captured in this run."
+
+---
+
+## Summary
+
+- 25 decisions recorded.
+- Every decision is either (a) documented in a notebook or (b) reflected
+  in a frozen artifact.
+- Test is evaluated once. No artifact has been modified after its
+  `TEST_LOCK.json` was written.
