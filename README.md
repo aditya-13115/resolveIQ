@@ -9,25 +9,59 @@ auto-handle or escalate.
 test-time artifact is SHA-locked. Every reported number traces to a
 frozen artifact.
 
+The repository contains three layers:
+
+1. **Pipeline** — notebooks `01`–`07` and `src/support_agent/`
+2. **API** — a thin FastAPI wrapper (`api/`)
+3. **UI** — a Vite + React demo (`frontend/`)
+
+The pipeline is the deliverable. The API and UI are a demo layer.
+
 ---
 
-## Reproduce in under 15 minutes
+## Quick start
+
+### 1. Reproduce the pipeline (under 15 minutes)
 
 ```bash
-# 1. Environment
+# Environment
 uv sync
 
-# 2. API key
+# API key
 cp .env.example .env
 # Add: GROQ_API_KEY=gsk_...
 
-# 3. Run notebooks in order
+# Run notebooks in order
 jupyter notebook notebooks/01_eda.ipynb
 # ... then 02 → 03 → 04 → 05 → 06 → 07
 ```
 
 Notebooks `02`–`06` are cached. Re-runs hit the disk cache and complete
 in seconds. Notebook `07` makes no API calls at all.
+
+### 2. Run the demo (optional)
+
+Two terminals. Backend first, then frontend.
+
+```powershell
+# Terminal 1 — API
+cd "D:\...\ResolveIQ"
+uv run uvicorn api.main:app --reload --port 8000
+# → http://localhost:8000/health should return {"status":"ok","pipeline_loaded":true}
+```
+
+```powershell
+# Terminal 2 — UI
+cd "D:\...\ResolveIQ\frontend"
+npm install
+npm run dev
+# → open http://localhost:5173
+```
+
+The UI loads the frozen taxonomy and lets you submit any customer
+message. It shows the assigned intent, the retrieved precedents, the
+generated reply, and the auto-handle / escalate decision — one pipeline
+stage at a time.
 
 ---
 
@@ -90,13 +124,23 @@ must match the artifact on disk. Any drift is a hard failure.
 ResolveIQ/
 ├── configs/                brand.yaml, intents.yaml, eval.yaml
 ├── notebooks/              01–07 (run in order)
-├── src/support_agent/      reusable modules
+├── src/support_agent/      reusable pipeline modules
 │   ├── intents/            classifier
 │   ├── retrieval/          index + retriever
 │   ├── generation/         reply generation
 │   ├── escalation/         policy
 │   ├── evaluation/         judges
 │   └── llm/                Groq client + cache
+├── api/                    FastAPI demo layer
+│   ├── main.py             /health, /taxonomy, /classify
+│   └── pipeline.py         loads frozen artifacts, wraps the pipeline
+├── frontend/               Vite + React demo UI
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── api.js
+│   │   ├── components/
+│   │   └── styles.css
+│   └── vite.config.js      dev proxy: /api/* → :8000
 ├── runs/                   frozen run artifacts
 │   ├── taxonomy/           discovery + coverage
 │   ├── golden_set/         golden set + audit trail
@@ -107,8 +151,76 @@ ResolveIQ/
 ├── reports/                final_report.md + figures/
 ├── evaluation/             promoted golden set + guidelines
 ├── tests/                  unit tests
+├── cache/                  LLM response cache (JSONL)
 └── DECISIONS.md            chronological decision log
 ```
+
+---
+
+## Demo layer
+
+### API endpoints
+
+| Method | Path | Purpose |
+|---|---|---|
+| `GET` | `/health` | Liveness + pipeline status |
+| `GET` | `/taxonomy` | Frozen taxonomy (version + intents) |
+| `POST` | `/classify` | Run the agent on a message |
+
+Request:
+
+```json
+{
+  "message": "My train was 45 minutes late yesterday. Can I claim Delay Repay?",
+  "top_k": 5,
+  "force_escalate": false
+}
+```
+
+Response shape:
+
+```json
+{
+  "intent": "delay_compensation",
+  "confidence": 0.95,
+  "confidence_calibrated": 0.602,
+  "alternative_intent": "service_disruption",
+  "alternative_confidence": 0.05,
+  "corpus_coverage": 1,
+  "retrieved": [ "...top-k precedents..." ],
+  "escalated": false,
+  "escalation_reason": "",
+  "reply": "...",
+  "used_precedent_ranks": [1, 3],
+  "grounded": true,
+  "api_status": "ok"
+}
+```
+
+Interactive docs at `http://localhost:8000/docs`.
+
+### UI
+
+The UI shows one pipeline stage at a time:
+
+- **Classify** — assigned intent, raw and calibrated confidence, alternative
+- **Retrieve** — top-k precedents with scores; cited ones highlighted
+- **Route** — auto-handle or escalate, with the rule that fired
+- **Generate** — the reply with the precedent ranks it cited
+
+Five sample chips cover common intents. Four additional `· Escalate`
+chips deliberately trigger escalation so both policy paths
+(`intent_other_or_ambiguous` and `corpus_coverage_zero`) are
+demonstrable in one click.
+
+### What the demo is not
+
+- No authentication
+- No rate limiting
+- No persistence beyond the pipeline's own LLM cache
+- No deployment config
+
+The demo is a review aid, not a product surface.
 
 ---
 

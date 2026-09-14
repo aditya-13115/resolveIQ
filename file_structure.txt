@@ -1,5 +1,10 @@
 ResolveIQ
+├── api
+│   ├── __init__.py
+│   ├── main.py
+│   └── pipeline.py
 ├── cache
+│   ├── api_generated_replies.jsonl
 │   ├── generated_replies.jsonl
 │   ├── intent_predictions.jsonl
 │   ├── judge_scores.jsonl
@@ -32,6 +37,31 @@ ResolveIQ
 │   └── banking77_intent_sanity
 │       ├── README.md
 │       └── run.py
+├── frontend
+│   ├── public
+│   │   ├── favicon.svg
+│   │   └── icons.svg
+│   ├── src
+│   │   ├── assets
+│   │   │   ├── hero.png
+│   │   │   ├── react.svg
+│   │   │   └── vite.svg
+│   │   ├── components
+│   │   │   ├── QueryForm.jsx
+│   │   │   └── ResultPanel.jsx
+│   │   ├── api.js
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   └── styles.css
+│   ├── .gitignore
+│   ├── .oxlintrc.json
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   └── vite.config.js
 ├── notebooks
 │   ├── 01_eda.ipynb
 │   ├── 02_taxonomy.ipynb

@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "fastapi>=0.141.1",
     "groq>=1.7.0",
     "ipykernel>=7.3.0",
     "ipython>=9.17.1",
@@ -12,10 +13,13 @@ dependencies = [
     "matplotlib>=3.11.1",
     "numpy>=2.5.3",
     "pandas>=3.0.5",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.2.3",
     "pyyaml>=6.0.3",
     "rank-bm25>=0.2.2",
     "scikit-learn>=1.9.1",
     "scipy>=1.18.1",
     "seaborn>=0.13.2",
     "sentence-transformers>=6.0.1",
+    "uvicorn[standard]>=0.53.0",
 ]
