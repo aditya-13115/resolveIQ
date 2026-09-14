@@ -1,4 +1,4 @@
-"approach","n","replies","automation_coverage","escalation_rate","mean_universal","good_rate_ge12","bad_rate_le6","unsupported_rate","unsafe_automation_rate","unsafe_auto_n","auto_n","escalation_precision","escalation_recall"
+"approach","n","replies","automation_coverage","escalation_rate","mean_auto_reply_quality","good_rate_ge12","bad_rate_le6","unsupported_rate","unsafe_automation_rate","unsafe_auto_n","auto_n","escalation_precision","escalation_recall"
 "ungrounded","59","59","1.0","0.0","13.186440677966102","0.864406779661017","0.01694915254237288","0.2542372881355932","0.6779661016949152","40","59","","0.0"
 "grounded_no_escalate","59","59","1.0","0.0","12.677966101694915","0.7457627118644068","0.01694915254237288","0.5423728813559322","0.6779661016949152","40","59","","0.0"
 "full_pipeline","59","51","0.864406779661017","0.13559322033898305","12.823529411764707","0.7647058823529411","0.0196078431372549","0.5098039215686274","0.7058823529411765","36","51","0.5","0.1"

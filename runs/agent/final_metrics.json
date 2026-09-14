@@ -9,5 +9,10 @@
   "unsafe_automation_rate": 0.5971223021582733,
   "unsafe_auto_n": 83,
   "auto_n": 139,
-  "escalation_rate": 0.0
+  "escalation_rate": 0.0,
+  "escalation_precision": null,
+  "escalation_recall": 0.0,
+  "escalation_tp": 0,
+  "escalation_fp": 0,
+  "escalation_fn": 83
 }

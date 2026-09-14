@@ -31,6 +31,6 @@
   "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
   "delta_grounding": -0.5084745762711864,
   "delta_unsupported": -0.288135593220339,
-  "locked_at": "2026-09-14T11:04:36+00:00",
+  "locked_at": "2026-09-14T11:24:49+00:00",
   "note": "Immutable lock written before test evaluation."
 }

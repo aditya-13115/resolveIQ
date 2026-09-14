@@ -1,16 +1,16 @@
 {
-  "created_at": "2026-09-14T11:05:23+00:00",
-  "chosen_agent_sha": "f77aafcd0b97c253f21837f56ef60d9250d844fc626685f8d7ff8c391002ff17",
+  "created_at": "2026-09-14T11:25:53+00:00",
+  "chosen_agent_sha": "dc6c09f6f3cd147eaa66cd284aa1c5bd5776d62e4e19f891bfd769be426086ab",
   "artifacts": [
     {
       "path": "runs\\agent\\chosen_agent.json",
       "size_bytes": 1545,
-      "sha256": "f77aafcd0b97c253f21837f56ef60d9250d844fc626685f8d7ff8c391002ff17"
+      "sha256": "dc6c09f6f3cd147eaa66cd284aa1c5bd5776d62e4e19f891bfd769be426086ab"
     },
     {
       "path": "runs\\agent\\comparison_dev.csv",
-      "size_bytes": 844,
-      "sha256": "228fa645212234de6fff8dbe3096940e53212f84a0e0896627eb96d60eb4de78"
+      "size_bytes": 853,
+      "sha256": "5c4b1c5b4924e3435b6f6b3b955a47a97ccad9e1ad447a328c6844b306165179"
     },
     {
       "path": "runs\\agent\\escalate_all\\dev_replies.jsonl",
@@ -29,8 +29,8 @@
     },
     {
       "path": "runs\\agent\\final_metrics.json",
-      "size_bytes": 342,
-      "sha256": "d136aa1cb1d63be211fb149e468849abac0f7029353c16f9610cadedc0958296"
+      "size_bytes": 474,
+      "sha256": "83d2efe7a84e677587ac57844bafa4ab2d29f3dca34f18a2fa60d1a64fc1e35f"
     },
     {
       "path": "runs\\agent\\full_pipeline\\dev_replies.jsonl",
@@ -50,7 +50,7 @@
     {
       "path": "runs\\agent\\handoff_to_07.json",
       "size_bytes": 1228,
-      "sha256": "be4fad6d70cb4f56de94b454ff0a1a971a03a0c90e71735261c0464c79746232"
+      "sha256": "24e19937e016836a19a7aa928fc04b6fcd3e9936c2a036d66f1f2570537ec89a"
     },
     {
       "path": "runs\\agent\\human_spot_check.csv",
@@ -65,7 +65,12 @@
     {
       "path": "runs\\agent\\TEST_LOCK.json",
       "size_bytes": 235,
-      "sha256": "94f9804976f72c8e7f7247b7cbf52a2c897f774547005bdbd1f1724453613c76"
+      "sha256": "ccfc41117caafda49e23920fd184a37f0edc280936d66ac726e8bf18820c32ea"
+    },
+    {
+      "path": "runs\\agent\\threshold_sweep_dev.csv",
+      "size_bytes": 1923,
+      "sha256": "7a2504b7fe4713576705e55bddb1ca88d5c035f9958c9dcf8dab32e69b9fced0"
     },
     {
       "path": "runs\\agent\\ungrounded\\dev_replies.jsonl",

@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-09-14T11:25:55+00:00",
+  "artifacts": {
+    "chosen_agent": "dc6c09f6f3cd147eaa66cd284aa1c5bd5776d62e4e19f891bfd769be426086ab",
+    "predictions_test": "ab08bce7efb7d04d61d444bb25e22e85b5f685e7790aa2a52fcc905e7f042f13",
+    "test_lock": "ccfc41117caafda49e23920fd184a37f0edc280936d66ac726e8bf18820c32ea",
+    "escalation_suitability_test": "7b54414e48e0136a9ef5501e6268e53013ef9aee1af8a58ff1955a5986c16ee1",
+    "universal_scores_test": "504cdb2c4d0f04f8a22fb5267bef84d304db62fa4d1a73336ab456da338fde9d",
+    "final_metrics": "83d2efe7a84e677587ac57844bafa4ab2d29f3dca34f18a2fa60d1a64fc1e35f"
+  },
+  "rubric_sha256": {
+    "escalation": "620cc267a3666a8cabd4ae470920c4c8d8a0ed537c75d36b8c9c67f0921929ec",
+    "universal": "b649ea025980af7314eb74060d489b0873067c716d2ea847e33b761a4959f361",
+    "groundedness": "e43dce962cbbb76a13dd50ce57c04232440d6f7960647aa8e180e59b8bdc7445"
+  },
+  "judge_model": "openai/gpt-oss-120b"
+}

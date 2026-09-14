@@ -16,7 +16,7 @@
     "classifier_sha256": "7d51251a172e623ceed6f25e9d705f99d6015f02e0b9e65e43c751d9feb603ea",
     "retriever_sha256": "33dbaea4a95ad1484910ea38528d69769c22865b2914e002a4edca426504eeeb",
     "corpus_sha256": "69327018136200df2e8a6af81d72cc752d3f5c7f8365ba6149c2c76f73757872",
-    "chosen_agent_sha": "f77aafcd0b97c253f21837f56ef60d9250d844fc626685f8d7ff8c391002ff17"
+    "chosen_agent_sha": "dc6c09f6f3cd147eaa66cd284aa1c5bd5776d62e4e19f891bfd769be426086ab"
   },
   "notes": "Retrieval scores are ordinal. Reply quality measured by three independent judges (universal, groundedness, escalation-suitability). Escalation-suitability label is independent of generation and sees only the customer message."
 }
