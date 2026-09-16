@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { classify, getTaxonomy } from './api'
 import QueryForm from './components/QueryForm'
 import ResultPanel from './components/ResultPanel'
@@ -17,6 +18,7 @@ export default function App() {
     setLoading(true)
     setError(null)
     setResult(null)
+
     try {
       setResult(await classify(message, opts))
     } catch (e) {
@@ -30,11 +32,23 @@ export default function App() {
     <div className="app">
       <header className="masthead">
         <div className="brand">
-          <h1>
-            Resolve<em>IQ</em>
-          </h1>
-          <span className="issue">Issue 01 · {new Date().getFullYear()}</span>
+          <img
+            src="/favicon.png"
+            alt="ResolveIQ logo"
+            className="brand-logo"
+          />
+
+          <div className="brand-copy">
+            <h1>
+              Resolve<em>IQ</em>
+            </h1>
+
+            <span className="issue">
+              {new Date().getFullYear()}
+            </span>
+          </div>
         </div>
+
         <div className="meta">
           Brand <b>GWRHelp</b>
           <br />
@@ -42,6 +56,7 @@ export default function App() {
           <br />
           Corpus <b>50 precedents</b>
         </div>
+
         <p className="tagline">
           A selective, evidence-grounded support agent. Classifies intent,
           retrieves historical precedent, drafts a reply, and decides whether
@@ -52,6 +67,7 @@ export default function App() {
       <main className="board">
         <section className="col-left">
           <h2 className="rubric">Query</h2>
+
           <QueryForm
             onSubmit={onSubmit}
             loading={loading}
@@ -61,8 +77,11 @@ export default function App() {
 
         <section className="col-right result">
           <h2 className="rubric">Analysis</h2>
+
           {error && <div className="error">{error}</div>}
+
           {result && <ResultPanel result={result} />}
+
           {!result && !error && (
             <div className="placeholder">
               Enter a customer message and press Run. The classifier will
@@ -76,10 +95,11 @@ export default function App() {
 
       <footer className="colophon">
         <div className="metrics">
-          Frozen test metrics &mdash; op macro F1 <b>0.624</b> ·
-          recall@5 <b>0.532</b> · safe automation coverage <b>0.295</b> ·
-          unsafe automation rate <b>0.597</b>
+          Frozen test metrics &mdash; op macro F1 <b>0.624</b> · recall@5{' '}
+          <b>0.532</b> · safe automation coverage <b>0.295</b> · unsafe
+          automation rate <b>0.597</b>
         </div>
+
         <div className="sig">
           Not a production service · 2026
         </div>

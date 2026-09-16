@@ -39,13 +39,9 @@ ResolveIQ
 │       └── run.py
 ├── frontend
 │   ├── public
-│   │   ├── favicon.svg
-│   │   └── icons.svg
+│   │   ├── favicon.png
+│   │   └── favicon.svg
 │   ├── src
-│   │   ├── assets
-│   │   │   ├── hero.png
-│   │   │   ├── react.svg
-│   │   │   └── vite.svg
 │   │   ├── components
 │   │   │   ├── QueryForm.jsx
 │   │   │   └── ResultPanel.jsx
@@ -60,7 +56,6 @@ ResolveIQ
 │   ├── index.html
 │   ├── package-lock.json
 │   ├── package.json
-│   ├── README.md
 │   └── vite.config.js
 ├── notebooks
 │   ├── 01_eda.ipynb
