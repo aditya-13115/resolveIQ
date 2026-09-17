@@ -764,42 +764,110 @@ The final report explicitly requires every reported number to trace back to froz
 
 ```text
 ResolveIQ/
-├── api/                      # Thin FastAPI demo wrapper
+├── api/                              # Thin FastAPI demo wrapper
+│   ├── __init__.py
 │   ├── main.py
 │   └── pipeline.py
 │
-├── configs/                  # Source-of-truth configuration
+├── cache/                            # Local generated LLM/cache artifacts
+│   ├── api_generated_replies.jsonl
+│   ├── generated_replies.jsonl
+│   ├── intent_predictions.jsonl
+│   └── judge_scores.jsonl
+│
+├── configs/                          # Source-of-truth configuration
 │   ├── brand.yaml
 │   ├── intents.yaml
-│   └── *.template
+│   └── intents.yaml.template
 │
-├── evaluation/              # Promoted annotation artifacts + guidelines
+├── data/                             # Dataset and intermediate data
+│   ├── interim/
+│   │   └── threads_sample.pkl
+│   ├── processed/
+│   ├── raw/
+│   │   └── customer-support-on-twitter/
+│   │       ├── sample.csv
+│   │       └── twcs.csv
+│   ├── sample/
+│   └── README.md
 │
-├── experiments/              # Small diagnostic experiments
+├── evaluation/                       # Human annotation and evaluation artifacts
+│   ├── annotation_guidelines.md
+│   ├── candidate_audit.csv
+│   └── golden_set.jsonl
 │
-├── frontend/                 # Vite + React review UI
+├── frontend/                         # Vite + React review UI
+│   ├── public/
+│   │   ├── favicon.png
+│   │   └── favicon.svg
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── QueryForm.jsx
+│   │   │   └── ResultPanel.jsx
+│   │   ├── api.js
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   └── styles.css
+│   ├── .gitignore
+│   ├── .oxlintrc.json
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   └── vite.config.js
 │
-├── notebooks/                # 01–07 experiment/evaluation pipeline
+├── notebooks/                        # Seven-stage experiment pipeline
+│   ├── 01_eda.ipynb
+│   ├── 02_taxonomy.ipynb
+│   ├── 03_golden_set.ipynb
+│   ├── 04_classifier.ipynb
+│   ├── 05_retrieval.ipynb
+│   ├── 06_agent.ipynb
+│   └── 07_evaluation.ipynb
 │
-├── prompts/                  # Reserved prompt-versioning location
+├── reports/                          # Final report and generated figures
+│   ├── figures/
+│   ├── final_report.md
+│   └── retrieval_handoff.json
 │
-├── reports/                  # Final report + figures
-│
-├── runs/                     # Frozen experiment artifacts and locks
-│   ├── brand_selection/
-│   ├── taxonomy/
-│   ├── golden_set/
-│   ├── classifier/
-│   ├── retrieval/
+├── runs/                             # Frozen experiment artifacts and locks
 │   ├── agent/
-│   └── evaluation/
+│   ├── agent_v1/
+│   ├── agent_v2/
+│   ├── baseline_0/
+│   ├── baseline_1/
+│   ├── brand_selection/
+│   ├── classifier/
+│   ├── evaluation/
+│   ├── golden_set/
+│   ├── retrieval/
+│   └── taxonomy/
 │
-├── src/support_agent/        # Reusable runtime/evaluation modules
-├── scripts/                  # Legacy/placeholder script paths
-├── tests/                    # Test paths; see cleanup note below
-├── cache/                    # Local LLM caches
-├── DECISIONS.md              # 25 recorded methodology decisions
+├── src/
+│   └── support_agent/                # Reusable runtime/evaluation modules
+│       ├── escalation/
+│       │   ├── __init__.py
+│       │   └── policy.py
+│       ├── evaluation/
+│       │   ├── __init__.py
+│       │   ├── judge.py
+│       │   └── risk_coverage.py
+│       ├── generation/
+│       │   ├── __init__.py
+│       │   └── generator.py
+│       └── retrieval/
+│           ├── __init__.py
+│           ├── index.py
+│           └── retriever.py
+│
+├── .env.example
+├── .gitignore
+├── .python-version
+├── DECISIONS.md                      # Methodology and design decisions
+├── main.py
 ├── pyproject.toml
+├── README.md
 └── uv.lock
 ```
 
