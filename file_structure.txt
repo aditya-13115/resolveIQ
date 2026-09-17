@@ -7,15 +7,11 @@ ResolveIQ
 │   ├── api_generated_replies.jsonl
 │   ├── generated_replies.jsonl
 │   ├── intent_predictions.jsonl
-│   ├── judge_scores.jsonl
-│   ├── README.md
-│   └── retrieved_context.jsonl
+│   └── judge_scores.jsonl
 ├── configs
 │   ├── brand.yaml
-│   ├── eval.yaml
 │   ├── intents.yaml
-│   ├── intents.yaml.template
-│   └── model.yaml
+│   └── intents.yaml.template
 ├── data
 │   ├── interim
 │   │   └── threads_sample.pkl
@@ -29,14 +25,7 @@ ResolveIQ
 ├── evaluation
 │   ├── annotation_guidelines.md
 │   ├── candidate_audit.csv
-│   ├── golden_set.jsonl
-│   ├── human_annotations.csv
-│   ├── judge_agreement.md
-│   └── rubric.md
-├── experiments
-│   └── banking77_intent_sanity
-│       ├── README.md
-│       └── run.py
+│   └── golden_set.jsonl
 ├── frontend
 │   ├── public
 │   │   ├── favicon.png
@@ -65,11 +54,6 @@ ResolveIQ
 │   ├── 05_retrieval.ipynb
 │   ├── 06_agent.ipynb
 │   └── 07_evaluation.ipynb
-├── prompts
-│   ├── classifier_v1.txt
-│   ├── grounding_v1.txt
-│   ├── judge_v1.txt
-│   └── reply_v1.txt
 ├── reports
 │   ├── figures
 │   │   ├── automation_by_intent_test.png
@@ -89,7 +73,6 @@ ResolveIQ
 │   │   ├── top_brand_authors.png
 │   │   ├── top_brands_by_requests.png
 │   │   └── topic_richness_proxy.png
-│   ├── failure_analysis.md
 │   ├── final_report.md
 │   └── retrieval_handoff.json
 ├── runs
@@ -250,62 +233,23 @@ ResolveIQ
 │       ├── intents.draft.yaml
 │       ├── intents.yaml.sha256
 │       └── taxonomy_notes.md
-├── scripts
-│   ├── build_index.py
-│   ├── make_report.py
-│   ├── prepare_data.py
-│   └── run_eval.py
 ├── src
 │   └── support_agent
-│       ├── agent
-│       │   ├── __init__.py
-│       │   └── pipeline.py
-│       ├── data
-│       │   ├── __init__.py
-│       │   ├── clean.py
-│       │   ├── load.py
-│       │   ├── select_brand.py
-│       │   ├── split.py
-│       │   └── threads.py
 │       ├── escalation
 │       │   ├── __init__.py
-│       │   ├── policy.py
-│       │   └── risk.py
+│       │   └── policy.py
 │       ├── evaluation
 │       │   ├── __init__.py
-│       │   ├── failure_analysis.py
-│       │   ├── human_agreement.py
 │       │   ├── judge.py
-│       │   ├── metrics.py
 │       │   └── risk_coverage.py
 │       ├── generation
 │       │   ├── __init__.py
 │       │   └── generator.py
-│       ├── intents
-│       │   ├── __init__.py
-│       │   ├── baselines.py
-│       │   ├── classifier.py
-│       │   └── taxonomy.py
-│       ├── llm
-│       │   ├── __init__.py
-│       │   ├── cache.py
-│       │   └── client.py
 │       ├── retrieval
 │       │   ├── __init__.py
 │       │   ├── index.py
 │       │   └── retriever.py
-│       ├── utils
-│       │   ├── __init__.py
-│       │   ├── logging.py
-│       │   └── seed.py
-│       ├── __init__.py
-│       ├── config.py
-│       └── schemas.py
-├── tests
-│   ├── test_escalation.py
-│   ├── test_metrics.py
-│   ├── test_schemas.py
-│   └── test_threads.py
+│       └── __init__.py
 ├── .env
 ├── .env.example
 ├── .gitignore
